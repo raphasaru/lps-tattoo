@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klebyz Tattoo — Projetos Autorais em São Paulo</title>
+  <meta name="description" content="Tatuagens autorais inspiradas em filmes, desenhos e cultura pop. Projetos com critério artístico no Concept Studio, São Paulo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --amber: #9f0712;
+      --amber-light: #c20d18;
+      --cream: #f0ead6;
+      --gray: #888888;
+      --gray-light: #b0b0b0;
+      --white: #fafafa;
+      --green: #25D366;
+      --green-hover: #1ebe57;
+      --light-bg: #ede7d3;
+      --light-text: #1a1410;
+      --light-muted: #5a5040;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Lora', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 19px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Film grain overlay ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    /* ── Utility ── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Reveal animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── CTA Button ── */
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: var(--green);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .cta:hover {
+      background: var(--green-hover);
+      transform: translateY(-2px);
+    }
+    .cta svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* ═══════════════════════════════
+       HERO
+    ═══════════════════════════════ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      overflow: hidden;
+      background-image:
+        linear-gradient(to right, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.82) 55%, rgba(10,10,10,0.55) 100%),
+        url('hero-bg.webp');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* fallback jpg for non-webp */
+    @supports not (background-image: url('x.webp')) {
+      .hero {
+        background-image:
+          linear-gradient(to right, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.82) 55%, rgba(10,10,10,0.55) 100%),
+          url('hero-bg.jpg');
+      }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-label {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      color: var(--amber);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-label::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--amber);
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--amber);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--gray-light);
+      max-width: 520px;
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+
+    .hero-text {
+      font-size: 1.1rem;
+      color: var(--gray);
+      max-width: 520px;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .hero-img-wrapper {
+      position: relative;
+    }
+    .hero-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(0.15) contrast(1.05);
+    }
+
+    /* ═══════════════════════════════
+       ABOUT — fundo claro
+    ═══════════════════════════════ */
+    .about {
+      padding: 80px 0;
+      position: relative;
+      background-color: var(--light-bg);
+    }
+
+    /* grain sobre o fundo claro */
+    .about::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    .about .section-header .label { color: var(--amber); }
+    .about .section-header h2 { color: var(--light-text); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--light-muted);
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+    .about-text p:first-child {
+      font-size: 1.1rem;
+      color: var(--light-text);
+    }
+
+    .about-highlight {
+      position: relative;
+      padding: 40px;
+      background: rgba(10,10,10,0.06);
+      border-left: 3px solid var(--amber);
+    }
+    .about-highlight p {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--light-text);
+      font-weight: 400;
+      line-height: 1.8;
+    }
+    .about-highlight .dash {
+      display: block;
+      width: 30px;
+      height: 2px;
+      background: var(--amber);
+      margin-top: 20px;
+    }
+
+    /* ═══════════════════════════════
+       GALLERY
+    ═══════════════════════════════ */
+    .gallery {
+      padding: 80px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-header .label {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: var(--amber);
+      margin-bottom: 12px;
+    }
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Carousel ── */
+    .gallery-carousel-wrapper {
+      position: relative;
+    }
+    .gallery-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 6px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+    }
+    .gallery-grid:active { cursor: grabbing; }
+    .gallery-grid::-webkit-scrollbar { display: none; }
+
+    .gallery-grid .gallery-item {
+      flex: 0 0 calc(33.333% - 4px);
+      scroll-snap-align: start;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      background: var(--dark);
+    }
+    .gallery-grid .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s;
+      filter: grayscale(0.1);
+    }
+    .gallery-grid .gallery-item:hover img {
+      transform: scale(1.05);
+      filter: grayscale(0);
+    }
+    .gallery-grid .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.4) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* nav arrows */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: rgba(10,10,10,0.7);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--white);
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-size: 1.2rem;
+      line-height: 1;
+      user-select: none;
+    }
+    .carousel-btn:hover { background: rgba(10,10,10,0.95); }
+    .carousel-btn.prev { left: -22px; }
+    .carousel-btn.next { right: -22px; }
+
+    .gallery-cta {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    /* ═══════════════════════════════
+       PROCESS — fundo claro
+    ═══════════════════════════════ */
+    .process {
+      padding: 80px 0;
+      position: relative;
+      background-color: var(--light-bg);
+    }
+
+    .process::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    .process .section-header .label { color: var(--amber); }
+    .process .section-header h2 { color: var(--light-text); }
+
+    .process-intro {
+      max-width: 680px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+    .process-intro p {
+      color: var(--light-muted);
+      font-weight: 400;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-bottom: 80px;
+    }
+    .step {
+      padding: 36px 28px;
+      background: #fff;
+      border-top: 2px solid var(--amber);
+      position: relative;
+      box-shadow: 0 2px 16px rgba(10,10,10,0.07);
+    }
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: rgba(159,7,18,0.12);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .step h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--light-text);
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .step p {
+      font-size: 1.05rem;
+      color: var(--light-muted);
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════
+       TESTIMONIALS
+    ═══════════════════════════════ */
+    .testimonials {
+      padding: 80px 0;
+      background: var(--dark);
+      position: relative;
+    }
+    .testimonials::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(212,160,84,0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+    .testimonial {
+      padding: 36px 28px;
+      position: relative;
+    }
+    .testimonial::before {
+      content: '\201C';
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: var(--amber);
+      opacity: 0.4;
+      position: absolute;
+      top: 8px;
+      left: 20px;
+      line-height: 1;
+    }
+    .testimonial p {
+      font-style: italic;
+      color: var(--gray-light);
+      font-weight: 300;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+    }
+    .testimonial .divider {
+      width: 30px;
+      height: 1px;
+      background: var(--amber);
+      margin-top: 20px;
+      opacity: 0.5;
+    }
+
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 60px;
+    }
+    .screenshot-item {
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--dark-card);
+      aspect-ratio: 3/5;
+    }
+    .screenshot-item img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .screenshot-item:hover img {
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 900px) {
+      .screenshots-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+    }
+
+    .closing {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .closing p {
+      font-size: 1.1rem;
+      color: var(--cream);
+      font-weight: 300;
+      margin-bottom: 36px;
+      line-height: 1.8;
+    }
+
+    /* ═══════════════════════════════
+       FOOTER
+    ═══════════════════════════════ */
+    footer {
+      padding: 60px 0;
+      text-align: center;
+      position: relative;
+    }
+    footer .footer-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--white);
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    footer p {
+      font-size: 0.85rem;
+      color: var(--gray);
+      font-weight: 300;
+    }
+    footer .footer-detail {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    footer .footer-detail span {
+      font-size: 0.8rem;
+      color: var(--gray);
+      letter-spacing: 0.05em;
+    }
+    footer .footer-detail span::before {
+      content: '·';
+      margin-right: 12px;
+      color: var(--amber);
+    }
+    footer .footer-detail span:first-child::before {
+      display: none;
+    }
+    footer .footer-legal {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    footer .footer-legal p {
+      font-size: 0.78rem;
+      color: #555;
+      line-height: 1.9;
+    }
+
+    /* ═══════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════ */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .hero-img-wrapper {
+        max-width: 360px;
+        margin: 0 auto;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .gallery-grid .gallery-item {
+        flex: 0 0 calc(50% - 3px);
+      }
+      .carousel-btn.prev { left: 4px; }
+      .carousel-btn.next { right: 4px; }
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body { font-size: 16px; }
+      .container { padding: 0 18px; }
+      .hero { padding: 100px 0 60px; min-height: auto; background-image: linear-gradient(to right, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.82) 55%, rgba(10,10,10,0.55) 100%), url('hero-bg-mobile.webp'); background-position: top center; background-size: cover; }
+      .hero-img-wrapper { display: none; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .gallery-grid .gallery-item { flex: 0 0 80%; }
+      .cta { padding: 14px 28px; font-size: 1rem; }
+      .screenshots-grid { grid-template-columns: 1fr 1fr; max-width: none; gap: 8px; }
+    }
+
+    /* ── Lightbox ── */
+    .lb-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(0,0,0,0.92);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .lb-overlay.active { display: flex; }
+    .lb-overlay img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 2px;
+      user-select: none;
+    }
+    .lb-close {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      font-size: 2rem;
+      color: var(--cream);
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      background: none;
+      border: none;
+      padding: 4px 8px;
+    }
+    .lb-close:hover { opacity: 1; }
+    .lb-trigger { cursor: zoom-in; }
+  </style>
+</head>
+<body>
+
+  <!-- ════════ HERO ════════ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-label reveal">KLEBYZ TATTOO</div>
+          <h1 class="reveal" style="transition-delay: 0.1s">
+            Tatuagens que transformam <em>memórias</em> em identidade
+          </h1>
+          <p class="hero-sub reveal" style="transition-delay: 0.2s">
+            Projetos autorais inspirados em filmes, desenhos e universos que marcaram gerações — pensados para o corpo, o tempo e a fase de vida de hoje.
+          </p>
+          <p class="hero-text reveal" style="transition-delay: 0.3s">
+            Kleber é tatuador em São Paulo e atende no Concept Studio.<br><br>
+            Seu trabalho nasce das referências que marcaram a infância e a adolescência, anos 80, 90 e início dos 2000, mas vai além da lembrança pura.
+          </p>
+          <a href="https://meulink.fit/pjweTCwFqKxdXQO" class="cta reveal" style="transition-delay: 0.4s">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            QUERO CONVERSAR SOBRE MEU PROJETO
+          </a>
+        </div>
+        <div class="hero-img-wrapper reveal" style="transition-delay: 0.3s">
+          <picture>
+            <source srcset="Fotos do Klebyz /copy_57B083A8-D0C9-4374-9625-0F3E33FD37E0.webp" type="image/webp">
+            <img class="hero-img" src="Fotos do Klebyz /copy_57B083A8-D0C9-4374-9625-0F3E33FD37E0.jpeg" alt="Klebyz — Tatuador em São Paulo" width="337" height="600" fetchpriority="high">
+          </picture>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ ABOUT ════════ -->
+  <section class="about">
+    <div class="container">
+      <div class="section-header reveal" style="margin-bottom: 50px;">
+        <div class="label">SOBRE</div>
+        <h2>Arte que dura</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>Aqui, filmes, personagens e símbolos não entram na pele como algo congelado no passado.</p>
+          <p>Eles são reinterpretados com leitura adulta, encaixe anatômico e intenção artística, para continuar fazendo sentido daqui a muitos anos.</p>
+        </div>
+        <div class="about-highlight reveal" style="transition-delay: 0.15s">
+          <p>Cada projeto começa na conversa. Escutar a história, entender o momento de vida, ajustar ideias e construir algo que funcione no corpo real, não só na referência ou na imagem da internet.</p>
+          <span class="dash"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ GALLERY ════════ -->
+  <section class="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label">PORTFÓLIO</div>
+        <h2>Projetos Autorais</h2>
+      </div>
+      <div class="gallery-carousel-wrapper">
+        <button class="carousel-btn prev" aria-label="Anterior">&#8592;</button>
+        <div class="gallery-grid" id="galleryCarousel">
+          <div class="gallery-item">
+            <picture><source srcset="Fotos de trabalhos/copy_7C7E6B3A-7D7C-4527-85DC-E8BA03057CF2.webp" type="image/webp"><img src="Fotos de trabalhos/copy_7C7E6B3A-7D7C-4527-85DC-E8BA03057CF2.jpeg" alt="Tatuagem autoral" loading="lazy" width="506" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="Fotos de trabalhos/IMG_6389.webp" type="image/webp"><img src="Fotos de trabalhos/IMG_6389.jpg" alt="Tatuagem autoral" loading="lazy" width="506" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="Fotos de trabalhos/IMG_6538.webp" type="image/webp"><img src="Fotos de trabalhos/IMG_6538.jpg" alt="Tatuagem autoral" loading="lazy" width="506" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="Fotos de trabalhos/IMG_4626.webp" type="image/webp"><img src="Fotos de trabalhos/IMG_4626.jpg" alt="Tatuagem autoral" loading="lazy" width="506" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="Fotos de trabalhos/IMG_4892.webp" type="image/webp"><img src="Fotos de trabalhos/IMG_4892.jpg" alt="Tatuagem autoral" loading="lazy" width="506" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="Fotos de trabalhos/IMG_1822.webp" type="image/webp"><img src="Fotos de trabalhos/IMG_1822.jpg" alt="Tatuagem autoral" loading="lazy" width="506" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="Fotos de trabalhos/IMG_7239.webp" type="image/webp"><img src="Fotos de trabalhos/IMG_7239.jpg" alt="Tatuagem autoral" loading="lazy" width="506" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="Fotos de trabalhos/IMG_7102.webp" type="image/webp"><img src="Fotos de trabalhos/IMG_7102.jpg" alt="Tatuagem autoral" loading="lazy" width="506" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="Fotos de trabalhos/IMG_4600.webp" type="image/webp"><img src="Fotos de trabalhos/IMG_4600.jpg" alt="Tatuagem autoral" loading="lazy" width="506" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="Fotos de trabalhos/IMG_3814.webp" type="image/webp"><img src="Fotos de trabalhos/IMG_3814.jpg" alt="Tatuagem autoral" loading="lazy" width="506" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="Fotos de trabalhos/IMG_1503.webp" type="image/webp"><img src="Fotos de trabalhos/IMG_1503.jpg" alt="Tatuagem autoral" loading="lazy" width="506" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="Fotos de trabalhos/IMG_2837.webp" type="image/webp"><img src="Fotos de trabalhos/IMG_2837.jpg" alt="Tatuagem autoral" loading="lazy" width="506" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="Fotos de trabalhos/IMG_4864.webp" type="image/webp"><img src="Fotos de trabalhos/IMG_4864.jpg" alt="Tatuagem autoral" loading="lazy" width="506" height="900"></picture>
+          </div>
+        </div>
+        <button class="carousel-btn next" aria-label="Próximo">&#8594;</button>
+      </div>
+      <div class="gallery-cta reveal">
+        <a href="https://meulink.fit/pjweTCwFqKxdXQO" class="cta">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          SOLICITAR ORÇAMENTO
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ PROCESS ════════ -->
+  <section class="process">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label">PROCESSO</div>
+        <h2>Como os projetos são construídos</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h3>CRITÉRIO</h3>
+          <p>O trabalho do Kleber é pensado para durar. Isso envolve leitura de corpo, encaixe anatômico, escala correta e decisões técnicas que evitam que a tatuagem perca impacto com o tempo.</p>
+        </div>
+        <div class="step reveal" style="transition-delay: 0.1s">
+          <div class="step-num">02</div>
+          <h3>ORGANIZAÇÃO</h3>
+          <p>Muitos clientes chegam com várias referências, universos misturados ou dúvidas reais. O papel dele é organizar tudo isso com critério artístico, sem exagero, sem confusão visual e sem transformar a pele em um mural sem leitura.</p>
+        </div>
+        <div class="step reveal" style="transition-delay: 0.2s">
+          <div class="step-num">03</div>
+          <h3>PROCESSO</h3>
+          <p>O atendimento acontece com calma, troca e respeito pelo processo. Sem pressa, sem fórmula pronta e sem imposições.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ TESTIMONIALS ════════ -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label">DEPOIMENTOS</div>
+        <h2>O que dizem os clientes</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial reveal">
+          <p>Ele conseguiu transformar algo da minha infância em uma tattoo que combina com quem eu sou hoje.</p>
+          <div class="divider"></div>
+        </div>
+        <div class="testimonial reveal" style="transition-delay: 0.1s">
+          <p>Não foi só a tatuagem, foi todo o cuidado na construção do projeto.</p>
+          <div class="divider"></div>
+        </div>
+        <div class="testimonial reveal" style="transition-delay: 0.2s">
+          <p>Voltei outras vezes porque confio no processo e nas decisões.</p>
+          <div class="divider"></div>
+        </div>
+      </div>
+      <div class="screenshots-grid">
+        <div class="screenshot-item reveal">
+          <picture><source srcset="Prints depoimentos/WhatsApp Image 2026-02-11 at 19.22.12.webp" type="image/webp"><img src="Prints depoimentos/WhatsApp Image 2026-02-11 at 19.22.12.jpeg" alt="Avaliação Google" loading="lazy" width="346" height="600"></picture>
+        </div>
+        <div class="screenshot-item reveal" style="transition-delay: 0.05s">
+          <picture><source srcset="Prints depoimentos/IMG_8897.webp" type="image/webp"><img src="Prints depoimentos/IMG_8897.jpg" alt="Cliente no estúdio" loading="lazy" width="340" height="600"></picture>
+        </div>
+        <div class="screenshot-item reveal" style="transition-delay: 0.1s">
+          <picture><source srcset="Prints depoimentos/IMG_8898.webp" type="image/webp"><img src="Prints depoimentos/IMG_8898.jpg" alt="Cliente com tatuagem" loading="lazy" width="341" height="600"></picture>
+        </div>
+        <div class="screenshot-item reveal" style="transition-delay: 0.1s">
+          <picture><source srcset="Prints depoimentos/IMG_8900.webp" type="image/webp"><img src="Prints depoimentos/IMG_8900.jpg" alt="Sessão de tatuagem" loading="lazy" width="345" height="600"></picture>
+        </div>
+        <div class="screenshot-item reveal" style="transition-delay: 0.15s">
+          <picture><source srcset="Prints depoimentos/IMG_8901.webp" type="image/webp"><img src="Prints depoimentos/IMG_8901.jpg" alt="Cliente no estúdio" loading="lazy" width="343" height="600"></picture>
+        </div>
+        <div class="screenshot-item reveal" style="transition-delay: 0.2s">
+          <picture><source srcset="Prints depoimentos/IMG_8902.webp" type="image/webp"><img src="Prints depoimentos/IMG_8902.jpg" alt="Clientes no estúdio" loading="lazy" width="337" height="600"></picture>
+        </div>
+        <div class="screenshot-item reveal" style="transition-delay: 0.15s">
+          <picture><source srcset="Prints depoimentos/IMG_8903.webp" type="image/webp"><img src="Prints depoimentos/IMG_8903.jpg" alt="Sessão de tatuagem" loading="lazy" width="341" height="600"></picture>
+        </div>
+        <div class="screenshot-item reveal" style="transition-delay: 0.2s">
+          <picture><source srcset="Prints depoimentos/copy_A2897EE6-019E-458E-91FE-9611A0A0E71F.webp" type="image/webp"><img src="Prints depoimentos/copy_A2897EE6-019E-458E-91FE-9611A0A0E71F.jpeg" alt="Cliente com tatuagem" loading="lazy" width="338" height="600"></picture>
+        </div>
+      </div>
+
+      <div class="closing reveal">
+        <p>Se você busca uma tatuagem com significado, referências que marcaram sua história e um processo feito com critério, conversa e maturidade artística, esse é o primeiro passo.</p>
+        <a href="https://meulink.fit/pjweTCwFqKxdXQO" class="cta">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          FALAR COM O KLEBER NO WHATSAPP
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ FOOTER ════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-name">KLEBYZ TATTOO</div>
+      <p>Concept Studio — São Paulo</p>
+      <div class="footer-detail">
+        <span>Projetos autorais</span>
+        <span>Atendimento personalizado</span>
+      </div>
+      <div class="footer-legal">
+        <p>Art Fusion Concept Studio — CNPJ: 43.717.052/0001-96</p>
+        <p>Avenida Renata, 140 — CEP 03377-000 — São Paulo/SP</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lb-overlay" id="lightbox">
+    <button class="lb-close" id="lb-close">&times;</button>
+    <img id="lb-img" src="" alt="">
+  </div>
+
+  <script>
+    // Reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+
+    function openLightbox(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt || '';
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    document.querySelectorAll('.screenshot-item img').forEach(img => {
+      img.classList.add('lb-trigger');
+      img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    });
+
+    // Carousel
+    const carousel = document.getElementById('galleryCarousel');
+    const itemWidth = () => carousel.querySelector('.gallery-item').offsetWidth + 6;
+
+    document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
+      carousel.scrollBy({ left: -itemWidth() * 3, behavior: 'smooth' });
+    });
+    document.querySelector('.carousel-btn.next').addEventListener('click', () => {
+      carousel.scrollBy({ left: itemWidth() * 3, behavior: 'smooth' });
+    });
+
+    // drag-to-scroll — ignora clique se arrastou mais de 5px
+    let isDragging = false, startX, scrollLeft, dragMoved = false;
+    carousel.addEventListener('mousedown', e => {
+      isDragging = true;
+      dragMoved = false;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+    carousel.addEventListener('mouseleave', () => isDragging = false);
+    carousel.addEventListener('mouseup', () => isDragging = false);
+    carousel.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const delta = x - startX;
+      if (Math.abs(delta) > 5) dragMoved = true;
+      carousel.scrollLeft = scrollLeft - delta;
+    });
+
+    // lightbox nos itens do carrossel — só abre se não foi drag
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+      img.classList.add('lb-trigger');
+      img.addEventListener('click', () => {
+        if (!dragMoved) openLightbox(img.src, img.alt);
+      });
+    });
+  </script>
+
+</body>
+</html>
