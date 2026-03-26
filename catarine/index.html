@@ -488,18 +488,11 @@
       border-radius: 8px;
       overflow: hidden;
       background: var(--navy-mid);
-      aspect-ratio: 3/5;
     }
     .screenshot-item img {
       width: 100%;
-      height: 100%;
+      height: auto;
       display: block;
-      object-fit: cover;
-      object-position: center;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .screenshot-item:hover img {
-      transform: scale(1.02);
     }
 
     @media (max-width: 900px) {
@@ -620,7 +613,7 @@
       .hero-grid { grid-template-columns: 1fr; }
       .gallery-grid .gallery-item { flex: 0 0 80%; }
       .cta { padding: 14px 28px; font-size: 1rem; }
-      .screenshots-grid { grid-template-columns: 1fr 1fr; max-width: none; gap: 8px; }
+      .screenshots-grid { grid-template-columns: 1fr; max-width: none; gap: 12px; }
     }
 
     /* ── Lightbox ── */
@@ -915,10 +908,6 @@
     lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-    document.querySelectorAll('.screenshot-item img').forEach(img => {
-      img.classList.add('lb-trigger');
-      img.addEventListener('click', () => openLightbox(img.src, img.alt));
-    });
 
     // Carousel
     const carousel = document.getElementById('galleryCarousel');
