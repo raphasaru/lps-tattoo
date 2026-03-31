@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isa Piagetti — Guest Tattoo Artist · Edinburgh & Düsseldorf</title>
+  <meta name="description" content="Brazilian tattoo artist with 11 years of career, specializing in large-scale dark compositions. Guest sessions in Edinburgh, Scotland and Düsseldorf, Germany.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --accent: #1a1a2e;
+      --ink: #c0a87a;
+      --ink-light: #d4bc8e;
+      --cream: #f0ead6;
+      --gray: #888888;
+      --gray-light: #b0b0b0;
+      --white: #fafafa;
+      --green: #25D366;
+      --green-hover: #1ebe57;
+      --light-bg: #1c1c24;
+      --light-text: #e8e2d4;
+      --light-muted: #9a9490;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Lora', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 19px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Film grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* CTA Button */
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: var(--green);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .cta:hover {
+      background: var(--green-hover);
+      transform: translateY(-2px);
+    }
+    .cta svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* ═══════════════════════════════
+       HERO
+    ═══════════════════════════════ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      overflow: hidden;
+      background-color: #0a0a0f;
+    }
+
+    /* dark vignette background using a subtle radial */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 70% 50%, rgba(30,20,50,0.5) 0%, rgba(10,10,15,0.95) 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-label {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      color: var(--ink);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-label::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--ink);
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--ink-light);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border: 1px solid rgba(192,168,122,0.3);
+      margin-bottom: 20px;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: var(--ink-light);
+    }
+    .hero-badge::before {
+      content: '●';
+      color: var(--ink);
+      font-size: 0.5rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--gray-light);
+      max-width: 520px;
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+
+    .hero-text {
+      font-size: 1.05rem;
+      color: var(--gray);
+      max-width: 520px;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .hero-img-wrapper {
+      position: relative;
+    }
+    .hero-img-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border: 1px solid rgba(192,168,122,0.2);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .hero-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(0.08) contrast(1.06);
+    }
+
+    /* ═══════════════════════════════
+       ABOUT — dark section
+    ═══════════════════════════════ */
+    .about {
+      padding: 96px 0;
+      position: relative;
+      background-color: var(--light-bg);
+    }
+
+    .about::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.06;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    .about .section-header .label { color: var(--ink-light); }
+    .about .section-header h2 { color: var(--light-text); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--light-muted);
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+    .about-text p:first-child {
+      font-size: 1.1rem;
+      color: var(--light-text);
+    }
+
+    .about-highlight {
+      position: relative;
+      padding: 40px;
+      background: rgba(0,0,0,0.25);
+      border-left: 3px solid var(--ink);
+    }
+    .about-highlight p {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--light-text);
+      font-weight: 400;
+      line-height: 1.8;
+    }
+    .about-highlight .dash {
+      display: block;
+      width: 30px;
+      height: 2px;
+      background: var(--ink);
+      margin-top: 20px;
+    }
+
+    .credentials {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .credential {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--light-muted);
+      letter-spacing: 0.03em;
+    }
+    .credential::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--ink);
+      flex-shrink: 0;
+    }
+
+    /* ═══════════════════════════════
+       GALLERY
+    ═══════════════════════════════ */
+    .gallery {
+      padding: 80px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-header .label {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    /* Carousel */
+    .gallery-carousel-wrapper {
+      position: relative;
+    }
+    .gallery-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 6px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+    }
+    .gallery-grid:active { cursor: grabbing; }
+    .gallery-grid::-webkit-scrollbar { display: none; }
+
+    .gallery-grid .gallery-item {
+      flex: 0 0 calc(33.333% - 4px);
+      scroll-snap-align: start;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      background: var(--dark);
+    }
+    .gallery-grid .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s;
+      filter: grayscale(0.2);
+    }
+    .gallery-grid .gallery-item:hover img {
+      transform: scale(1.05);
+      filter: grayscale(0);
+    }
+    .gallery-grid .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.4) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: rgba(10,10,10,0.7);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--white);
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-size: 1.2rem;
+      line-height: 1;
+      user-select: none;
+    }
+    .carousel-btn:hover { background: rgba(10,10,10,0.95); }
+    .carousel-btn.prev { left: -22px; }
+    .carousel-btn.next { right: -22px; }
+
+    .gallery-cta {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    /* ═══════════════════════════════
+       PROCESS — dark section
+    ═══════════════════════════════ */
+    .process {
+      padding: 96px 0;
+      position: relative;
+      background-color: var(--light-bg);
+    }
+
+    .process::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.06;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    .process .section-header .label { color: var(--ink-light); }
+    .process .section-header h2 { color: var(--light-text); }
+
+    .process-intro {
+      max-width: 680px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+    .process-intro p {
+      color: var(--light-muted);
+      font-weight: 400;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    .step {
+      padding: 36px 28px;
+      background: rgba(0,0,0,0.3);
+      border-top: 2px solid var(--ink);
+      position: relative;
+    }
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: rgba(192,168,122,0.12);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .step h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--light-text);
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .step p {
+      font-size: 1.05rem;
+      color: var(--light-muted);
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════
+       CLOSING CTA
+    ═══════════════════════════════ */
+    .closing-section {
+      padding: 96px 0;
+      background: var(--dark);
+      position: relative;
+    }
+    .closing-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(192,168,122,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .closing {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .closing p {
+      font-size: 1.15rem;
+      color: var(--cream);
+      font-weight: 300;
+      margin-bottom: 16px;
+      line-height: 1.85;
+    }
+    .closing p:last-of-type {
+      font-size: 1rem;
+      color: var(--gray);
+      margin-bottom: 40px;
+    }
+
+    /* ═══════════════════════════════
+       FOOTER
+    ═══════════════════════════════ */
+    footer {
+      padding: 60px 0;
+      text-align: center;
+      position: relative;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    footer .footer-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--white);
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    footer p {
+      font-size: 0.85rem;
+      color: var(--gray);
+      font-weight: 300;
+    }
+    footer .footer-detail {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    footer .footer-detail span {
+      font-size: 0.8rem;
+      color: var(--gray);
+      letter-spacing: 0.05em;
+    }
+    footer .footer-detail span::before {
+      content: '·';
+      margin-right: 12px;
+      color: var(--ink);
+    }
+    footer .footer-detail span:first-child::before {
+      display: none;
+    }
+
+    /* ═══════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════ */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .hero-img-wrapper {
+        max-width: 360px;
+        margin: 0 auto;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .gallery-grid .gallery-item {
+        flex: 0 0 calc(50% - 3px);
+      }
+      .carousel-btn.prev { left: 4px; }
+      .carousel-btn.next { right: 4px; }
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body { font-size: 16px; }
+      .container { padding: 0 18px; }
+      .hero { padding: 100px 0 60px; min-height: auto; }
+      .hero-img-wrapper { display: none; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .gallery-grid .gallery-item { flex: 0 0 80%; }
+      .cta { padding: 14px 28px; font-size: 1rem; }
+    }
+
+    /* Lightbox */
+    .lb-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(0,0,0,0.94);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .lb-overlay.active { display: flex; }
+    .lb-overlay img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 2px;
+      user-select: none;
+    }
+    .lb-close {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      font-size: 2rem;
+      color: var(--cream);
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      background: none;
+      border: none;
+      padding: 4px 8px;
+    }
+    .lb-close:hover { opacity: 1; }
+    .lb-trigger { cursor: zoom-in; }
+  </style>
+</head>
+<body>
+
+  <!-- ════════ HERO ════════ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-label reveal">ISA PIAGETTI · GUEST TATTOO ARTIST</div>
+          <div class="hero-badge reveal" style="transition-delay: 0.05s">BOOKING OPEN · JULY – AUGUST 2025</div>
+          <h1 class="reveal" style="transition-delay: 0.1s">
+            Original projects built to <em>international</em> standards
+          </h1>
+          <p class="hero-sub reveal" style="transition-delay: 0.2s">
+            In July and August, Isa Piagetti will be on European tour — guest sessions in Edinburgh, Scotland, and Düsseldorf, Germany.
+          </p>
+          <p class="hero-text reveal" style="transition-delay: 0.3s">
+            11 years of career. Large-scale compositions. Dark aesthetic. High visual impact.<br><br>
+            A limited number of clients will be accepted. Projects are curated for artistic alignment and technical complexity.
+          </p>
+          <a href="#" class="cta reveal" style="transition-delay: 0.4s">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            APPLY FOR THE GUEST
+          </a>
+        </div>
+        <div class="hero-img-wrapper reveal" style="transition-delay: 0.3s">
+          <picture>
+            <source srcset="profile-isa.webp" type="image/webp">
+            <img class="hero-img" src="profile-isa.jpg" alt="Isa Piagetti — Tattoo Artist" width="420" height="560" fetchpriority="high">
+          </picture>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ ABOUT ════════ -->
+  <section class="about">
+    <div class="container">
+      <div class="section-header reveal" style="margin-bottom: 50px;">
+        <div class="label">ABOUT</div>
+        <h2>Structure before impact</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>Isa Piagetti is a Brazilian tattoo artist with 11 years of career, specializing in large-scale compositions, dark aesthetics, and high-impact visual constructions.</p>
+          <p>Her artistic foundation began before tattooing. Raised in a family of artists and with a background in Architecture, she developed structural vision, spatial reading, and a deep understanding of anatomy — fundamentals that define her work today.</p>
+          <p>With a consolidated trajectory in Brazil and Europe, she has been awarded at national and international conventions and served as a judge at European events. She has tattooed in Italy, Switzerland, and Germany, carrying her authorial signature to different audiences and cultures.</p>
+          <div class="credentials">
+            <div class="credential">11 years of career</div>
+            <div class="credential">Architecture background — structural spatial vision</div>
+            <div class="credential">Award-winning at national and international conventions</div>
+            <div class="credential">Guest experience in Italy, Switzerland, Germany</div>
+          </div>
+        </div>
+        <div class="about-highlight reveal" style="transition-delay: 0.15s">
+          <p>Her method is clear: structure before impact. Each project is born from study, plane organization, strategic contrast, and anatomical flow. Not images applied to skin. Visual constructions that follow movement, presence, and permanence.</p>
+          <span class="dash"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ GALLERY ════════ -->
+  <section class="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label">PORTFOLIO</div>
+        <h2>Original Work</h2>
+      </div>
+      <div class="gallery-carousel-wrapper">
+        <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
+        <div class="gallery-grid" id="galleryCarousel">
+          <div class="gallery-item">
+            <picture><source srcset="trabalhos-isa/DSC05523.webp" type="image/webp"><img src="trabalhos-isa/DSC05523.JPG" alt="Isa Piagetti tattoo work" loading="lazy" width="600" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="trabalhos-isa/DSC05367.webp" type="image/webp"><img src="trabalhos-isa/DSC05367.JPG" alt="Isa Piagetti tattoo work" loading="lazy" width="600" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="trabalhos-isa/DSC05309.webp" type="image/webp"><img src="trabalhos-isa/DSC05309.JPG" alt="Isa Piagetti tattoo work" loading="lazy" width="600" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="trabalhos-isa/DSC05306.webp" type="image/webp"><img src="trabalhos-isa/DSC05306.JPG" alt="Isa Piagetti tattoo work" loading="lazy" width="600" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="trabalhos-isa/DSC05018.webp" type="image/webp"><img src="trabalhos-isa/DSC05018.JPG" alt="Isa Piagetti tattoo work" loading="lazy" width="600" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="trabalhos-isa/DSC01608.webp" type="image/webp"><img src="trabalhos-isa/DSC01608.JPG" alt="Isa Piagetti tattoo work" loading="lazy" width="600" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="trabalhos-isa/DSC01070.webp" type="image/webp"><img src="trabalhos-isa/DSC01070.JPG" alt="Isa Piagetti tattoo work" loading="lazy" width="600" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="trabalhos-isa/A3C5F756-CB7C-4EC2-A3FA-44F95BB14BAB.webp" type="image/webp"><img src="trabalhos-isa/A3C5F756-CB7C-4EC2-A3FA-44F95BB14BAB.jpg" alt="Isa Piagetti tattoo work" loading="lazy" width="600" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="trabalhos-isa/63829568-AEA7-45C0-8D8F-37A3ABF2603C.webp" type="image/webp"><img src="trabalhos-isa/63829568-AEA7-45C0-8D8F-37A3ABF2603C.jpg" alt="Isa Piagetti tattoo work" loading="lazy" width="600" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="trabalhos-isa/41F52A9E-58BD-4BDB-9DCB-32C838CD5286.webp" type="image/webp"><img src="trabalhos-isa/41F52A9E-58BD-4BDB-9DCB-32C838CD5286.jpg" alt="Isa Piagetti tattoo work" loading="lazy" width="600" height="900"></picture>
+          </div>
+          <div class="gallery-item">
+            <picture><source srcset="trabalhos-isa/2E6DA6ED-D667-4B84-815C-E4C61BE59ED9.webp" type="image/webp"><img src="trabalhos-isa/2E6DA6ED-D667-4B84-815C-E4C61BE59ED9.jpg" alt="Isa Piagetti tattoo work" loading="lazy" width="600" height="900"></picture>
+          </div>
+        </div>
+        <button class="carousel-btn next" aria-label="Next">&#8594;</button>
+      </div>
+      <div class="gallery-cta reveal">
+        <a href="#" class="cta">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          TALK TO ISA ABOUT MY PROJECT
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ PROCESS ════════ -->
+  <section class="process">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label">THE PROCESS</div>
+        <h2>How projects are built</h2>
+      </div>
+      <div class="process-intro reveal">
+        <p>Large-scale projects require method, planning, and respect for the skin. Large-scale works are her specialty: realism, surrealism, complex cover-ups, and dense compositions with dark aesthetic.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h3>STRUCTURE</h3>
+          <p>Every construction begins with body analysis: axis, movement, proportion, and visual hierarchy. Each element is positioned with intention, respecting anatomical flow and long-term readability.</p>
+        </div>
+        <div class="step reveal" style="transition-delay: 0.1s">
+          <div class="step-num">02</div>
+          <h3>LAYERING</h3>
+          <p>Sessions are divided strategically to ensure depth, consistent contrast, and skin preservation. Building in layers is what sustains impact and durability over time.</p>
+        </div>
+        <div class="step reveal" style="transition-delay: 0.2s">
+          <div class="step-num">03</div>
+          <h3>SELECTION</h3>
+          <p>Guest bookings go through curation. Selection prioritizes aesthetic alignment, project complexity, and commitment to the process. No improvisation. No generic solutions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ CLOSING CTA ════════ -->
+  <section class="closing-section">
+    <div class="container">
+      <div class="closing reveal">
+        <p>If you're looking for an original project built with artistic criteria, anatomical reading, and international standards — this is the moment to start the conversation.</p>
+        <p>Spots are limited and the schedule is organized in order of project approval.</p>
+        <a href="#" class="cta">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          APPLY FOR THE GUEST
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ FOOTER ════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-name">ISA PIAGETTI</div>
+      <p>Guest Tattoo Artist · Edinburgh · Düsseldorf</p>
+      <div class="footer-detail">
+        <span>Large-scale compositions</span>
+        <span>Dark aesthetic</span>
+        <span>International standards</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lb-overlay" id="lightbox">
+    <button class="lb-close" id="lb-close">&times;</button>
+    <img id="lb-img" src="" alt="">
+  </div>
+
+  <script>
+    // Reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+
+    function openLightbox(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt || '';
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+      img.classList.add('lb-trigger');
+      img.addEventListener('click', () => openLightbox(img.closest('picture') ? img.src : img.src, img.alt));
+    });
+
+    // Carousel drag
+    const carousel = document.getElementById('galleryCarousel');
+    let isDragging = false, startX = 0, scrollLeft = 0;
+
+    carousel.addEventListener('mousedown', e => {
+      isDragging = true;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+      carousel.style.userSelect = 'none';
+    });
+    carousel.addEventListener('mouseleave', () => { isDragging = false; });
+    carousel.addEventListener('mouseup', () => { isDragging = false; carousel.style.userSelect = ''; });
+    carousel.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      carousel.scrollLeft = scrollLeft - walk;
+    });
+
+    // Carousel buttons
+    document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
+      const itemW = carousel.querySelector('.gallery-item').offsetWidth + 6;
+      carousel.scrollBy({ left: -itemW * 3, behavior: 'smooth' });
+    });
+    document.querySelector('.carousel-btn.next').addEventListener('click', () => {
+      const itemW = carousel.querySelector('.gallery-item').offsetWidth + 6;
+      carousel.scrollBy({ left: itemW * 3, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
