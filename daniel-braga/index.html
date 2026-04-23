@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daniel Braga — Guest Tattoo Artist · Dublin, Düsseldorf & Amsterdam</title>
+  <meta name="description" content="Tatuador brasileiro com mais de 15 anos de carreira, especializado em projetos autorais com leitura de corpo e padrão internacional. Guest em Dublin, Düsseldorf e Amsterdam.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --ink: #c0a87a;
+      --ink-light: #d4bc8e;
+      --cream: #f0ead6;
+      --gray: #888888;
+      --gray-light: #b0b0b0;
+      --white: #fafafa;
+      --green: #25D366;
+      --green-hover: #1ebe57;
+      --light-bg: #1c1c24;
+      --light-text: #e8e2d4;
+      --light-muted: #9a9490;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Lora', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 19px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: var(--green);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .cta:hover {
+      background: var(--green-hover);
+      transform: translateY(-2px);
+    }
+    .cta svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* ═══ HERO ═══ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      overflow: hidden;
+      background-color: #0a0a0f;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 70% 50%, rgba(20,15,35,0.6) 0%, rgba(10,10,15,0.95) 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-label {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      color: var(--ink);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-label::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--ink);
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--ink-light);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border: 1px solid rgba(192,168,122,0.3);
+      margin-bottom: 20px;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: var(--ink-light);
+    }
+    .hero-badge::before {
+      content: '●';
+      color: var(--ink);
+      font-size: 0.5rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--gray-light);
+      max-width: 520px;
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+    .hero-text {
+      font-size: 1.05rem;
+      color: var(--gray);
+      max-width: 520px;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .hero-img-wrapper { position: relative; }
+    .hero-img-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border: 1px solid rgba(192,168,122,0.2);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .hero-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      filter: grayscale(0.08) contrast(1.06);
+    }
+
+    /* ═══ ABOUT ═══ */
+    .about {
+      padding: 96px 0;
+      position: relative;
+      background-color: var(--light-bg);
+    }
+    .about::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.06;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+    .about .section-header .label { color: var(--ink-light); }
+    .about .section-header h2 { color: var(--light-text); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .about-text p {
+      color: var(--light-muted);
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+    .about-text p:first-child {
+      font-size: 1.1rem;
+      color: var(--light-text);
+    }
+    .about-highlight {
+      position: relative;
+      padding: 40px;
+      background: rgba(0,0,0,0.25);
+      border-left: 3px solid var(--ink);
+    }
+    .about-highlight p {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--light-text);
+      font-weight: 400;
+      line-height: 1.8;
+    }
+    .about-highlight .dash {
+      display: block;
+      width: 30px;
+      height: 2px;
+      background: var(--ink);
+      margin-top: 20px;
+    }
+    .credentials {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .credential {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--light-muted);
+      letter-spacing: 0.03em;
+    }
+    .credential::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--ink);
+      flex-shrink: 0;
+    }
+
+    /* ═══ GALLERY ═══ */
+    .gallery { padding: 80px 0; }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-header .label {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    .gallery-carousel-wrapper { position: relative; }
+    .gallery-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 6px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+    }
+    .gallery-grid:active { cursor: grabbing; }
+    .gallery-grid::-webkit-scrollbar { display: none; }
+    .gallery-grid .gallery-item {
+      flex: 0 0 calc(33.333% - 4px);
+      scroll-snap-align: start;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      background: var(--dark);
+    }
+    .gallery-grid .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s;
+      filter: grayscale(0.2);
+    }
+    .gallery-grid .gallery-item:hover img {
+      transform: scale(1.05);
+      filter: grayscale(0);
+    }
+    .gallery-grid .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.4) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: rgba(10,10,10,0.7);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--white);
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-size: 1.2rem;
+      line-height: 1;
+      user-select: none;
+    }
+    .carousel-btn:hover { background: rgba(10,10,10,0.95); }
+    .carousel-btn.prev { left: -22px; }
+    .carousel-btn.next { right: -22px; }
+    .gallery-cta { text-align: center; margin-top: 50px; }
+
+    /* ═══ PROCESS ═══ */
+    .process {
+      padding: 96px 0;
+      position: relative;
+      background-color: var(--light-bg);
+    }
+    .process::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.06;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+    .process .section-header .label { color: var(--ink-light); }
+    .process .section-header h2 { color: var(--light-text); }
+    .process-intro {
+      max-width: 680px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+    .process-intro p { color: var(--light-muted); font-weight: 400; }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    .step {
+      padding: 36px 28px;
+      background: rgba(0,0,0,0.3);
+      border-top: 2px solid var(--ink);
+    }
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: rgba(192,168,122,0.12);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .step h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--light-text);
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .step p {
+      font-size: 1.05rem;
+      color: var(--light-muted);
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    /* ═══ CLOSING ═══ */
+    .closing-section {
+      padding: 96px 0;
+      background: var(--dark);
+      position: relative;
+    }
+    .closing-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(192,168,122,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .closing {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .closing p {
+      font-size: 1.15rem;
+      color: var(--cream);
+      font-weight: 300;
+      margin-bottom: 16px;
+      line-height: 1.85;
+    }
+    .closing p:last-of-type {
+      font-size: 1rem;
+      color: var(--gray);
+      margin-bottom: 40px;
+    }
+
+    /* ═══ FOOTER ═══ */
+    footer {
+      padding: 60px 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    footer .footer-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--white);
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    footer p { font-size: 0.85rem; color: var(--gray); font-weight: 300; }
+    footer .footer-detail {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    footer .footer-detail span {
+      font-size: 0.8rem;
+      color: var(--gray);
+      letter-spacing: 0.05em;
+    }
+    footer .footer-detail span::before { content: '·'; margin-right: 12px; color: var(--ink); }
+    footer .footer-detail span:first-child::before { display: none; }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-img-wrapper { max-width: 360px; margin: 0 auto; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .gallery-grid .gallery-item { flex: 0 0 calc(50% - 3px); }
+      .carousel-btn.prev { left: 4px; }
+      .carousel-btn.next { right: 4px; }
+      .steps { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media (max-width: 600px) {
+      body { font-size: 16px; }
+      .container { padding: 0 18px; }
+      .hero { padding: 100px 0 60px; min-height: auto; }
+      .hero-img-wrapper { display: block; max-width: 260px; margin: 0 auto; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .gallery-grid .gallery-item { flex: 0 0 80%; }
+      .cta { padding: 14px 28px; font-size: 1rem; }
+    }
+
+    /* Lightbox */
+    .lb-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(0,0,0,0.94);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .lb-overlay.active { display: flex; }
+    .lb-overlay img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 2px;
+      user-select: none;
+    }
+    .lb-close {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      font-size: 2rem;
+      color: var(--cream);
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      background: none;
+      border: none;
+      padding: 4px 8px;
+    }
+    .lb-close:hover { opacity: 1; }
+    .lb-trigger { cursor: zoom-in; }
+  </style>
+</head>
+<body>
+
+  <!-- ════════ HERO ════════ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-label reveal">DANIEL BRAGA · GUEST TATTOO ARTIST</div>
+          <div class="hero-badge reveal" style="transition-delay: 0.05s">AGENDA ABERTA · JUNHO – AGOSTO 2025</div>
+          <h1 class="reveal" style="transition-delay: 0.1s">
+            Projetos autorais construídos com leitura de corpo e <em>padrão internacional</em>
+          </h1>
+          <p class="hero-sub reveal" style="transition-delay: 0.2s">
+            Entre junho e agosto, Daniel Braga estará em temporada na Europa — atendendo em Dublin (Irlanda), Düsseldorf (Alemanha) e Amsterdam (Holanda).
+          </p>
+          <p class="hero-text reveal" style="transition-delay: 0.3s">
+            15 anos de carreira. Projetos autorais em diferentes estilos. Leitura de corpo e construção consistente.<br><br>
+            Um número limitado de clientes será atendido. Os projetos passam por curadoria de alinhamento técnico.
+          </p>
+          <a href="#whatsapp" class="cta reveal" style="transition-delay: 0.4s">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            QUERO APLICAR PARA O GUEST
+          </a>
+        </div>
+        <div class="hero-img-wrapper reveal" style="transition-delay: 0.3s">
+          <img class="hero-img" src="profile1.jpg" alt="Daniel Braga — Tatuador" width="420" height="560" fetchpriority="high">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ ABOUT ════════ -->
+  <section class="about">
+    <div class="container">
+      <div class="section-header reveal" style="margin-bottom: 50px;">
+        <div class="label">SOBRE</div>
+        <h2>Organização antes de impacto</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>Daniel Braga é tatuador brasileiro com mais de 15 anos de carreira, com atuação no Brasil e no exterior, desenvolvendo projetos autorais com foco em construção, leitura e presença no corpo.</p>
+          <p>Ao longo da carreira, desenvolveu um olhar técnico voltado para estrutura e encaixe. Isso permite trabalhar desde projetos mais diretos até composições maiores, sempre com coerência no corpo e sem excesso de informação.</p>
+          <p>O método é claro: organização antes de impacto. Cada projeto é pensado para se integrar ao corpo — não apenas ocupar espaço.</p>
+          <p>Durante a temporada de guest, Daniel atenderá um número limitado de clientes, priorizando projetos alinhados com o nível técnico que ele entrega.</p>
+          <div class="credentials">
+            <div class="credential">15+ anos de carreira</div>
+            <div class="credential">Projetos autorais — oriental, neotrad e composições livres</div>
+            <div class="credential">Atuação no Brasil e no exterior</div>
+            <div class="credential">Guest em Dublin, Düsseldorf e Amsterdam</div>
+          </div>
+        </div>
+        <div class="about-highlight reveal" style="transition-delay: 0.15s">
+          <p>Cada projeto começa pela leitura do corpo: eixo, movimento, proporção e organização visual. A partir disso, os elementos são definidos para manter equilíbrio, fluidez e uma leitura clara — independentemente do tamanho ou da proposta.</p>
+          <span class="dash"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ GALLERY ════════ -->
+  <section class="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label">PORTFÓLIO</div>
+        <h2>Trabalhos Autorais</h2>
+      </div>
+      <div class="gallery-carousel-wrapper">
+        <button class="carousel-btn prev" aria-label="Anterior">&#8592;</button>
+        <div class="gallery-grid" id="galleryCarousel">
+          <div class="gallery-item"><img src="trabalhos/DSC05700.JPG" alt="Trabalho Daniel Braga" loading="lazy" width="600" height="900"></div>
+          <div class="gallery-item"><img src="trabalhos/DSC05705.JPG" alt="Trabalho Daniel Braga" loading="lazy" width="600" height="900"></div>
+          <div class="gallery-item"><img src="trabalhos/01b18978-bf53-44d5-97b9-b701a21e3aa3.jpg" alt="Trabalho Daniel Braga" loading="lazy" width="600" height="900"></div>
+          <div class="gallery-item"><img src="trabalhos/040fa341-3e08-4268-ba43-aa62eeb18748.jpg" alt="Trabalho Daniel Braga" loading="lazy" width="600" height="900"></div>
+          <div class="gallery-item"><img src="trabalhos/12e225a5-6020-4f6f-8a82-9685c01e099d.jpg" alt="Trabalho Daniel Braga" loading="lazy" width="600" height="900"></div>
+          <div class="gallery-item"><img src="trabalhos/137a2b77-14a3-4985-a189-9959a16f2540.jpg" alt="Trabalho Daniel Braga" loading="lazy" width="600" height="900"></div>
+          <div class="gallery-item"><img src="trabalhos/5787c87c-d575-4367-a37a-2a42812ce9c8.jpg" alt="Trabalho Daniel Braga" loading="lazy" width="600" height="900"></div>
+          <div class="gallery-item"><img src="trabalhos/59a6401f-0f72-4c23-a2a5-df5c56e6ade0.jpg" alt="Trabalho Daniel Braga" loading="lazy" width="600" height="900"></div>
+          <div class="gallery-item"><img src="trabalhos/73a19cbd-d3f1-4e94-a0da-9c8159f0f6ec.jpg" alt="Trabalho Daniel Braga" loading="lazy" width="600" height="900"></div>
+          <div class="gallery-item"><img src="trabalhos/88c66e1c-3b93-493b-b105-6f83974e1fab.jpg" alt="Trabalho Daniel Braga" loading="lazy" width="600" height="900"></div>
+          <div class="gallery-item"><img src="trabalhos/c257093c-57c4-4912-b491-7747a239d921.jpg" alt="Trabalho Daniel Braga" loading="lazy" width="600" height="900"></div>
+          <div class="gallery-item"><img src="trabalhos/c6b8b007-0fca-4a37-ab73-14bc467f62ef.jpg" alt="Trabalho Daniel Braga" loading="lazy" width="600" height="900"></div>
+          <div class="gallery-item"><img src="trabalhos/cc9eb2d4-0e7c-458a-b6dc-1a124aef473b.jpg" alt="Trabalho Daniel Braga" loading="lazy" width="600" height="900"></div>
+          <div class="gallery-item"><img src="trabalhos/d30965a3-8454-45cc-acc4-e5791549ec31.jpg" alt="Trabalho Daniel Braga" loading="lazy" width="600" height="900"></div>
+          <div class="gallery-item"><img src="trabalhos/e64c11cc-8aab-4b1d-a888-d3674d0cf0ad.jpg" alt="Trabalho Daniel Braga" loading="lazy" width="600" height="900"></div>
+          <div class="gallery-item"><img src="trabalhos/eb68bcb4-2598-40c1-b0ac-ff64855d8b13.jpg" alt="Trabalho Daniel Braga" loading="lazy" width="600" height="900"></div>
+          <div class="gallery-item"><img src="trabalhos/fa3290c4-9ce9-4115-8478-e0d478469c66.jpg" alt="Trabalho Daniel Braga" loading="lazy" width="600" height="900"></div>
+        </div>
+        <button class="carousel-btn next" aria-label="Próximo">&#8594;</button>
+      </div>
+      <div class="gallery-cta reveal">
+        <a href="#whatsapp" class="cta">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          QUERO FALAR SOBRE MEU PROJETO
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ PROCESS ════════ -->
+  <section class="process">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label">O PROCESSO</div>
+        <h2>Como os projetos são construídos</h2>
+      </div>
+      <div class="process-intro reveal">
+        <p>O foco está na construção consistente, respeitando o espaço da pele e evitando soluções rápidas que comprometem o resultado ao longo do tempo. Sem improviso. Sem solução genérica.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h3>LEITURA</h3>
+          <p>Cada projeto começa pela leitura do corpo: eixo, movimento, proporção e organização visual. Os elementos são definidos para manter equilíbrio, fluidez e uma leitura clara.</p>
+        </div>
+        <div class="step reveal" style="transition-delay: 0.1s">
+          <div class="step-num">02</div>
+          <h3>CONSTRUÇÃO</h3>
+          <p>Projetos autorais em diferentes estilos, sempre com direção técnica. O objetivo é entregar um trabalho que faça sentido no corpo como um todo — independentemente do tamanho ou da proposta.</p>
+        </div>
+        <div class="step reveal" style="transition-delay: 0.2s">
+          <div class="step-num">03</div>
+          <h3>SELEÇÃO</h3>
+          <p>O atendimento durante o guest é direto e estruturado. Os projetos passam por curadoria — priorizando alinhamento técnico e clareza da ideia. As vagas são limitadas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ CLOSING CTA ════════ -->
+  <section class="closing-section">
+    <div class="container">
+      <div class="closing reveal">
+        <p>Se a ideia é desenvolver um projeto com direção, leitura de corpo e construção bem definida — esse é o momento de iniciar a conversa.</p>
+        <p>As vagas são limitadas e a agenda é organizada a partir da aprovação dos projetos.</p>
+        <a href="#whatsapp" class="cta">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          QUERO APLICAR PARA O GUEST
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ FOOTER ════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-name">DANIEL BRAGA</div>
+      <p>Guest Tattoo Artist · Dublin · Düsseldorf · Amsterdam</p>
+      <div class="footer-detail">
+        <span>Projetos autorais</span>
+        <span>Leitura de corpo</span>
+        <span>Padrão internacional</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lb-overlay" id="lightbox">
+    <button class="lb-close" id="lb-close">&times;</button>
+    <img id="lb-img" src="" alt="">
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+
+    function openLightbox(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt || '';
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+      img.classList.add('lb-trigger');
+      img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    });
+
+    const carousel = document.getElementById('galleryCarousel');
+    let isDragging = false, startX = 0, scrollLeft = 0;
+
+    carousel.addEventListener('mousedown', e => {
+      isDragging = true;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+      carousel.style.userSelect = 'none';
+    });
+    carousel.addEventListener('mouseleave', () => { isDragging = false; });
+    carousel.addEventListener('mouseup', () => { isDragging = false; carousel.style.userSelect = ''; });
+    carousel.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      e.preventDefault();
+      carousel.scrollLeft = scrollLeft - (e.pageX - carousel.offsetLeft - startX) * 1.5;
+    });
+
+    document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
+      const itemW = carousel.querySelector('.gallery-item').offsetWidth + 6;
+      carousel.scrollBy({ left: -itemW * 3, behavior: 'smooth' });
+    });
+    document.querySelector('.carousel-btn.next').addEventListener('click', () => {
+      const itemW = carousel.querySelector('.gallery-item').offsetWidth + 6;
+      carousel.scrollBy({ left: itemW * 3, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
