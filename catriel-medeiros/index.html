@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catriel Medeiros — Tatuador · Realismo Preto e Cinza</title>
+  <meta name="description" content="Mais de 11 anos especializado em realismo preto e cinza e coberturas extremas. Cada tatuagem nasce de uma história real — 1 cliente por dia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --ink: #0d0d0d;
+      --ink-light: #333;
+      --cream: #f0ead6;
+      --gray: #888888;
+      --gray-light: #b0b0b0;
+      --white: #fafafa;
+      --green: #25D366;
+      --green-hover: #1ebe57;
+      --light-bg: #1a1816;
+      --light-text: #e8e2d4;
+      --light-muted: #9a9490;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Lora', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #f5f2ee;
+      color: #0d0d0d;
+      font-family: var(--font-body);
+      font-size: 19px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: var(--green);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .cta:hover { background: var(--green-hover); transform: translateY(-2px); }
+    .cta svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: #f5f2ee;
+      padding: 100px 0 80px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      color: var(--ink);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    .hero-label::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--ink);
+      flex-shrink: 0;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 9vw, 7.5rem);
+      line-height: 0.93;
+      letter-spacing: 0.02em;
+      color: #0d0d0d;
+      margin-bottom: 32px;
+      text-transform: uppercase;
+    }
+    .hero-headline {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: #555;
+      max-width: 480px;
+      margin-bottom: 44px;
+      border-left: 2px solid var(--ink);
+      padding-left: 20px;
+    }
+    .hero-img-wrapper { position: relative; }
+    .hero-img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      filter: grayscale(0.15);
+    }
+
+    /* ─── POSITIONING ─── */
+    .positioning {
+      background: #eeeae3;
+      padding: 80px 0;
+      text-align: center;
+    }
+    .positioning-inner { max-width: 720px; margin: 0 auto; }
+    .positioning-rule {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+    .positioning-rule::before,
+    .positioning-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #ccc;
+    }
+    .positioning-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+      letter-spacing: 0.06em;
+      color: #0d0d0d;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .positioning p {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: #555;
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+    .positioning p:last-child { margin-bottom: 0; }
+
+    /* ─── ABOUT ─── */
+    .about {
+      background: #eeeae3;
+      padding: 110px 0;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      color: #0d0d0d;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    .section-label::before {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: #0d0d0d;
+      flex-shrink: 0;
+    }
+    .about h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      letter-spacing: 0.04em;
+      color: #0d0d0d;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 32px;
+    }
+    .about p {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .about p.last { margin-bottom: 40px; }
+    .about-quote {
+      background: #fff;
+      padding: 48px 40px;
+      border-left: 3px solid var(--ink);
+    }
+    .about-quote blockquote {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: #333;
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+    .about-quote cite {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.14em;
+      color: #0d0d0d;
+      font-style: normal;
+    }
+    .about-stats {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(0,0,0,0.08);
+    }
+    .about-stat {
+      background: #f5f2ee;
+      padding: 28px 24px;
+    }
+    .about-stat-number {
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      color: #0d0d0d;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .about-stat-label {
+      font-size: 0.82rem;
+      color: #666;
+      line-height: 1.4;
+      letter-spacing: 0.03em;
+    }
+
+    /* ─── GALLERY ─── */
+    .gallery {
+      background: #f5f2ee;
+      padding: 110px 0;
+    }
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    .gallery h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: 0.04em;
+      color: #0d0d0d;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .carousel-btns { display: flex; gap: 8px; }
+    .carousel-btn {
+      width: 44px;
+      height: 44px;
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.25);
+      color: #0d0d0d;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+    }
+    .carousel-btn:hover { background: #0d0d0d; color: #f5f2ee; border-color: #0d0d0d; }
+    .carousel-btn svg { width: 18px; height: 18px; }
+    .gallery-track {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      cursor: grab;
+    }
+    .gallery-track::-webkit-scrollbar { display: none; }
+    .gallery-track:active { cursor: grabbing; }
+    .gallery-item {
+      flex: 0 0 calc(33.333% - 4px);
+      scroll-snap-align: start;
+      aspect-ratio: 2/3;
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      filter: grayscale(0.1);
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    /* ─── FEEDBACKS ─── */
+    .feedbacks {
+      background: #eeeae3;
+      padding: 110px 0;
+    }
+    .feedbacks h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: 0.04em;
+      color: #0d0d0d;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 48px;
+    }
+    .feedbacks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .feedback-item {
+      overflow: hidden;
+      background: #ddd8cf;
+    }
+    .feedback-item img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .feedback-item:hover img { transform: scale(1.02); }
+
+    /* ─── CTA FINAL ─── */
+    .cta-final {
+      background: #f5f2ee;
+      padding: 130px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-final::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(138,109,60,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-final-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .cta-final .section-label { justify-content: center; margin-bottom: 32px; }
+    .cta-final h2 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7vw, 6rem);
+      letter-spacing: 0.04em;
+      color: #0d0d0d;
+      text-transform: uppercase;
+      line-height: 0.95;
+      margin-bottom: 48px;
+    }
+    .cta-final p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+    .cta-final p.last { margin-bottom: 52px; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #eeeae3;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      padding: 40px 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      letter-spacing: 0.1em;
+      color: #0d0d0d;
+      text-transform: uppercase;
+    }
+    .footer-tags { display: flex; gap: 12px; flex-wrap: wrap; }
+    .footer-tag {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: #555;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border: 1px solid rgba(0,0,0,0.2);
+    }
+
+    /* ─── LIGHTBOX ─── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--white);
+      cursor: pointer;
+      background: none;
+      border: none;
+      letter-spacing: 0.05em;
+      line-height: 1;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero { min-height: auto; padding: 80px 0 60px; }
+      .hero-img { height: 420px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .gallery-item { flex: 0 0 calc(50% - 3px); }
+      .feedbacks-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      body { font-size: 16px; }
+      .container { padding: 0 18px; }
+      .hero { padding: 70px 0 50px; }
+      .gallery-item { flex: 0 0 80%; }
+      .feedbacks-grid { grid-template-columns: 1fr; }
+      .cta { padding: 14px 28px; font-size: 1rem; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .positioning-title { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-label reveal">Tatuador · Realismo Preto e Cinza</div>
+        <h1 class="reveal" style="transition-delay:0.1s">Catriel<br>Medeiros</h1>
+        <p class="hero-headline reveal" style="transition-delay:0.2s">
+          Mais do que técnica na pele, cada tatuagem nasce da história de quem a carrega.
+        </p>
+        <a href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20conhecer%20o%20processo%20do%20Catriel" class="cta reveal" style="transition-delay:0.3s">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.48-8.45zM12.045 21.785h-.004c-1.774 0-3.513-.476-5.031-1.378l-.361-.214-3.741.975.998-3.648-.235-.374a9.861 9.861 0 0 1-1.523-5.268c.003-5.45 4.458-9.887 9.94-9.887 2.655 0 5.145 1.03 7.022 2.902a9.847 9.847 0 0 1 2.902 7.012c-.003 5.451-4.458 9.88-9.967 9.88zm5.461-7.404c-.301-.15-1.767-.867-2.04-.967-.274-.1-.473-.15-.672.15-.2.3-.773.967-.947 1.166-.173.2-.347.225-.647.075-.3-.15-1.267-.465-2.414-1.48-.893-.79-1.494-1.766-1.668-2.065-.173-.3-.019-.461.13-.611.133-.133.3-.347.45-.52.149-.174.199-.3.298-.5.1-.2.05-.374-.025-.524-.075-.15-.672-1.62-.922-2.22-.24-.58-.487-.5-.672-.51-.173-.01-.372-.012-.571-.012-.2 0-.523.074-.797.374-.273.3-1.045 1.02-1.045 2.487s1.07 2.886 1.22 3.086c.149.199 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.57-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.2-.572-.35z"/></svg>
+          Quero conhecer esse processo
+        </a>
+      </div>
+      <div class="hero-img-wrapper reveal" style="transition-delay:0.15s">
+        <img class="hero-img" src="catiel-perfil.JPG.jpeg" alt="Catriel Medeiros" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POSITIONING -->
+<section class="positioning">
+  <div class="container">
+    <div class="positioning-inner">
+      <div class="positioning-rule reveal">
+        <span class="positioning-title">A história vem antes da arte</span>
+      </div>
+      <p class="reveal" style="transition-delay:0.1s">
+        Nem sempre uma tatuagem começa no desenho.<br>
+        Muitas vezes, ela começa em uma fase da vida, em uma cicatriz, em uma mudança — ou em algo que precisa ganhar forma de um jeito único.
+      </p>
+      <p class="reveal" style="transition-delay:0.2s">
+        Aqui, cada criação nasce da escuta, do significado e da construção de algo que faça sentido de verdade para quem vai levar essa arte na pele.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="section-label reveal">Sobre</div>
+        <h2 class="reveal" style="transition-delay:0.1s">A arte começa na história de cada pessoa</h2>
+        <p class="reveal" style="transition-delay:0.15s">
+          Meu nome é Catriel Medeiros e trabalho com tatuagem há mais de 11 anos, especializado em realismo preto e cinza e coberturas extremas.
+        </p>
+        <p class="reveal" style="transition-delay:0.2s">
+          Ao longo da minha trajetória, desenvolvi um método de trabalho que vai muito além da técnica. Para mim, uma grande tatuagem não nasce apenas da habilidade artística — ela nasce da história de quem a carrega.
+        </p>
+        <p class="reveal" style="transition-delay:0.25s">
+          Por isso, escolhi trabalhar de uma forma diferente: <strong>atendo apenas um cliente por dia.</strong>
+        </p>
+        <p class="reveal" style="transition-delay:0.3s">
+          Esse tempo é dedicado a compreender profundamente cada pessoa que passa pelo meu estúdio. Antes de qualquer desenho, existe uma conversa. Um momento de escuta real, onde busco entender as experiências, significados e ideias que cada cliente deseja transformar em arte.
+        </p>
+        <p class="reveal last" style="transition-delay:0.35s">
+          Meu objetivo não é apenas realizar uma tatuagem, mas criar uma obra de arte exclusiva, pensada individualmente para o corpo e para a história de cada cliente.
+        </p>
+        <a href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20conhecer%20o%20processo%20do%20Catriel" class="cta reveal" style="transition-delay:0.4s">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.48-8.45zM12.045 21.785h-.004c-1.774 0-3.513-.476-5.031-1.378l-.361-.214-3.741.975.998-3.648-.235-.374a9.861 9.861 0 0 1-1.523-5.268c.003-5.45 4.458-9.887 9.94-9.887 2.655 0 5.145 1.03 7.022 2.902a9.847 9.847 0 0 1 2.902 7.012c-.003 5.451-4.458 9.88-9.967 9.88zm5.461-7.404c-.301-.15-1.767-.867-2.04-.967-.274-.1-.473-.15-.672.15-.2.3-.773.967-.947 1.166-.173.2-.347.225-.647.075-.3-.15-1.267-.465-2.414-1.48-.893-.79-1.494-1.766-1.668-2.065-.173-.3-.019-.461.13-.611.133-.133.3-.347.45-.52.149-.174.199-.3.298-.5.1-.2.05-.374-.025-.524-.075-.15-.672-1.62-.922-2.22-.24-.58-.487-.5-.672-.51-.173-.01-.372-.012-.571-.012-.2 0-.523.074-.797.374-.273.3-1.045 1.02-1.045 2.487s1.07 2.886 1.22 3.086c.149.199 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.57-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.2-.572-.35z"/></svg>
+          Quero conhecer esse processo
+        </a>
+      </div>
+      <div>
+        <div class="about-quote reveal" style="transition-delay:0.2s">
+          <blockquote>
+            "Com foco em realismo preto e cinza de alta precisão e em coberturas complexas, meu trabalho busca transformar ideias em imagens marcantes — tatuagens que carregam significado, personalidade e um nível de execução técnica impecável."
+          </blockquote>
+          <cite>— Catriel Medeiros</cite>
+        </div>
+        <div class="about-stats reveal" style="transition-delay:0.3s">
+          <div class="about-stat">
+            <div class="about-stat-number">11+</div>
+            <div class="about-stat-label">Anos de<br>carreira</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-number">1</div>
+            <div class="about-stat-label">Cliente<br>por dia</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-number">∞</div>
+            <div class="about-stat-label">Projetos<br>únicos</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-number">100%</div>
+            <div class="about-stat-label">Exclusivo<br>por cliente</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-label">Portfólio</div>
+        <h2>Obras que marcam</h2>
+      </div>
+      <div class="carousel-btns">
+        <button class="carousel-btn prev" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg>
+        </button>
+        <button class="carousel-btn next" aria-label="Próximo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="gallery-track" id="galleryCarousel">
+      <div class="gallery-item reveal">
+        <img src="trabalhos/FA3FAEA7-59BC-44EC-A9F8-8DA48915BC3F.JPG.webp" alt="Trabalho Catriel Medeiros" loading="lazy">
+      </div>
+      <div class="gallery-item reveal" style="transition-delay:0.05s">
+        <img src="trabalhos/IMG_0217.JPG.webp" alt="Trabalho Catriel Medeiros" loading="lazy">
+      </div>
+      <div class="gallery-item reveal" style="transition-delay:0.08s">
+        <img src="trabalhos/IMG_0813.webp" alt="Trabalho Catriel Medeiros" loading="lazy">
+      </div>
+      <div class="gallery-item reveal" style="transition-delay:0.11s">
+        <img src="trabalhos/IMG_1106.JPG.webp" alt="Trabalho Catriel Medeiros" loading="lazy">
+      </div>
+      <div class="gallery-item reveal" style="transition-delay:0.14s">
+        <img src="trabalhos/IMG_1107.JPG.webp" alt="Trabalho Catriel Medeiros" loading="lazy">
+      </div>
+      <div class="gallery-item reveal" style="transition-delay:0.17s">
+        <img src="trabalhos/IMG_2308.webp" alt="Trabalho Catriel Medeiros" loading="lazy">
+      </div>
+      <div class="gallery-item reveal" style="transition-delay:0.2s">
+        <img src="trabalhos/IMG_2626.webp" alt="Trabalho Catriel Medeiros" loading="lazy">
+      </div>
+      <div class="gallery-item reveal" style="transition-delay:0.23s">
+        <img src="trabalhos/IMG_6291.webp" alt="Trabalho Catriel Medeiros" loading="lazy">
+      </div>
+      <div class="gallery-item reveal" style="transition-delay:0.26s">
+        <img src="trabalhos/IMG_8721.webp" alt="Trabalho Catriel Medeiros" loading="lazy">
+      </div>
+      <div class="gallery-item reveal" style="transition-delay:0.29s">
+        <img src="trabalhos/IMG_9702.JPG.webp" alt="Trabalho Catriel Medeiros" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEEDBACKS -->
+<section class="feedbacks">
+  <div class="container">
+    <div class="section-label reveal">Depoimentos</div>
+    <h2 class="reveal" style="transition-delay:0.1s">Histórias reais</h2>
+    <div class="feedbacks-grid">
+      <div class="feedback-item reveal">
+        <img src="feedbacks/WhatsApp%20Image%202026-04-15%20at%2019.09.21%20(1).jpeg" alt="Feedback cliente" loading="lazy">
+      </div>
+      <div class="feedback-item reveal" style="transition-delay:0.05s">
+        <img src="feedbacks/WhatsApp%20Image%202026-04-15%20at%2019.09.21.jpeg" alt="Feedback cliente" loading="lazy">
+      </div>
+      <div class="feedback-item reveal" style="transition-delay:0.1s">
+        <img src="feedbacks/WhatsApp%20Image%202026-04-15%20at%2019.09.22%20(1).jpeg" alt="Feedback cliente" loading="lazy">
+      </div>
+      <div class="feedback-item reveal" style="transition-delay:0.15s">
+        <img src="feedbacks/WhatsApp%20Image%202026-04-15%20at%2019.09.22%20(2).jpeg" alt="Feedback cliente" loading="lazy">
+      </div>
+      <div class="feedback-item reveal" style="transition-delay:0.2s">
+        <img src="feedbacks/WhatsApp%20Image%202026-04-15%20at%2019.09.22%20(3).jpeg" alt="Feedback cliente" loading="lazy">
+      </div>
+      <div class="feedback-item reveal" style="transition-delay:0.25s">
+        <img src="feedbacks/WhatsApp%20Image%202026-04-15%20at%2019.09.22.jpeg" alt="Feedback cliente" loading="lazy">
+      </div>
+      <div class="feedback-item reveal" style="transition-delay:0.3s">
+        <img src="feedbacks/WhatsApp%20Image%202026-04-15%20at%2019.09.23%20(1).jpeg" alt="Feedback cliente" loading="lazy">
+      </div>
+      <div class="feedback-item reveal" style="transition-delay:0.35s">
+        <img src="feedbacks/WhatsApp%20Image%202026-04-15%20at%2019.09.23.jpeg" alt="Feedback cliente" loading="lazy">
+      </div>
+      <div class="feedback-item reveal" style="transition-delay:0.4s">
+        <img src="feedbacks/WhatsApp%20Image%202026-04-15%20at%2019.09.49.jpeg" alt="Feedback cliente" loading="lazy">
+      </div>
+      <div class="feedback-item reveal" style="transition-delay:0.45s">
+        <img src="feedbacks/WhatsApp%20Image%202026-04-15%20at%2019.10.38.jpeg" alt="Feedback cliente" loading="lazy">
+      </div>
+      <div class="feedback-item reveal" style="transition-delay:0.5s">
+        <img src="feedbacks/WhatsApp%20Image%202026-04-18%20at%2019.47.23.jpeg" alt="Feedback cliente" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="container">
+    <div class="cta-final-inner">
+      <div class="section-label reveal">Próximo passo</div>
+      <h2 class="reveal" style="transition-delay:0.1s">Agende sua<br>experiência.</h2>
+      <p class="reveal" style="transition-delay:0.2s">
+        Nem sempre é simples colocar em palavras tudo o que uma tatuagem representa.
+      </p>
+      <p class="reveal" style="transition-delay:0.25s">
+        Mas quando existe essa vontade de marcar algo na pele, normalmente existe também uma história por trás disso.
+      </p>
+      <p class="reveal" style="transition-delay:0.3s">
+        No meu processo, cada criação nasce da escuta, da presença e da construção de um projeto pensado de forma individual.
+      </p>
+      <p class="reveal" style="transition-delay:0.35s">
+        Mais do que executar uma ideia, meu objetivo é entender o que faz sentido para você e transformar isso em arte com técnica, precisão e personalidade.
+      </p>
+      <p class="reveal last" style="transition-delay:0.4s">
+        Se você sente que esse é o momento de dar esse passo, esse é o começo.
+      </p>
+      <a href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20come%C3%A7ar%20meu%20projeto%20com%20o%20Catriel" class="cta reveal" style="transition-delay:0.45s">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.48-8.45zM12.045 21.785h-.004c-1.774 0-3.513-.476-5.031-1.378l-.361-.214-3.741.975.998-3.648-.235-.374a9.861 9.861 0 0 1-1.523-5.268c.003-5.45 4.458-9.887 9.94-9.887 2.655 0 5.145 1.03 7.022 2.902a9.847 9.847 0 0 1 2.902 7.012c-.003 5.451-4.458 9.88-9.967 9.88zm5.461-7.404c-.301-.15-1.767-.867-2.04-.967-.274-.1-.473-.15-.672.15-.2.3-.773.967-.947 1.166-.173.2-.347.225-.647.075-.3-.15-1.267-.465-2.414-1.48-.893-.79-1.494-1.766-1.668-2.065-.173-.3-.019-.461.13-.611.133-.133.3-.347.45-.52.149-.174.199-.3.298-.5.1-.2.05-.374-.025-.524-.075-.15-.672-1.62-.922-2.22-.24-.58-.487-.5-.672-.51-.173-.01-.372-.012-.571-.012-.2 0-.523.074-.797.374-.273.3-1.045 1.02-1.045 2.487s1.07 2.886 1.22 3.086c.149.199 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.57-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.2-.572-.35z"/></svg>
+        Quero começar meu projeto
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-name">Catriel Medeiros</div>
+      <div class="footer-tags">
+        <span class="footer-tag">Realismo Preto e Cinza</span>
+        <span class="footer-tag">Coberturas Extremas</span>
+        <span class="footer-tag">Projetos Exclusivos</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">✕</button>
+  <img src="" alt="Trabalho ampliado" id="lightboxImg">
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const carousel = document.getElementById('galleryCarousel');
+  let isDragging = false, startX = 0, scrollLeft = 0;
+  carousel.addEventListener('mousedown', e => {
+    isDragging = true;
+    startX = e.pageX - carousel.offsetLeft;
+    scrollLeft = carousel.scrollLeft;
+    carousel.style.userSelect = 'none';
+  });
+  carousel.addEventListener('mouseleave', () => { isDragging = false; });
+  carousel.addEventListener('mouseup', () => { isDragging = false; carousel.style.userSelect = ''; });
+  carousel.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    carousel.scrollLeft = scrollLeft - (e.pageX - carousel.offsetLeft - startX) * 1.5;
+  });
+  document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
+    carousel.scrollBy({ left: -(carousel.querySelector('.gallery-item').offsetWidth + 6) * 3, behavior: 'smooth' });
+  });
+  document.querySelector('.carousel-btn.next').addEventListener('click', () => {
+    carousel.scrollBy({ left: (carousel.querySelector('.gallery-item').offsetWidth + 6) * 3, behavior: 'smooth' });
+  });
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('.gallery-item img').forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
