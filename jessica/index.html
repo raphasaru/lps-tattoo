@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jessica Santana — Glitter Tattoo Artist · Paris & Amsterdam</title>
+  <meta name="description" content="Brazilian glitter tattoo artist with international experience. Authorial projects built from your story. Guest sessions in Paris and Amsterdam — limited spots.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:          #ffffff;
+      --bg-alt:      #f8e7ea;
+      --bg-soft:     #fdf2f4;
+      --ink:         #a02c4f;
+      --ink-light:   #c45070;
+      --ink-pale:    #f8e7ea;
+      --text:        #1e0c12;
+      --text-muted:  #7a5060;
+      --text-light:  #a08088;
+      --border:      rgba(160,44,79,0.15);
+      --green:       #25D366;
+      --green-hover: #1ebe57;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body:    'Lora', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 19px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: var(--green);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .cta:hover { background: var(--green-hover); transform: translateY(-2px); }
+    .cta svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* ═══ HERO ═══ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      background: linear-gradient(145deg, #ffffff 0%, #fdf2f4 55%, #f8e7ea 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-label {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      color: var(--ink);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-label::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--ink);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border: 1px solid rgba(160,44,79,0.35);
+      background: rgba(160,44,79,0.05);
+      margin-bottom: 20px;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: var(--ink);
+    }
+    .hero-badge::before {
+      content: '●';
+      color: var(--ink);
+      font-size: 0.5rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--ink);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 16px;
+    }
+    .hero-text {
+      font-size: 1.02rem;
+      color: var(--text-light);
+      max-width: 520px;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .hero-img-wrapper {
+      position: relative;
+    }
+    .hero-img-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: -16px;
+      bottom: -16px;
+      background: var(--bg-alt);
+      z-index: 0;
+    }
+    .hero-img-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 2px solid var(--ink);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .hero-img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ═══ SECTION HEADER ═══ */
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-header .label {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.35em;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+
+    /* ═══ ABOUT ═══ */
+    .about {
+      padding: 96px 0;
+      background: var(--bg-alt);
+    }
+    .about .section-header .label { color: var(--ink); }
+    .about .section-header h2 { color: var(--text); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .about-text p:first-child {
+      font-size: 1.08rem;
+      color: var(--text);
+    }
+    .about-highlight {
+      padding: 40px;
+      background: #fff;
+      border-left: 3px solid var(--ink);
+    }
+    .about-highlight p {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.8;
+    }
+    .about-highlight .dash {
+      display: block;
+      width: 30px;
+      height: 2px;
+      background: var(--ink);
+      margin-top: 20px;
+    }
+    .credentials {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .credential {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+    .credential::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--ink);
+      flex-shrink: 0;
+    }
+
+    /* ═══ GALLERY ═══ */
+    .gallery {
+      padding: 80px 0;
+      background: var(--bg);
+    }
+
+    .gallery-carousel-wrapper { position: relative; }
+    .gallery-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 6px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+    }
+    .gallery-grid:active { cursor: grabbing; }
+    .gallery-grid::-webkit-scrollbar { display: none; }
+    .gallery-grid .gallery-item {
+      flex: 0 0 calc(33.333% - 4px);
+      scroll-snap-align: start;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      background: var(--bg-soft);
+    }
+    .gallery-grid .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .gallery-grid .gallery-item:hover img { transform: scale(1.05); }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: #fff;
+      border: 1.5px solid var(--ink);
+      color: var(--ink);
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      font-size: 1.2rem;
+      line-height: 1;
+      user-select: none;
+    }
+    .carousel-btn:hover { background: var(--ink); color: #fff; }
+    .carousel-btn.prev { left: -22px; }
+    .carousel-btn.next { right: -22px; }
+    .gallery-cta { text-align: center; margin-top: 50px; }
+
+    /* ═══ AWARDS ═══ */
+    .awards {
+      padding: 96px 0;
+      background: var(--bg-soft);
+    }
+
+    .awards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .awards-text p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .awards-text p:first-child {
+      font-size: 1.08rem;
+      color: var(--text);
+    }
+    .awards-quote {
+      padding: 40px;
+      background: #fff;
+      border-left: 3px solid var(--ink);
+    }
+    .awards-quote p {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.8;
+    }
+    .awards-quote .dash {
+      display: block;
+      width: 30px;
+      height: 2px;
+      background: var(--ink);
+      margin-top: 20px;
+    }
+    .awards-stats {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .awards-stat {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .awards-stat::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--ink);
+      flex-shrink: 0;
+    }
+
+    /* ═══ PROCESS ═══ */
+    .process {
+      padding: 96px 0;
+      background: var(--bg-alt);
+    }
+    .process .section-header .label { color: var(--ink); }
+    .process .section-header h2 { color: var(--text); }
+    .process-intro {
+      max-width: 680px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+    .process-intro p { color: var(--text-muted); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    .step {
+      padding: 36px 28px;
+      background: #fff;
+      border-top: 2px solid var(--ink);
+    }
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: rgba(160,44,79,0.1);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .step h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .step p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ═══ CLOSING ═══ */
+    .closing-section {
+      padding: 96px 0;
+      background: var(--ink);
+    }
+    .closing {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .closing h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      color: #fff;
+      letter-spacing: 0.02em;
+      margin-bottom: 24px;
+    }
+    .closing p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 16px;
+      line-height: 1.85;
+    }
+    .closing p:last-of-type {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 40px;
+    }
+    .closing .cta {
+      background: #fff;
+      color: var(--ink);
+    }
+    .closing .cta:hover {
+      background: var(--bg-alt);
+      transform: translateY(-2px);
+    }
+    .closing .cta svg { fill: var(--green); }
+
+    /* ═══ FOOTER ═══ */
+    footer {
+      padding: 60px 0;
+      text-align: center;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+    footer .footer-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--text);
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    footer p { font-size: 0.85rem; color: var(--text-muted); }
+    footer .footer-detail {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    footer .footer-detail span {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      letter-spacing: 0.05em;
+    }
+    footer .footer-detail span::before {
+      content: '·';
+      margin-right: 12px;
+      color: var(--ink);
+    }
+    footer .footer-detail span:first-child::before { display: none; }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 50px; }
+      .hero-img-wrapper { max-width: 360px; margin: 0 auto; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .awards-grid { grid-template-columns: 1fr; gap: 40px; }
+      .gallery-grid .gallery-item { flex: 0 0 calc(50% - 3px); }
+      .carousel-btn.prev { left: 4px; }
+      .carousel-btn.next { right: 4px; }
+      .steps { grid-template-columns: 1fr; gap: 20px; }
+    }
+    @media (max-width: 600px) {
+      body { font-size: 16px; }
+      .container { padding: 0 18px; }
+      .hero { padding: 100px 0 60px; min-height: auto; }
+      .hero-img-wrapper { max-width: 260px; }
+      .gallery-grid .gallery-item { flex: 0 0 80%; }
+      .cta { padding: 14px 28px; font-size: 1rem; }
+    }
+
+    /* Lightbox */
+    .lb-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(30,12,18,0.92);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .lb-overlay.active { display: flex; }
+    .lb-overlay img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 2px;
+      user-select: none;
+    }
+    .lb-close {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      background: none;
+      border: none;
+      padding: 4px 8px;
+    }
+    .lb-close:hover { opacity: 1; }
+    .lb-trigger { cursor: zoom-in; }
+  </style>
+</head>
+<body>
+
+  <!-- ════════ HERO ════════ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-label reveal">JESSICA SANTANA · GLITTER TATTOO ARTIST</div>
+          <div class="hero-badge reveal" style="transition-delay: 0.05s">GUEST SESSIONS · PARIS & AMSTERDAM</div>
+          <h1 class="reveal" style="transition-delay: 0.1s">
+            Authorial projects that turn memory into something that only <em>exists on your skin</em>
+          </h1>
+          <p class="hero-sub reveal" style="transition-delay: 0.2s">
+            Brazilian artist renowned for her glitter technique, bringing her signature to Paris and Amsterdam in a limited guest season.
+          </p>
+          <p class="hero-text reveal" style="transition-delay: 0.3s">
+            Jessica's work doesn't start with a ready design. It starts with an idea that needs to be interpreted. Each project is built around your story, your references, and how they can exist on your body with clarity, balance, and lasting presence.
+          </p>
+          <a href="#" class="cta reveal" style="transition-delay: 0.4s">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            REQUEST A QUOTE
+          </a>
+        </div>
+        <div class="hero-img-wrapper reveal" style="transition-delay: 0.3s">
+          <img class="hero-img" src="FOTO JESSICA/hero.webp" alt="Jessica Santana — Glitter Tattoo Artist" width="420" height="560" fetchpriority="high">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ ABOUT ════════ -->
+  <section class="about">
+    <div class="container">
+      <div class="section-header reveal" style="margin-bottom: 50px;">
+        <div class="label">ABOUT</div>
+        <h2>A work that has crossed borders</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>Throughout her career, Jessica has built a body of work that transcended national borders. She has brought her technique to studios across Europe — with sessions in France and Portugal — and continues to expand that presence with new international seasons.</p>
+          <p>Today, she receives clients from different parts of the world, including Japan, Germany, and the UAE — people looking for more than a tattoo, but a project developed with intention and identity.</p>
+          <p>With a background in visual arts and a trajectory built inside and outside Brazil, Jessica developed her own visual language — where glitter is not just aesthetics, but part of how the design is constructed on skin.</p>
+          <p>Beyond her sessions, she also works directly with the formation of other tattoo artists, through mentorships where she shares her technique, creative process, and development of artistic language.</p>
+          <div class="credentials">
+            <div class="credential">Visual arts background</div>
+            <div class="credential">Guest sessions in France, Portugal &amp; now Paris + Amsterdam</div>
+            <div class="credential">International clients from Japan, Germany, UAE</div>
+            <div class="credential">Mentorship program for emerging artists</div>
+          </div>
+        </div>
+        <div class="about-highlight reveal" style="transition-delay: 0.15s">
+          <p>This movement between creation and teaching strengthens not just the final result, but the consistency of the work over time.</p>
+          <span class="dash"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ GALLERY ════════ -->
+  <section class="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label">PORTFOLIO</div>
+        <h2>Original Work</h2>
+      </div>
+      <div class="gallery-carousel-wrapper">
+        <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
+        <div class="gallery-grid" id="galleryCarousel">
+          <div class="gallery-item">
+            <img src="galeria-jessica/IMG_1044.webp" alt="Jessica Santana tattoo work" loading="lazy" width="600" height="600">
+          </div>
+          <div class="gallery-item">
+            <img src="galeria-jessica/IMG_2549.webp" alt="Jessica Santana tattoo work" loading="lazy" width="600" height="600">
+          </div>
+          <div class="gallery-item">
+            <img src="galeria-jessica/IMG_3190.webp" alt="Jessica Santana tattoo work" loading="lazy" width="600" height="600">
+          </div>
+          <div class="gallery-item">
+            <img src="galeria-jessica/IMG_6233.webp" alt="Jessica Santana tattoo work" loading="lazy" width="600" height="600">
+          </div>
+          <div class="gallery-item">
+            <img src="galeria-jessica/IMG_6679.webp" alt="Jessica Santana tattoo work" loading="lazy" width="600" height="600">
+          </div>
+          <div class="gallery-item">
+            <img src="galeria-jessica/IMG_8369.webp" alt="Jessica Santana tattoo work" loading="lazy" width="600" height="600">
+          </div>
+          <div class="gallery-item">
+            <img src="galeria-jessica/IMG_0129_SnapseedCopy.webp" alt="Jessica Santana tattoo work" loading="lazy" width="600" height="600">
+          </div>
+          <div class="gallery-item">
+            <img src="galeria-jessica/Snapseed.webp" alt="Jessica Santana tattoo work" loading="lazy" width="600" height="600">
+          </div>
+          <div class="gallery-item">
+            <img src="galeria-jessica/Design sem nome.webp" alt="Jessica Santana tattoo work" loading="lazy" width="600" height="600">
+          </div>
+          <div class="gallery-item">
+            <img src="galeria-jessica/Design sem nome 2.webp" alt="Jessica Santana tattoo work" loading="lazy" width="600" height="600">
+          </div>
+          <div class="gallery-item">
+            <img src="galeria-jessica/IMG_6626.webp" alt="Jessica Santana tattoo work" loading="lazy" width="600" height="600">
+          </div>
+        </div>
+        <button class="carousel-btn next" aria-label="Next">&#8594;</button>
+      </div>
+      <div class="gallery-cta reveal">
+        <a href="#" class="cta">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          START MY PROJECT
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ AWARDS ════════ -->
+  <section class="awards">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label">RECOGNITION</div>
+        <h2>Recognition that accompanies this path</h2>
+      </div>
+      <div class="awards-grid">
+        <div class="awards-text reveal">
+          <p>Since the beginning of her career, Jessica has been recognized at tattoo conventions, winning awards in the glitter style.</p>
+          <p>This recognition came not only from the visual result, but from the way the technique was developed — bringing her own approach to light, texture, and construction on skin.</p>
+          <p>Over the years, this work has continued to be validated within the artistic community, consolidating her signature as one of the references in the style.</p>
+          <div class="awards-stats">
+            <div class="awards-stat">Convention awards — glitter tattoo</div>
+            <div class="awards-stat">Recognized from the early years of her career</div>
+            <div class="awards-stat">International validation across multiple countries</div>
+          </div>
+        </div>
+        <div class="awards-quote reveal" style="transition-delay: 0.15s">
+          <p>This recognition reinforces what lies behind every project: decision, technique, and construction.</p>
+          <span class="dash"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ PROCESS ════════ -->
+  <section class="process">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label">THE PROCESS</div>
+        <h2>How projects are built</h2>
+      </div>
+      <div class="process-intro reveal">
+        <p>Jessica's work doesn't start with a ready design. It starts with an idea that needs to be interpreted — and built specifically for you.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h3>CONSULTATION</h3>
+          <p>We talk about your idea, your references, and how they can be interpreted through Jessica's artistic language. The project starts here — with your story, not a pre-made template.</p>
+        </div>
+        <div class="step reveal" style="transition-delay: 0.1s">
+          <div class="step-num">02</div>
+          <h3>DESIGN</h3>
+          <p>The design is built specifically for your body — considering balance, placement, visual intention, and how the glitter technique will bring the piece to life on your skin.</p>
+        </div>
+        <div class="step reveal" style="transition-delay: 0.2s">
+          <div class="step-num">03</div>
+          <h3>GUEST SESSION</h3>
+          <p>Your appointment takes place during the European season, in Paris or Amsterdam. Limited spots. The same care and technique Jessica brings to every project, regardless of where she is.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ CLOSING CTA ════════ -->
+  <section class="closing-section">
+    <div class="container">
+      <div class="closing reveal">
+        <h2>Ready to start your project?</h2>
+        <p>If you're looking for an authorial tattoo built with intention, technique, and your own identity — this is the moment to reach out.</p>
+        <p>Guest sessions in Paris and Amsterdam — limited spots available.</p>
+        <a href="#" class="cta">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          REQUEST A QUOTE ON WHATSAPP
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ FOOTER ════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-name">JESSICA SANTANA</div>
+      <p>Glitter Tattoo Artist · Paris & Amsterdam</p>
+      <div class="footer-detail">
+        <span>Glitter technique</span>
+        <span>Authorial projects</span>
+        <span>International guest</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lb-overlay" id="lightbox">
+    <button class="lb-close" id="lb-close">&times;</button>
+    <img id="lb-img" src="" alt="">
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+
+    function openLightbox(src, alt) {
+      lbImg.src = src; lbImg.alt = alt || '';
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+      img.classList.add('lb-trigger');
+      img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    });
+
+    const carousel = document.getElementById('galleryCarousel');
+    let isDragging = false, startX = 0, scrollLeft = 0;
+
+    carousel.addEventListener('mousedown', e => {
+      isDragging = true;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+      carousel.style.userSelect = 'none';
+    });
+    carousel.addEventListener('mouseleave', () => { isDragging = false; });
+    carousel.addEventListener('mouseup', () => { isDragging = false; carousel.style.userSelect = ''; });
+    carousel.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      e.preventDefault();
+      carousel.scrollLeft = scrollLeft - (e.pageX - carousel.offsetLeft - startX) * 1.5;
+    });
+
+    document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
+      const itemW = carousel.querySelector('.gallery-item').offsetWidth + 6;
+      carousel.scrollBy({ left: -itemW * 3, behavior: 'smooth' });
+    });
+    document.querySelector('.carousel-btn.next').addEventListener('click', () => {
+      const itemW = carousel.querySelector('.gallery-item').offsetWidth + 6;
+      carousel.scrollBy({ left: itemW * 3, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
