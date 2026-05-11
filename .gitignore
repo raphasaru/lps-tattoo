@@ -4,3 +4,11 @@
 hero-bg.png
 hero-bg-mobile.png
 *.zip
+
+# Large media — videos and raw originals
+*.MOV
+*.mov
+*.MP4
+*.mp4
+*.HEIC
+*.heic

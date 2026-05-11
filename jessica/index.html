@@ -324,6 +324,31 @@
     .carousel-btn.next { right: -22px; }
     .gallery-cta { text-align: center; margin-top: 50px; }
 
+    /* ═══ SUB-GALLERY (awards + europa) ═══ */
+    .sub-gallery {
+      margin-top: 60px;
+    }
+    .sub-gallery-label {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.35em;
+      color: var(--ink);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .sub-gallery-label::before {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: var(--ink);
+    }
+    .sub-gallery .gallery-grid .gallery-item {
+      flex: 0 0 calc(33.333% - 4px);
+      aspect-ratio: 4/3;
+    }
+
     /* ═══ AWARDS ═══ */
     .awards {
       padding: 96px 0;
@@ -568,6 +593,21 @@
           <span class="dash"></span>
         </div>
       </div>
+      <div class="sub-gallery reveal">
+        <div class="sub-gallery-label">IN EUROPE</div>
+        <div class="gallery-carousel-wrapper">
+          <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
+          <div class="gallery-grid" id="europaCarousel">
+            <div class="gallery-item"><img src="FOTO NA EUROPA/europa-1.webp" alt="Jessica Santana in Europe" loading="lazy"></div>
+            <div class="gallery-item"><img src="FOTO NA EUROPA/europa-2.webp" alt="Jessica Santana in Europe" loading="lazy"></div>
+            <div class="gallery-item"><img src="FOTO NA EUROPA/europa-3.webp" alt="Jessica Santana in Europe" loading="lazy"></div>
+            <div class="gallery-item"><img src="FOTO NA EUROPA/europa-4.webp" alt="Jessica Santana in Europe" loading="lazy"></div>
+            <div class="gallery-item"><img src="FOTO NA EUROPA/europa-5.webp" alt="Jessica Santana in Europe" loading="lazy"></div>
+            <div class="gallery-item"><img src="FOTO NA EUROPA/europa-6.webp" alt="Jessica Santana in Europe" loading="lazy"></div>
+          </div>
+          <button class="carousel-btn next" aria-label="Next">&#8594;</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -649,6 +689,23 @@
           <span class="dash"></span>
         </div>
       </div>
+      <div class="sub-gallery reveal">
+        <div class="sub-gallery-label">AWARDED WORK</div>
+        <div class="gallery-carousel-wrapper">
+          <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
+          <div class="gallery-grid" id="premiacaoCarousel">
+            <div class="gallery-item"><img src="FOTO PREMIAÇAO/premiacao-2024-princesas.webp" alt="Jessica Santana award" loading="lazy"></div>
+            <div class="gallery-item"><img src="FOTO PREMIAÇAO/convencao-2018-serie.webp" alt="Jessica Santana award" loading="lazy"></div>
+            <div class="gallery-item"><img src="FOTO PREMIAÇAO/IMG_7582.webp" alt="Jessica Santana award" loading="lazy"></div>
+            <div class="gallery-item"><img src="FOTO PREMIAÇAO/premiacao-2018-glitter.webp" alt="Jessica Santana award" loading="lazy"></div>
+            <div class="gallery-item"><img src="FOTO PREMIAÇAO/premiacao-2018-glitter-1.webp" alt="Jessica Santana award" loading="lazy"></div>
+            <div class="gallery-item"><img src="FOTO PREMIAÇAO/premiacao-2018-glitter-2.webp" alt="Jessica Santana award" loading="lazy"></div>
+            <div class="gallery-item"><img src="FOTO PREMIAÇAO/premiacao-2018-glitter-3.webp" alt="Jessica Santana award" loading="lazy"></div>
+            <div class="gallery-item"><img src="FOTO PREMIAÇAO/premiacao-2018-glitter-4.webp" alt="Jessica Santana award" loading="lazy"></div>
+          </div>
+          <button class="carousel-btn next" aria-label="Next">&#8594;</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -719,30 +776,34 @@
       img.addEventListener('click', () => openLightbox(img.src, img.alt));
     });
 
-    const carousel = document.getElementById('galleryCarousel');
-    let isDragging = false, startX = 0, scrollLeft = 0;
+    document.querySelectorAll('.gallery-carousel-wrapper').forEach(wrapper => {
+      const carousel = wrapper.querySelector('.gallery-grid');
+      const prevBtn = wrapper.querySelector('.carousel-btn.prev');
+      const nextBtn = wrapper.querySelector('.carousel-btn.next');
+      let isDragging = false, startX = 0, scrollLeft = 0;
 
-    carousel.addEventListener('mousedown', e => {
-      isDragging = true;
-      startX = e.pageX - carousel.offsetLeft;
-      scrollLeft = carousel.scrollLeft;
-      carousel.style.userSelect = 'none';
-    });
-    carousel.addEventListener('mouseleave', () => { isDragging = false; });
-    carousel.addEventListener('mouseup', () => { isDragging = false; carousel.style.userSelect = ''; });
-    carousel.addEventListener('mousemove', e => {
-      if (!isDragging) return;
-      e.preventDefault();
-      carousel.scrollLeft = scrollLeft - (e.pageX - carousel.offsetLeft - startX) * 1.5;
-    });
+      carousel.addEventListener('mousedown', e => {
+        isDragging = true;
+        startX = e.pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+        carousel.style.userSelect = 'none';
+      });
+      carousel.addEventListener('mouseleave', () => { isDragging = false; });
+      carousel.addEventListener('mouseup', () => { isDragging = false; carousel.style.userSelect = ''; });
+      carousel.addEventListener('mousemove', e => {
+        if (!isDragging) return;
+        e.preventDefault();
+        carousel.scrollLeft = scrollLeft - (e.pageX - carousel.offsetLeft - startX) * 1.5;
+      });
 
-    document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
-      const itemW = carousel.querySelector('.gallery-item').offsetWidth + 6;
-      carousel.scrollBy({ left: -itemW * 3, behavior: 'smooth' });
-    });
-    document.querySelector('.carousel-btn.next').addEventListener('click', () => {
-      const itemW = carousel.querySelector('.gallery-item').offsetWidth + 6;
-      carousel.scrollBy({ left: itemW * 3, behavior: 'smooth' });
+      prevBtn.addEventListener('click', () => {
+        const itemW = carousel.querySelector('.gallery-item').offsetWidth + 6;
+        carousel.scrollBy({ left: -itemW * 3, behavior: 'smooth' });
+      });
+      nextBtn.addEventListener('click', () => {
+        const itemW = carousel.querySelector('.gallery-item').offsetWidth + 6;
+        carousel.scrollBy({ left: itemW * 3, behavior: 'smooth' });
+      });
     });
   </script>
 </body>
