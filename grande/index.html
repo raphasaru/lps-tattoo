@@ -389,13 +389,13 @@
       scroll-snap-align: start;
       overflow: hidden;
       position: relative;
-      aspect-ratio: 1/1;
+      aspect-ratio: 4/5;
     }
     .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
+      object-position: center center;
       display: block;
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
       filter: grayscale(8%) contrast(1.05);
@@ -645,12 +645,49 @@
     .lightbox-close:hover { border-color: var(--ink); color: var(--ink); }
 
     /* ─── RESPONSIVE ──────────────────────────────── */
+    .hero-img-mobile { display: none; }
+
     @media (max-width: 900px) {
       .hero-grid {
         grid-template-columns: 1fr;
         gap: 40px;
       }
-      .hero-img-wrapper { order: -1; max-width: 320px; }
+      .hero-img-wrapper { display: none; }
+      .hero-img-mobile {
+        display: block;
+        position: relative;
+        width: 100%;
+        max-width: 320px;
+        margin: 20px 0 20px;
+      }
+      .hero-img-mobile::before {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        border: 1px solid rgba(122,158,184,0.2);
+        z-index: 1;
+        pointer-events: none;
+      }
+      .hero-img-mobile::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 30%;
+        background: linear-gradient(to top, var(--black), transparent);
+        z-index: 2;
+        pointer-events: none;
+      }
+      .hero-img-mobile img {
+        width: 100%;
+        aspect-ratio: 4/5;
+        max-height: 340px;
+        object-fit: cover;
+        object-position: center center;
+        display: block;
+        filter: grayscale(15%) contrast(1.05);
+      }
       .about-grid { grid-template-columns: 1fr; gap: 48px; }
       .about-quote-block { position: static; }
       .steps {
@@ -663,7 +700,11 @@
         border-top: 1px solid rgba(255,255,255,0.08);
       }
       .step { padding: 32px 0; }
-      .gallery-item { flex: 0 0 calc(50% - 3px); }
+      .gallery-item {
+        flex: 0 0 calc(50% - 3px);
+        aspect-ratio: 4/5;
+      }
+      .gallery-item img { object-position: center center; }
       .carousel-btn.prev { left: 4px; }
       .carousel-btn.next { right: 4px; }
     }
@@ -672,7 +713,11 @@
       body { font-size: 16px; }
       .container { padding: 0 18px; }
       .hero { padding: 100px 0 60px; min-height: auto; }
-      .gallery-item { flex: 0 0 85%; }
+      .gallery-item {
+        flex: 0 0 85%;
+        aspect-ratio: 4/5;
+      }
+      .gallery-item img { object-position: center center; }
       .cta { padding: 14px 24px; font-size: 1rem; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
       .process-cta-wrap { flex-direction: column; align-items: flex-start; gap: 12px; }
@@ -701,9 +746,12 @@
           <p class="hero-text reveal" style="transition-delay:0.2s">
             Brazilian tattoo artist specializing in black and gray realism, large-scale projects and high-impact visual compositions. Before dedicating his life fully to tattooing, he spent 13 years working in law enforcement — discipline, accountability and commitment to results.
           </p>
+          <div class="hero-img-mobile reveal" style="transition-delay:0.22s">
+            <img src="grande-perfil.webp" alt="Vinícius Grande">
+          </div>
           <a href="https://wa.me/5511999999999?text=Hi%2C+Vin%C3%ADcius%21+I+saw+your+LP+and+want+to+apply+for+the+Guest+in+Framingham." class="cta reveal" style="transition-delay:0.25s">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.477 2 2.004 6.473 2.004 12c0 1.989.58 3.842 1.58 5.402L2 22l4.701-1.561A9.959 9.959 0 0012.004 22C17.531 22 22 17.527 22 12c0-5.523-4.469-9.999-9.996-10zm0 18.188c-1.706 0-3.3-.467-4.669-1.28l-.335-.199-3.47 1.152.972-3.567-.217-.348A8.133 8.133 0 013.868 12c0-4.484 3.65-8.133 8.136-8.133 4.484 0 8.133 3.649 8.133 8.133 0 4.485-3.649 8.188-8.133 8.188z"/></svg>
-            Apply for the Guest
+            Request a Quote
           </a>
         </div>
 
@@ -929,7 +977,7 @@
         </p>
         <a href="https://wa.me/5511999999999?text=Hi%2C+Vin%C3%ADcius%21+I+saw+your+LP+and+want+to+apply+for+the+Guest+in+Framingham." class="cta reveal" style="transition-delay:0.2s">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.477 2 2.004 6.473 2.004 12c0 1.989.58 3.842 1.58 5.402L2 22l4.701-1.561A9.959 9.959 0 0012.004 22C17.531 22 22 17.527 22 12c0-5.523-4.469-9.999-9.996-10zm0 18.188c-1.706 0-3.3-.467-4.669-1.28l-.335-.199-3.47 1.152.972-3.567-.217-.348A8.133 8.133 0 013.868 12c0-4.484 3.65-8.133 8.136-8.133 4.484 0 8.133 3.649 8.133 8.133 0 4.485-3.649 8.188-8.133 8.188z"/></svg>
-          Apply for the Guest
+          Request a Quote
         </a>
       </div>
     </div>
