@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kleber Soares — Award-Winning Brazilian Tattoo Artist · Framingham, MA</title>
+  <meta name="description" content="Brazilian realism tattoo artist with 40+ international awards. Guest at Fine Art Tattoo, Framingham MA — limited appointments Sep–Oct 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0c0808;
+      --dark: #110a0a;
+      --dark-card: #1a0f0f;
+      --ink: #b71c1c;
+      --ink-light: #e53935;
+      --ink-dim: rgba(183,28,28,0.13);
+      --ink-border: rgba(183,28,28,0.28);
+      --cream: #f0e8e0;
+      --gray: #8a8280;
+      --gray-light: #b8aeaa;
+      --white: #faf6f4;
+      --green: #25D366;
+      --green-hover: #1ebe57;
+      --light-bg: #1c1010;
+      --light-text: #e8dcd8;
+      --light-muted: #9a8e8a;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Lora', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 19px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: var(--green);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .cta:hover { background: var(--green-hover); transform: translateY(-2px); }
+    .cta svg { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
+
+    .section-label {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: var(--ink);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    /* ═══ TOP BAR ═══ */
+    .top-bar {
+      background: var(--dark-card);
+      border-bottom: 1px solid var(--ink-border);
+      text-align: center;
+      padding: 11px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-bar p {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      color: var(--ink-light);
+    }
+    .top-bar span { color: var(--gray); margin: 0 10px; }
+
+    /* ═══ HERO ═══ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 0 80px;
+      overflow: hidden;
+      background-color: var(--black);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 70% 50%, rgba(50,8,8,0.45) 0%, rgba(12,8,8,0.95) 70%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-label {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      color: var(--ink);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-label::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--ink);
+      flex-shrink: 0;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border: 1px solid var(--ink-border);
+      margin-bottom: 24px;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: var(--ink-light);
+    }
+    .hero-badge::before {
+      content: '●';
+      color: var(--ink);
+      font-size: 0.5rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      line-height: 1.0;
+      letter-spacing: 0.01em;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: normal; color: var(--ink-light); }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--gray-light);
+      max-width: 520px;
+      margin-bottom: 20px;
+      line-height: 1.75;
+      font-style: italic;
+    }
+    .hero-text {
+      font-size: 0.97rem;
+      color: var(--gray-light);
+      max-width: 520px;
+      margin-bottom: 36px;
+      line-height: 1.85;
+    }
+    .credibility-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--ink-border);
+      padding-top: 32px;
+      margin-top: 12px;
+    }
+    .cred-item {
+      padding: 0 20px;
+      border-right: 1px solid rgba(183,28,28,0.12);
+    }
+    .cred-item:first-child { padding-left: 0; }
+    .cred-item:last-child { border-right: none; }
+    .cred-value {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: var(--ink-light);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .cred-label {
+      font-size: 0.75rem;
+      color: var(--gray);
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+    }
+    .hero-img-wrapper {
+      position: relative;
+    }
+    .hero-img-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border: 1px solid var(--ink-border);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .hero-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      filter: grayscale(0.05) contrast(1.04);
+    }
+
+    /* ═══ AUTHORITY ═══ */
+    .authority {
+      padding: 96px 0;
+      background: var(--light-bg);
+      position: relative;
+    }
+    .authority::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.06;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+    .authority .container { position: relative; z-index: 1; }
+    .authority-intro {
+      max-width: 740px;
+      margin-bottom: 64px;
+    }
+    .authority-intro h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: var(--white);
+      letter-spacing: 0.02em;
+      margin-bottom: 20px;
+      line-height: 1.05;
+    }
+    .authority-intro h2 em { font-style: normal; color: var(--ink-light); }
+    .authority-body {
+      color: var(--light-muted);
+      font-size: 0.97rem;
+      line-height: 1.85;
+    }
+    .authority-body p { margin-bottom: 16px; }
+    .authority-body p:first-child { color: var(--light-text); font-size: 1.05rem; }
+    .authority-quote {
+      border-left: 2px solid var(--ink);
+      padding-left: 24px;
+      margin: 32px 0;
+      font-style: italic;
+      color: var(--light-text);
+      font-size: 1.02rem;
+      line-height: 1.8;
+    }
+
+    /* Awards gallery */
+    .awards-label {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.3em;
+      color: var(--gray);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .awards-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--ink-border);
+    }
+    .awards-carousel-wrap {
+      position: relative;
+    }
+    .awards-carousel {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      cursor: grab;
+    }
+    .awards-carousel::-webkit-scrollbar { display: none; }
+    .awards-carousel.dragging { cursor: grabbing; }
+    .award-item {
+      flex: 0 0 260px;
+      scroll-snap-align: start;
+      position: relative;
+      overflow: hidden;
+      background: var(--dark-card);
+    }
+    .award-item img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      filter: grayscale(0.1) contrast(1.05);
+      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), filter 0.5s;
+      cursor: zoom-in;
+    }
+    .award-item:hover img { transform: scale(1.04); filter: grayscale(0) contrast(1.08); }
+    .carousel-nav {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+      justify-content: flex-end;
+    }
+    .carousel-btn {
+      width: 42px;
+      height: 42px;
+      background: var(--dark-card);
+      border: 1px solid var(--ink-border);
+      color: var(--ink-light);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s, border-color 0.25s;
+      font-size: 1.1rem;
+    }
+    .carousel-btn:hover { background: var(--ink-dim); border-color: var(--ink); }
+
+    .authority-cta-wrap { margin-top: 48px; }
+
+    /* ═══ EUA / LOCATION ═══ */
+    .location-section {
+      padding: 96px 0;
+      background: var(--dark);
+      position: relative;
+    }
+    .location-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+    .location-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .location-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: var(--white);
+      letter-spacing: 0.02em;
+      margin-bottom: 20px;
+      line-height: 1.05;
+    }
+    .location-text h2 em { font-style: normal; color: var(--ink-light); }
+    .location-text p {
+      color: var(--gray-light);
+      font-size: 0.97rem;
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+    .location-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 28px 0 36px;
+    }
+    .location-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .location-key {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      color: var(--ink);
+      min-width: 80px;
+    }
+    .location-val {
+      font-size: 0.95rem;
+      color: var(--light-text);
+    }
+    .location-img-wrap {
+      position: relative;
+    }
+    .location-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border: 1px solid var(--ink-border);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .location-img {
+      width: 100%;
+      aspect-ratio: 9/16;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(0.08) contrast(1.03);
+    }
+
+    /* ═══ PORTFOLIO ═══ */
+    .portfolio {
+      padding: 96px 0;
+      background: var(--black);
+      position: relative;
+    }
+    .portfolio::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+    .portfolio .container { position: relative; z-index: 1; }
+    .portfolio-header {
+      max-width: 720px;
+      margin-bottom: 56px;
+    }
+    .portfolio-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: var(--white);
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+      line-height: 1.05;
+    }
+    .portfolio-header h2 em { font-style: normal; color: var(--ink-light); }
+    .portfolio-header p {
+      color: var(--gray-light);
+      font-size: 0.97rem;
+      line-height: 1.85;
+    }
+    .portfolio-carousel-wrap { position: relative; }
+    .portfolio-carousel {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      cursor: grab;
+    }
+    .portfolio-carousel::-webkit-scrollbar { display: none; }
+    .portfolio-carousel.dragging { cursor: grabbing; }
+    .portfolio-item {
+      flex: 0 0 280px;
+      scroll-snap-align: start;
+      position: relative;
+      overflow: hidden;
+      background: var(--dark-card);
+    }
+    .portfolio-item img {
+      width: 100%;
+      aspect-ratio: 9/16;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(0.06) contrast(1.04);
+      transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.5s;
+      cursor: zoom-in;
+    }
+    .portfolio-item:hover img { transform: scale(1.04); filter: grayscale(0) contrast(1.08); }
+    .portfolio-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(12,8,8,0.4) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .portfolio-styles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 48px 0 40px;
+    }
+    .style-card {
+      padding: 28px 20px;
+      border-top: 2px solid var(--ink);
+      background: var(--dark-card);
+    }
+    .style-icon {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--ink-dim);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .style-card h3 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      color: var(--light-text);
+      margin-bottom: 10px;
+    }
+    .style-card p {
+      font-size: 0.84rem;
+      color: var(--light-muted);
+      line-height: 1.7;
+    }
+    .portfolio-close {
+      border-left: 2px solid var(--ink);
+      padding-left: 24px;
+      font-style: italic;
+      color: var(--gray-light);
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 0 40px;
+    }
+
+    /* ═══ PROCESS ═══ */
+    .process {
+      padding: 96px 0;
+      background: var(--light-bg);
+      position: relative;
+    }
+    .process::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.06;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+    .process .container { position: relative; z-index: 1; }
+    .process-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .process-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .step {
+      padding: 36px 28px;
+      border-top: 2px solid var(--ink);
+      background: rgba(0,0,0,0.35);
+    }
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--ink-dim);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .step h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 0.07em;
+      color: var(--light-text);
+      margin-bottom: 12px;
+    }
+    .step p {
+      font-size: 0.88rem;
+      color: var(--light-muted);
+      line-height: 1.75;
+    }
+
+    /* ═══ CLOSING CTA ═══ */
+    .closing {
+      padding: 120px 0;
+      background: var(--dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .closing::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(183,28,28,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .closing .container { position: relative; z-index: 1; }
+    .closing h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      color: var(--white);
+      letter-spacing: 0.02em;
+      line-height: 1.0;
+      margin-bottom: 20px;
+    }
+    .closing h2 em { font-style: normal; color: var(--ink-light); }
+    .closing-sub {
+      font-size: 1rem;
+      color: var(--gray-light);
+      font-style: italic;
+      max-width: 520px;
+      margin: 0 auto 44px;
+      line-height: 1.8;
+    }
+
+    /* ═══ FOOTER ═══ */
+    footer {
+      padding: 44px 0;
+      background: var(--black);
+      border-top: 1px solid var(--ink-border);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      letter-spacing: 0.1em;
+      color: var(--white);
+    }
+    .footer-role {
+      font-size: 0.8rem;
+      color: var(--gray);
+      letter-spacing: 0.04em;
+      margin-top: 2px;
+    }
+    .footer-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .footer-tag {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      color: var(--ink);
+      padding: 5px 12px;
+      border: 1px solid var(--ink-border);
+    }
+
+    /* ═══ LIGHTBOX ═══ */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0,0,0,0.94);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      display: block;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--gray-light);
+      cursor: pointer;
+      letter-spacing: 0;
+      line-height: 1;
+      background: none;
+      border: none;
+      transition: color 0.2s;
+    }
+    .lightbox-close:hover { color: var(--white); }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero-img { aspect-ratio: 4/5; max-height: 540px; }
+      .hero-grid > div:first-child { order: 1; }
+      .hero-img-wrapper { order: 2; }
+      .credibility-bar { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .cred-item { padding: 12px 0; border-right: none; border-bottom: 1px solid rgba(183,28,28,0.1); }
+      .cred-item:nth-child(odd) { border-right: 1px solid rgba(183,28,28,0.1); padding-right: 16px; }
+      .location-grid { grid-template-columns: 1fr; gap: 40px; }
+      .location-img { aspect-ratio: 4/3; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .portfolio-styles { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr; gap: 20px; }
+    }
+    @media (max-width: 600px) {
+      body { font-size: 17px; }
+      .container { padding: 0 18px; }
+      .hero { padding: 90px 0 60px; min-height: auto; }
+      .hero-grid { gap: 36px; }
+      .award-item { flex: 0 0 200px; }
+      .portfolio-styles { grid-template-columns: 1fr; }
+      .cta { padding: 14px 28px; font-size: 1rem; }
+      .portfolio-item img { aspect-ratio: 3/4; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <p>LIMITED BOOKING OPEN<span>·</span>FINE ART TATTOO, FRAMINGHAM MA<span>·</span>SEP–OCT 2026</p>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-label reveal">KLEBER SOARES · GUEST ARTIST</div>
+          <div class="hero-badge reveal">BOOKING OPEN · SEP–OCT 2026</div>
+          <h1 class="reveal">Realistic Tattoos by an <em>Internationally Awarded</em> Brazilian Artist</h1>
+          <p class="hero-sub reveal">Kleber Soares will be at Fine Art Tattoo in Framingham, Massachusetts, from September to October 2026 — a limited US season.</p>
+          <p class="hero-text reveal">A high-level tattoo doesn't come from a good reference alone. It comes from 25 years of experience — someone who understands composition, skin, contrast, depth, color, anatomy, and story. Over 40 international awards. Best of Show at the largest tattoo convention in Latin America. Mentor to hundreds of artists around the world.</p>
+          <a href="https://wa.me/5500000000000?text=Hi%20Kleber%2C%20I%20found%20your%20US%20Tour%20page%20and%20would%20like%20to%20request%20my%20tattoo%20project." class="cta reveal">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            REQUEST MY PROJECT
+          </a>
+          <div class="credibility-bar reveal">
+            <div class="cred-item">
+              <div class="cred-value">25</div>
+              <div class="cred-label">Years tattooing</div>
+            </div>
+            <div class="cred-item">
+              <div class="cred-value">40+</div>
+              <div class="cred-label">International awards</div>
+            </div>
+            <div class="cred-item">
+              <div class="cred-value">Best<br>of Show</div>
+              <div class="cred-label">Latin America's largest convention</div>
+            </div>
+            <div class="cred-item">
+              <div class="cred-value">100s</div>
+              <div class="cred-label">Artists mentored worldwide</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-img-wrapper reveal" style="transition-delay:0.15s">
+          <img class="hero-img" src="profile.webp" alt="Kleber Soares — tattoo artist" fetchpriority="high">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTHORITY / AWARDS -->
+  <section class="authority">
+    <div class="container">
+      <div class="authority-intro reveal">
+        <span class="section-label">RECOGNITION</span>
+        <h2>25 Years, Over <em>40 Awards</em>, and a Career That Crossed Borders</h2>
+        <p style="color:var(--gray-light);font-size:1rem;font-style:italic;margin-top:8px;line-height:1.75">Built at conventions, international seasons, and by mentoring artists around the world</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-bottom:48px" class="reveal authority-content-grid">
+        <div class="authority-body">
+          <p>Kleber Soares' authority was built through consistency — 25 years dedicated to tattooing, creating projects that demand artistic vision, technical mastery, and deep responsibility for each client's story.</p>
+          <p>Over that journey, Kleber has won more than 40 awards at conventions, including Best of Show at the largest tattoo convention in Latin America — recognition given to the single best piece of the entire event.</p>
+          <p>That kind of award doesn't just validate a beautiful image. It validates technical decision-making, composition, contrast, application, finish, and visual impact.</p>
+          <p>Beyond client work, Kleber has become a reference point for other professionals, mentoring hundreds of artists around the world. Teaching requires mastery of the entire process, technical clarity, and experience that goes far beyond execution alone.</p>
+          <p>His international guest appearances reinforce this recognition: a Brazilian artist taking his technique abroad and being sought by clients who want to be tattooed by someone the market itself has validated.</p>
+        </div>
+        <div>
+          <div class="authority-quote">
+            Getting tattooed by Kleber means accessing a perspective built over decades — recognized by awards, clients, and the artists who learned from his technique.
+          </div>
+          <a href="https://wa.me/5500000000000?text=Hi%20Kleber%2C%20I%20found%20your%20US%20Tour%20page%20and%20would%20like%20to%20book%20my%20tattoo%20appointment." class="cta">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            I WANT TO TATTOO WITH KLEBER IN THE US
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="awards-label">AWARDS &amp; COMPETITION PHOTOS</div>
+        <div class="awards-carousel-wrap">
+          <div class="awards-carousel" id="awardsCarousel">
+            <div class="award-item"><img src="award-1.webp" alt="Kleber Soares award" loading="lazy"></div>
+            <div class="award-item"><img src="award-2.webp" alt="Kleber Soares award" loading="lazy"></div>
+            <div class="award-item"><img src="award-3.webp" alt="Kleber Soares award" loading="lazy"></div>
+            <div class="award-item"><img src="award-4.webp" alt="Kleber Soares award" loading="lazy"></div>
+            <div class="award-item"><img src="award-5.webp" alt="Kleber Soares award" loading="lazy"></div>
+            <div class="award-item"><img src="award-6.webp" alt="Kleber Soares award" loading="lazy"></div>
+          </div>
+          <div class="carousel-nav">
+            <button class="carousel-btn prev" id="awardsPrev">&#8592;</button>
+            <button class="carousel-btn next" id="awardsNext">&#8594;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION / EUA -->
+  <section class="location-section">
+    <div class="container">
+      <div class="location-grid">
+        <div class="location-text reveal">
+          <span class="section-label">US SEASON</span>
+          <h2>Fine Art Tattoo<br><em>Framingham, MA</em></h2>
+          <p>From September to October 2026, Kleber will be accepting appointments in the United States for a limited season of new projects. This is a rare opportunity to work with a Brazilian artist whose career has been built on consistency, technical mastery, and international recognition.</p>
+          <p>Spots are limited. Priority goes to complete, well-prepared projects.</p>
+          <div class="location-detail">
+            <div class="location-row">
+              <span class="location-key">STUDIO</span>
+              <span class="location-val">Fine Art Tattoo</span>
+            </div>
+            <div class="location-row">
+              <span class="location-key">CITY</span>
+              <span class="location-val">Framingham, Massachusetts</span>
+            </div>
+            <div class="location-row">
+              <span class="location-key">DATES</span>
+              <span class="location-val">September – October 2026</span>
+            </div>
+            <div class="location-row">
+              <span class="location-key">SLOTS</span>
+              <span class="location-val">Limited — contact to confirm availability</span>
+            </div>
+          </div>
+          <a href="https://wa.me/5500000000000?text=Hi%20Kleber%2C%20I%20found%20your%20US%20Tour%20page%20and%20would%20like%20to%20check%20availability%20for%20my%20tattoo." class="cta">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            CHECK AVAILABILITY
+          </a>
+        </div>
+        <div class="location-img-wrap reveal" style="transition-delay:0.15s">
+          <img class="location-img" src="eua-1.webp" alt="Kleber Soares in the United States" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio">
+    <div class="container">
+      <div class="portfolio-header reveal">
+        <span class="section-label">PORTFOLIO</span>
+        <h2>Color Realism, Black &amp; Gray, <em>Pets &amp; Tributes</em></h2>
+        <p>During his US season, Kleber will be accepting projects within the core lines of his artistic signature — each one developed with technical precision and a deep respect for the client's story.</p>
+      </div>
+
+      <div class="portfolio-carousel-wrap reveal">
+        <div class="portfolio-carousel" id="portfolioCarousel">
+          <div class="portfolio-item"><img src="tattoo-1.webp" alt="Kleber Soares tattoo work" loading="lazy"></div>
+          <div class="portfolio-item"><img src="tattoo-2.webp" alt="Kleber Soares tattoo work" loading="lazy"></div>
+          <div class="portfolio-item"><img src="tattoo-3.webp" alt="Kleber Soares tattoo work" loading="lazy"></div>
+          <div class="portfolio-item"><img src="tattoo-4.webp" alt="Kleber Soares tattoo work" loading="lazy"></div>
+          <div class="portfolio-item"><img src="tattoo-5.webp" alt="Kleber Soares tattoo work" loading="lazy"></div>
+          <div class="portfolio-item"><img src="tattoo-6.webp" alt="Kleber Soares tattoo work" loading="lazy"></div>
+          <div class="portfolio-item"><img src="tattoo-7.webp" alt="Kleber Soares tattoo work" loading="lazy"></div>
+          <div class="portfolio-item"><img src="tattoo-8.webp" alt="Kleber Soares tattoo work" loading="lazy"></div>
+          <div class="portfolio-item"><img src="tattoo-9.webp" alt="Kleber Soares tattoo work" loading="lazy"></div>
+          <div class="portfolio-item"><img src="tattoo-10.webp" alt="Kleber Soares tattoo work" loading="lazy"></div>
+          <div class="portfolio-item"><img src="tattoo-11.webp" alt="Kleber Soares tattoo work" loading="lazy"></div>
+          <div class="portfolio-item"><img src="tattoo-12.webp" alt="Kleber Soares tattoo work" loading="lazy"></div>
+          <div class="portfolio-item"><img src="tattoo-13.webp" alt="Kleber Soares tattoo work" loading="lazy"></div>
+        </div>
+        <div class="carousel-nav">
+          <button class="carousel-btn prev" id="portfolioPrev">&#8592;</button>
+          <button class="carousel-btn next" id="portfolioNext">&#8594;</button>
+        </div>
+      </div>
+
+      <div class="portfolio-styles reveal">
+        <div class="style-card">
+          <div class="style-icon">01</div>
+          <h3>COLOR REALISM</h3>
+          <p>Visual strength, depth of color, contrast, and presence on the skin.</p>
+        </div>
+        <div class="style-card" style="transition-delay:0.1s">
+          <div class="style-icon">02</div>
+          <h3>BLACK &amp; GRAY</h3>
+          <p>Light, shadow, texture, and expression — intense, elegant, and layered with meaning.</p>
+        </div>
+        <div class="style-card" style="transition-delay:0.2s">
+          <div class="style-icon">03</div>
+          <h3>PET PORTRAITS</h3>
+          <p>Capturing the gaze, personality, and emotional bond between client and animal.</p>
+        </div>
+        <div class="style-card" style="transition-delay:0.3s">
+          <div class="style-icon">04</div>
+          <h3>TRIBUTES</h3>
+          <p>A way to carry a memory, a person, or an important story — permanently and meaningfully.</p>
+        </div>
+      </div>
+
+      <div class="portfolio-close reveal">
+        The next tattoo Kleber creates in the United States could carry your story.
+      </div>
+
+      <div class="reveal">
+        <a href="https://wa.me/5500000000000?text=Hi%20Kleber%2C%20I%20found%20your%20US%20Tour%20page%20and%20would%20like%20to%20send%20my%20tattoo%20idea." class="cta">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          SEND MY IDEA FOR THE US TOUR
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="container">
+      <div class="process-header reveal">
+        <span class="section-label">HOW IT WORKS</span>
+        <h2>3 Steps to Your Appointment</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h3>SEND YOUR IDEA</h3>
+          <p>Message via WhatsApp with your reference, what the piece means to you, and where on your body. The more context you share, the better Kleber can evaluate your project.</p>
+        </div>
+        <div class="step reveal" style="transition-delay:0.1s">
+          <div class="step-num">02</div>
+          <h3>PROJECT CONSULTATION</h3>
+          <p>Kleber reviews your idea, asks questions if needed, and plans the composition, size, and placement. Only selected projects move forward to scheduling.</p>
+        </div>
+        <div class="step reveal" style="transition-delay:0.2s">
+          <div class="step-num">03</div>
+          <h3>TATTOO SESSION</h3>
+          <p>Your appointment at Fine Art Tattoo in Framingham, MA. Kleber handles every aspect of your session with the same care and precision that has earned him 40+ awards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="closing">
+    <div class="container">
+      <span class="section-label reveal" style="display:block;margin-bottom:12px">LIMITED APPOINTMENTS · SEP–OCT 2026</span>
+      <h2 class="reveal">Your Story<br>on <em>Your Skin</em></h2>
+      <p class="closing-sub reveal">Fine Art Tattoo · Framingham, Massachusetts<br>September – October 2026 · Limited slots available</p>
+      <a href="https://wa.me/5500000000000?text=Hi%20Kleber%2C%20I%20found%20your%20US%20Tour%20page%20and%20would%20like%20to%20book%20my%20tattoo%20appointment." class="cta reveal">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        REQUEST MY APPOINTMENT
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-name">KLEBER SOARES</div>
+          <div class="footer-role">Guest Artist · Fine Art Tattoo · Framingham, MA</div>
+        </div>
+        <div class="footer-tags">
+          <span class="footer-tag">25 YEARS</span>
+          <span class="footer-tag">40+ AWARDS</span>
+          <span class="footer-tag">BEST OF SHOW</span>
+          <span class="footer-tag">SEP–OCT 2026</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <img id="lightboxImg" src="" alt="">
+  </div>
+
+  <script>
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Awards carousel drag
+    const awardsCarousel = document.getElementById('awardsCarousel');
+    let isDragging = false, startX = 0, scrollLeft = 0;
+    awardsCarousel.addEventListener('mousedown', e => {
+      isDragging = true;
+      startX = e.pageX - awardsCarousel.offsetLeft;
+      scrollLeft = awardsCarousel.scrollLeft;
+      awardsCarousel.classList.add('dragging');
+    });
+    awardsCarousel.addEventListener('mouseleave', () => { isDragging = false; awardsCarousel.classList.remove('dragging'); });
+    awardsCarousel.addEventListener('mouseup', () => { isDragging = false; awardsCarousel.classList.remove('dragging'); });
+    awardsCarousel.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      e.preventDefault();
+      awardsCarousel.scrollLeft = scrollLeft - (e.pageX - awardsCarousel.offsetLeft - startX) * 1.5;
+    });
+    document.getElementById('awardsPrev').addEventListener('click', () => {
+      const itemW = awardsCarousel.querySelector('.award-item').offsetWidth + 8;
+      awardsCarousel.scrollBy({ left: -itemW * 2, behavior: 'smooth' });
+    });
+    document.getElementById('awardsNext').addEventListener('click', () => {
+      const itemW = awardsCarousel.querySelector('.award-item').offsetWidth + 8;
+      awardsCarousel.scrollBy({ left: itemW * 2, behavior: 'smooth' });
+    });
+
+    // Portfolio carousel drag
+    const portfolioCarousel = document.getElementById('portfolioCarousel');
+    let pDragging = false, pStartX = 0, pScrollLeft = 0;
+    portfolioCarousel.addEventListener('mousedown', e => {
+      pDragging = true; pStartX = e.pageX - portfolioCarousel.offsetLeft; pScrollLeft = portfolioCarousel.scrollLeft;
+      portfolioCarousel.classList.add('dragging');
+    });
+    portfolioCarousel.addEventListener('mouseleave', () => { pDragging = false; portfolioCarousel.classList.remove('dragging'); });
+    portfolioCarousel.addEventListener('mouseup', () => { pDragging = false; portfolioCarousel.classList.remove('dragging'); });
+    portfolioCarousel.addEventListener('mousemove', e => {
+      if (!pDragging) return;
+      e.preventDefault();
+      portfolioCarousel.scrollLeft = pScrollLeft - (e.pageX - portfolioCarousel.offsetLeft - pStartX) * 1.5;
+    });
+    document.getElementById('portfolioPrev').addEventListener('click', () => {
+      const itemW = portfolioCarousel.querySelector('.portfolio-item').offsetWidth + 8;
+      portfolioCarousel.scrollBy({ left: -itemW * 3, behavior: 'smooth' });
+    });
+    document.getElementById('portfolioNext').addEventListener('click', () => {
+      const itemW = portfolioCarousel.querySelector('.portfolio-item').offsetWidth + 8;
+      portfolioCarousel.scrollBy({ left: itemW * 3, behavior: 'smooth' });
+    });
+    let pTouchStartX = 0, pTouchScrollLeft = 0;
+    portfolioCarousel.addEventListener('touchstart', e => {
+      pTouchStartX = e.touches[0].pageX; pTouchScrollLeft = portfolioCarousel.scrollLeft;
+    }, { passive: true });
+    portfolioCarousel.addEventListener('touchmove', e => {
+      portfolioCarousel.scrollLeft = pTouchScrollLeft - (e.touches[0].pageX - pTouchStartX);
+    }, { passive: true });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    document.querySelectorAll('.award-item img, .portfolio-item img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('open');
+      });
+    });
+    document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('open'));
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
+
+    // Touch drag for awards carousel
+    let touchStartX = 0, touchScrollLeft = 0;
+    awardsCarousel.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].pageX;
+      touchScrollLeft = awardsCarousel.scrollLeft;
+    }, { passive: true });
+    awardsCarousel.addEventListener('touchmove', e => {
+      awardsCarousel.scrollLeft = touchScrollLeft - (e.touches[0].pageX - touchStartX);
+    }, { passive: true });
+
+    // Fix authority content grid responsive
+    function fixGrid() {
+      const grid = document.querySelector('.authority-content-grid');
+      if (grid) {
+        if (window.innerWidth < 900) {
+          grid.style.gridTemplateColumns = '1fr';
+          grid.style.gap = '40px';
+        } else {
+          grid.style.gridTemplateColumns = '1fr 1fr';
+          grid.style.gap = '60px';
+        }
+      }
+    }
+    fixGrid();
+    window.addEventListener('resize', fixGrid);
+  </script>
+</body>
+</html>
