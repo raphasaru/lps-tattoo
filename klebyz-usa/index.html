@@ -238,9 +238,120 @@
       width: 100%;
       aspect-ratio: 4/5;
       object-fit: cover;
-      object-position: top center;
+      object-position: center 15%;
       display: block;
       filter: grayscale(0.05) contrast(1.04);
+    }
+
+    /* ═══ PORTFOLIO ═══ */
+    .portfolio {
+      padding: 96px 0;
+      background: var(--black);
+      position: relative;
+    }
+    .portfolio::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+    .portfolio .container { position: relative; z-index: 1; }
+    .portfolio-header {
+      max-width: 720px;
+      margin-bottom: 56px;
+    }
+    .portfolio-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: var(--white);
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+      line-height: 1.05;
+    }
+    .portfolio-header h2 em { font-style: normal; color: var(--ink-light); }
+    .portfolio-header p {
+      color: var(--gray-light);
+      font-size: 0.97rem;
+      line-height: 1.85;
+    }
+    .portfolio-carousel-wrap { position: relative; }
+    .portfolio-carousel {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      cursor: grab;
+    }
+    .portfolio-carousel::-webkit-scrollbar { display: none; }
+    .portfolio-carousel.dragging { cursor: grabbing; }
+    .portfolio-item {
+      flex: 0 0 280px;
+      scroll-snap-align: start;
+      position: relative;
+      overflow: hidden;
+      background: var(--dark-card);
+    }
+    .portfolio-item img {
+      width: 100%;
+      aspect-ratio: 9/16;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(0.06) contrast(1.04);
+      transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.5s;
+      cursor: zoom-in;
+    }
+    .portfolio-item:hover img { transform: scale(1.04); filter: grayscale(0) contrast(1.08); }
+    .portfolio-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(12,8,8,0.4) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .portfolio-styles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 48px 0 40px;
+    }
+    .style-card {
+      padding: 28px 20px;
+      border-top: 2px solid var(--ink);
+      background: var(--dark-card);
+    }
+    .style-icon {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--ink-dim);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .style-card h3 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      color: var(--light-text);
+      margin-bottom: 10px;
+    }
+    .style-card p {
+      font-size: 0.84rem;
+      color: var(--light-muted);
+      line-height: 1.7;
+    }
+    .portfolio-close {
+      border-left: 2px solid var(--ink);
+      padding-left: 24px;
+      font-style: italic;
+      color: var(--gray-light);
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 0 40px;
     }
 
     /* ═══ AUTHORITY ═══ */
@@ -441,117 +552,6 @@
       filter: grayscale(0.08) contrast(1.03);
     }
 
-    /* ═══ PORTFOLIO ═══ */
-    .portfolio {
-      padding: 96px 0;
-      background: var(--black);
-      position: relative;
-    }
-    .portfolio::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-      background-size: 256px 256px;
-    }
-    .portfolio .container { position: relative; z-index: 1; }
-    .portfolio-header {
-      max-width: 720px;
-      margin-bottom: 56px;
-    }
-    .portfolio-header h2 {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      color: var(--white);
-      letter-spacing: 0.02em;
-      margin-bottom: 16px;
-      line-height: 1.05;
-    }
-    .portfolio-header h2 em { font-style: normal; color: var(--ink-light); }
-    .portfolio-header p {
-      color: var(--gray-light);
-      font-size: 0.97rem;
-      line-height: 1.85;
-    }
-    .portfolio-carousel-wrap { position: relative; }
-    .portfolio-carousel {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      cursor: grab;
-    }
-    .portfolio-carousel::-webkit-scrollbar { display: none; }
-    .portfolio-carousel.dragging { cursor: grabbing; }
-    .portfolio-item {
-      flex: 0 0 280px;
-      scroll-snap-align: start;
-      position: relative;
-      overflow: hidden;
-      background: var(--dark-card);
-    }
-    .portfolio-item img {
-      width: 100%;
-      aspect-ratio: 9/16;
-      object-fit: cover;
-      display: block;
-      filter: grayscale(0.06) contrast(1.04);
-      transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.5s;
-      cursor: zoom-in;
-    }
-    .portfolio-item:hover img { transform: scale(1.04); filter: grayscale(0) contrast(1.08); }
-    .portfolio-item::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(12,8,8,0.4) 0%, transparent 50%);
-      pointer-events: none;
-    }
-    .portfolio-styles {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin: 48px 0 40px;
-    }
-    .style-card {
-      padding: 28px 20px;
-      border-top: 2px solid var(--ink);
-      background: var(--dark-card);
-    }
-    .style-icon {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      color: var(--ink-dim);
-      line-height: 1;
-      margin-bottom: 12px;
-    }
-    .style-card h3 {
-      font-family: var(--font-display);
-      font-size: 0.95rem;
-      letter-spacing: 0.1em;
-      color: var(--light-text);
-      margin-bottom: 10px;
-    }
-    .style-card p {
-      font-size: 0.84rem;
-      color: var(--light-muted);
-      line-height: 1.7;
-    }
-    .portfolio-close {
-      border-left: 2px solid var(--ink);
-      padding-left: 24px;
-      font-style: italic;
-      color: var(--gray-light);
-      font-size: 1rem;
-      line-height: 1.8;
-      max-width: 600px;
-      margin: 0 0 40px;
-    }
-
     /* ═══ PROCESS ═══ */
     .process {
       padding: 96px 0;
@@ -718,7 +718,7 @@
     /* ═══ RESPONSIVE ═══ */
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; gap: 48px; }
-      .hero-img { aspect-ratio: 4/5; max-height: 540px; }
+      .hero-img { aspect-ratio: 3/4; max-height: 500px; object-position: center 10%; }
       .hero-grid > div:first-child { order: 1; }
       .hero-img-wrapper { order: 2; }
       .credibility-bar { grid-template-columns: repeat(2, 1fr); gap: 16px; }
@@ -735,6 +735,7 @@
       .container { padding: 0 18px; }
       .hero { padding: 90px 0 60px; min-height: auto; }
       .hero-grid { gap: 36px; }
+      .hero-img { aspect-ratio: 3/4; max-height: 420px; object-position: center 12%; }
       .award-item { flex: 0 0 200px; }
       .portfolio-styles { grid-template-columns: 1fr; }
       .cta { padding: 14px 28px; font-size: 1rem; }
@@ -759,7 +760,7 @@
           <h1 class="reveal">Realistic Tattoos by an <em>Internationally Awarded</em> Brazilian Artist</h1>
           <p class="hero-sub reveal">Kleber Soares will be at Fine Art Tattoo in Framingham, Massachusetts, from September to October 2026 — a limited US season.</p>
           <p class="hero-text reveal">A high-level tattoo doesn't come from a good reference alone. It comes from 25 years of experience — someone who understands composition, skin, contrast, depth, color, anatomy, and story. Over 40 international awards. Best of Show at the largest tattoo convention in Latin America. Mentor to hundreds of artists around the world.</p>
-          <a href="https://wa.me/5500000000000?text=Hi%20Kleber%2C%20I%20found%20your%20US%20Tour%20page%20and%20would%20like%20to%20request%20my%20tattoo%20project." class="cta reveal">
+          <a href="https://meulink.fit/pjweTCwFqKxdXQO" class="cta reveal">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             REQUEST MY PROJECT
           </a>
@@ -783,94 +784,7 @@
           </div>
         </div>
         <div class="hero-img-wrapper reveal" style="transition-delay:0.15s">
-          <img class="hero-img" src="profile.webp" alt="Kleber Soares — tattoo artist" fetchpriority="high">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- AUTHORITY / AWARDS -->
-  <section class="authority">
-    <div class="container">
-      <div class="authority-intro reveal">
-        <span class="section-label">RECOGNITION</span>
-        <h2>25 Years, Over <em>40 Awards</em>, and a Career That Crossed Borders</h2>
-        <p style="color:var(--gray-light);font-size:1rem;font-style:italic;margin-top:8px;line-height:1.75">Built at conventions, international seasons, and by mentoring artists around the world</p>
-      </div>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-bottom:48px" class="reveal authority-content-grid">
-        <div class="authority-body">
-          <p>Kleber Soares' authority was built through consistency — 25 years dedicated to tattooing, creating projects that demand artistic vision, technical mastery, and deep responsibility for each client's story.</p>
-          <p>Over that journey, Kleber has won more than 40 awards at conventions, including Best of Show at the largest tattoo convention in Latin America — recognition given to the single best piece of the entire event.</p>
-          <p>That kind of award doesn't just validate a beautiful image. It validates technical decision-making, composition, contrast, application, finish, and visual impact.</p>
-          <p>Beyond client work, Kleber has become a reference point for other professionals, mentoring hundreds of artists around the world. Teaching requires mastery of the entire process, technical clarity, and experience that goes far beyond execution alone.</p>
-          <p>His international guest appearances reinforce this recognition: a Brazilian artist taking his technique abroad and being sought by clients who want to be tattooed by someone the market itself has validated.</p>
-        </div>
-        <div>
-          <div class="authority-quote">
-            Getting tattooed by Kleber means accessing a perspective built over decades — recognized by awards, clients, and the artists who learned from his technique.
-          </div>
-          <a href="https://wa.me/5500000000000?text=Hi%20Kleber%2C%20I%20found%20your%20US%20Tour%20page%20and%20would%20like%20to%20book%20my%20tattoo%20appointment." class="cta">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            I WANT TO TATTOO WITH KLEBER IN THE US
-          </a>
-        </div>
-      </div>
-
-      <div class="reveal">
-        <div class="awards-label">AWARDS &amp; COMPETITION PHOTOS</div>
-        <div class="awards-carousel-wrap">
-          <div class="awards-carousel" id="awardsCarousel">
-            <div class="award-item"><img src="award-1.webp" alt="Kleber Soares award" loading="lazy"></div>
-            <div class="award-item"><img src="award-2.webp" alt="Kleber Soares award" loading="lazy"></div>
-            <div class="award-item"><img src="award-3.webp" alt="Kleber Soares award" loading="lazy"></div>
-            <div class="award-item"><img src="award-4.webp" alt="Kleber Soares award" loading="lazy"></div>
-            <div class="award-item"><img src="award-5.webp" alt="Kleber Soares award" loading="lazy"></div>
-            <div class="award-item"><img src="award-6.webp" alt="Kleber Soares award" loading="lazy"></div>
-          </div>
-          <div class="carousel-nav">
-            <button class="carousel-btn prev" id="awardsPrev">&#8592;</button>
-            <button class="carousel-btn next" id="awardsNext">&#8594;</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LOCATION / EUA -->
-  <section class="location-section">
-    <div class="container">
-      <div class="location-grid">
-        <div class="location-text reveal">
-          <span class="section-label">US SEASON</span>
-          <h2>Fine Art Tattoo<br><em>Framingham, MA</em></h2>
-          <p>From September to October 2026, Kleber will be accepting appointments in the United States for a limited season of new projects. This is a rare opportunity to work with a Brazilian artist whose career has been built on consistency, technical mastery, and international recognition.</p>
-          <p>Spots are limited. Priority goes to complete, well-prepared projects.</p>
-          <div class="location-detail">
-            <div class="location-row">
-              <span class="location-key">STUDIO</span>
-              <span class="location-val">Fine Art Tattoo</span>
-            </div>
-            <div class="location-row">
-              <span class="location-key">CITY</span>
-              <span class="location-val">Framingham, Massachusetts</span>
-            </div>
-            <div class="location-row">
-              <span class="location-key">DATES</span>
-              <span class="location-val">September – October 2026</span>
-            </div>
-            <div class="location-row">
-              <span class="location-key">SLOTS</span>
-              <span class="location-val">Limited — contact to confirm availability</span>
-            </div>
-          </div>
-          <a href="https://wa.me/5500000000000?text=Hi%20Kleber%2C%20I%20found%20your%20US%20Tour%20page%20and%20would%20like%20to%20check%20availability%20for%20my%20tattoo." class="cta">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            CHECK AVAILABILITY
-          </a>
-        </div>
-        <div class="location-img-wrap reveal" style="transition-delay:0.15s">
-          <img class="location-img" src="eua-1.webp" alt="Kleber Soares in the United States" loading="lazy">
+          <img class="hero-img" src="klebyz-profile3.webp" alt="Kleber Soares — tattoo artist" fetchpriority="high">
         </div>
       </div>
     </div>
@@ -935,10 +849,97 @@
       </div>
 
       <div class="reveal">
-        <a href="https://wa.me/5500000000000?text=Hi%20Kleber%2C%20I%20found%20your%20US%20Tour%20page%20and%20would%20like%20to%20send%20my%20tattoo%20idea." class="cta">
+        <a href="https://meulink.fit/pjweTCwFqKxdXQO" class="cta">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           SEND MY IDEA FOR THE US TOUR
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTHORITY / AWARDS -->
+  <section class="authority">
+    <div class="container">
+      <div class="authority-intro reveal">
+        <span class="section-label">RECOGNITION</span>
+        <h2>25 Years, Over <em>40 Awards</em>, and a Career That Crossed Borders</h2>
+        <p style="color:var(--gray-light);font-size:1rem;font-style:italic;margin-top:8px;line-height:1.75">Built at conventions, international seasons, and by mentoring artists around the world</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-bottom:48px" class="reveal authority-content-grid">
+        <div class="authority-body">
+          <p>Kleber Soares' authority was built through consistency — 25 years dedicated to tattooing, creating projects that demand artistic vision, technical mastery, and deep responsibility for each client's story.</p>
+          <p>Over that journey, Kleber has won more than 40 awards at conventions, including Best of Show at the largest tattoo convention in Latin America — recognition given to the single best piece of the entire event.</p>
+          <p>That kind of award doesn't just validate a beautiful image. It validates technical decision-making, composition, contrast, application, finish, and visual impact.</p>
+          <p>Beyond client work, Kleber has become a reference point for other professionals, mentoring hundreds of artists around the world. Teaching requires mastery of the entire process, technical clarity, and experience that goes far beyond execution alone.</p>
+          <p>His international guest appearances reinforce this recognition: a Brazilian artist taking his technique abroad and being sought by clients who want to be tattooed by someone the market itself has validated.</p>
+        </div>
+        <div>
+          <div class="authority-quote">
+            Getting tattooed by Kleber means accessing a perspective built over decades — recognized by awards, clients, and the artists who learned from his technique.
+          </div>
+          <a href="https://meulink.fit/pjweTCwFqKxdXQO" class="cta">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            I WANT TO TATTOO WITH KLEBER IN THE US
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="awards-label">AWARDS &amp; COMPETITION PHOTOS</div>
+        <div class="awards-carousel-wrap">
+          <div class="awards-carousel" id="awardsCarousel">
+            <div class="award-item"><img src="award-1.webp" alt="Kleber Soares award" loading="lazy"></div>
+            <div class="award-item"><img src="award-2.webp" alt="Kleber Soares award" loading="lazy"></div>
+            <div class="award-item"><img src="award-3.webp" alt="Kleber Soares award" loading="lazy"></div>
+            <div class="award-item"><img src="award-4.webp" alt="Kleber Soares award" loading="lazy"></div>
+            <div class="award-item"><img src="award-5.webp" alt="Kleber Soares award" loading="lazy"></div>
+            <div class="award-item"><img src="award-6.webp" alt="Kleber Soares award" loading="lazy"></div>
+          </div>
+          <div class="carousel-nav">
+            <button class="carousel-btn prev" id="awardsPrev">&#8592;</button>
+            <button class="carousel-btn next" id="awardsNext">&#8594;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION / EUA -->
+  <section class="location-section">
+    <div class="container">
+      <div class="location-grid">
+        <div class="location-text reveal">
+          <span class="section-label">US SEASON</span>
+          <h2>Fine Art Tattoo<br><em>Framingham, MA</em></h2>
+          <p>From September to October 2026, Kleber will be accepting appointments in the United States for a limited season of new projects. This is a rare opportunity to work with a Brazilian artist whose career has been built on consistency, technical mastery, and international recognition.</p>
+          <p>Spots are limited. Priority goes to complete, well-prepared projects.</p>
+          <div class="location-detail">
+            <div class="location-row">
+              <span class="location-key">STUDIO</span>
+              <span class="location-val">Fine Art Tattoo</span>
+            </div>
+            <div class="location-row">
+              <span class="location-key">CITY</span>
+              <span class="location-val">Framingham, Massachusetts</span>
+            </div>
+            <div class="location-row">
+              <span class="location-key">DATES</span>
+              <span class="location-val">September – October 2026</span>
+            </div>
+            <div class="location-row">
+              <span class="location-key">SLOTS</span>
+              <span class="location-val">Limited — contact to confirm availability</span>
+            </div>
+          </div>
+          <a href="https://meulink.fit/pjweTCwFqKxdXQO" class="cta">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            CHECK AVAILABILITY
+          </a>
+        </div>
+        <div class="location-img-wrap reveal" style="transition-delay:0.15s">
+          <img class="location-img" src="eua-1.webp" alt="Kleber Soares in the United States" loading="lazy">
+        </div>
       </div>
     </div>
   </section>
@@ -976,7 +977,7 @@
       <span class="section-label reveal" style="display:block;margin-bottom:12px">LIMITED APPOINTMENTS · SEP–OCT 2026</span>
       <h2 class="reveal">Your Story<br>on <em>Your Skin</em></h2>
       <p class="closing-sub reveal">Fine Art Tattoo · Framingham, Massachusetts<br>September – October 2026 · Limited slots available</p>
-      <a href="https://wa.me/5500000000000?text=Hi%20Kleber%2C%20I%20found%20your%20US%20Tour%20page%20and%20would%20like%20to%20book%20my%20tattoo%20appointment." class="cta reveal">
+      <a href="https://meulink.fit/pjweTCwFqKxdXQO" class="cta reveal">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         REQUEST MY APPOINTMENT
       </a>
