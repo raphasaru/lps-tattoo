@@ -315,7 +315,9 @@
     @media (max-width: 900px) {
       .gallery-scroll.gallery-single img { width: 100%; height: auto; flex: 1 1 100%; }
       .carousel-nav.is-scrollable { display: flex; }
-      .hero-grid { grid-template-columns: 1fr; gap: 40px; position: relative; z-index: 2; }
+      .hero { z-index: 0; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-copy { position: relative; z-index: 2; }
       .hero::before { display: none; }
       .hero::after {
         content: '';
@@ -377,7 +379,7 @@
   <section class="hero">
     <div class="container">
       <div class="hero-grid">
-        <div>
+        <div class="hero-copy">
           <div class="hero-eyebrow reveal">Clínica Estética Bertunes — Vila Formosa, SP</div>
           <h1 class="reveal" style="transition-delay:.08s">
             Sinta-se linda, <em>sem deixar de parecer você mesma</em>
