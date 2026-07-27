@@ -122,7 +122,15 @@
       background: radial-gradient(ellipse 65% 65% at 75% 45%, rgba(188,113,124,0.07) 0%, transparent 65%);
       pointer-events: none;
     }
-    .hero-grid { display: grid; grid-template-columns: 1fr 380px; gap: 80px; align-items: center; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      grid-template-areas: "top image" "bottom image";
+      gap: 24px 80px;
+      align-items: start;
+    }
+    .hero-copy-top { grid-area: top; }
+    .hero-copy-bottom { grid-area: bottom; }
     .hero-eyebrow {
       font-size: 0.7rem;
       letter-spacing: 0.3em;
@@ -148,7 +156,7 @@
     .hero-desc { font-size: 1.02rem; font-weight: 300; color: var(--text); max-width: 480px; margin-bottom: 36px; line-height: 1.8; }
     .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
     .hero-badge { font-size: 0.88rem; font-weight: 400; color: var(--rose-text); background: var(--blush); border: 1px solid var(--rose); padding: 5px 14px; border-radius: 20px; letter-spacing: 0.02em; }
-    .hero-img-wrap { position: relative; }
+    .hero-img-wrap { grid-area: image; position: relative; }
     .hero-img-wrap::before {
       content: '';
       position: absolute; top: -10px; right: -10px; bottom: 10px; left: 10px;
@@ -315,26 +323,14 @@
     @media (max-width: 900px) {
       .gallery-scroll.gallery-single img { width: 100%; height: auto; flex: 1 1 100%; }
       .carousel-nav.is-scrollable { display: flex; }
-      .hero { z-index: 0; }
-      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-      .hero-copy { position: relative; z-index: 2; }
-      .hero::before { display: none; }
-      .hero::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, rgba(250,247,244,0.68) 0%, rgba(250,247,244,0.93) 100%);
-        z-index: 1;
+      .hero-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas: "top" "image" "bottom";
+        gap: 24px;
       }
-      .hero-img-wrap {
-        position: absolute;
-        inset: 0;
-        max-width: none;
-        margin: 0;
-        z-index: 0;
-      }
+      .hero-img-wrap { max-width: 100%; margin: 0; }
       .hero-img-wrap::before { display: none; }
-      .hero-img { width: 100%; height: 100%; aspect-ratio: auto; border-radius: 0; object-position: center 15%; }
+      .hero-img { aspect-ratio: 1/1; }
       .about-list { grid-template-columns: 1fr; }
       .about-grid { grid-template-columns: 1fr; gap: 32px; }
       .service-grid, .service-grid.reverse { grid-template-columns: 1fr; direction: ltr; gap: 28px; }
@@ -379,11 +375,16 @@
   <section class="hero">
     <div class="container">
       <div class="hero-grid">
-        <div class="hero-copy">
+        <div class="hero-copy-top">
           <div class="hero-eyebrow reveal">Clínica Estética Bertunes — Vila Formosa, SP</div>
           <h1 class="reveal" style="transition-delay:.08s">
             Realce sua beleza <em>sem deixar de parecer você</em>
           </h1>
+        </div>
+        <div class="hero-img-wrap reveal" style="transition-delay:.2s">
+          <img class="hero-img" src="img/hero-kath.webp" alt="Procedimento facial realizado pela biomédica Kathleen Soares" width="380" height="506" fetchpriority="high">
+        </div>
+        <div class="hero-copy-bottom">
           <p class="hero-sub reveal" style="transition-delay:.16s">
             Há mais de oito anos cuidando da autoestima e da confiança de quem escolhe se valorizar, com atendimento personalizado, escuta e planejamento.
           </p>
@@ -401,9 +402,6 @@
             Quero agendar minha avaliação gratuita
           </a>
           <p class="cta-support reveal" style="transition-delay:.4s">Fale com a nossa equipe pelo WhatsApp.</p>
-        </div>
-        <div class="hero-img-wrap reveal" style="transition-delay:.2s">
-          <img class="hero-img" src="img/hero-kath.webp" alt="Procedimento facial realizado pela biomédica Kathleen Soares" width="380" height="506" fetchpriority="high">
         </div>
       </div>
     </div>
