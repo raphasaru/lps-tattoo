@@ -313,6 +313,7 @@
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
+      .gallery-scroll.gallery-single img { width: 100%; height: auto; flex: 1 1 100%; }
       .carousel-nav.is-scrollable { display: flex; }
       .hero-grid { grid-template-columns: 1fr; gap: 40px; }
       .hero-img-wrap { max-width: 280px; margin: 0 auto; }
@@ -538,7 +539,7 @@
 
       <div class="reveal">
         <p class="subsection-label">Resultado — Botox</p>
-        <div class="gallery-scroll" id="g-botox" style="justify-content:center">
+        <div class="gallery-scroll gallery-single" id="g-botox" style="justify-content:center">
           <img src="img/resultado-botox.jpg" alt="Antes e depois no período correto — botox" loading="lazy">
         </div>
       </div>
@@ -570,7 +571,7 @@
 
       <div class="reveal">
         <p class="subsection-label">Evolução do resultado — Bioestimulador</p>
-        <div class="gallery-scroll" id="g-bioestimulador" style="justify-content:center">
+        <div class="gallery-scroll gallery-single" id="g-bioestimulador" style="justify-content:center">
           <img src="img/resultado-bioestimulador.jpg" alt="Evolução do resultado — bioestimulador de colágeno" loading="lazy">
         </div>
       </div>
