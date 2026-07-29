@@ -30,13 +30,13 @@
       --font-sans: 'Urbanist', system-ui, sans-serif;
     }
 
-    html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; touch-action: pan-y; }
+    html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; touch-action: pan-y; font-size: 20px; }
 
     body {
       background: var(--cream);
       color: var(--text);
       font-family: var(--font-sans);
-      font-size: 17px;
+      font-size: 21.25px;
       line-height: 1.75;
       overflow-x: hidden;
       width: 100%;
@@ -62,7 +62,7 @@
       background: var(--green);
       color: #fff;
       font-family: var(--font-sans);
-      font-size: 0.88rem;
+      font-size: 0.66rem;
       font-weight: 700;
       letter-spacing: 0.05em;
       text-transform: uppercase;
@@ -89,7 +89,7 @@
     }
     .section-header h2 {
       font-family: var(--font-serif);
-      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-size: clamp(1.52rem, 3.5vw, 2.24rem);
       font-weight: 400;
       color: var(--rose);
       line-height: 1.15;
@@ -145,7 +145,7 @@
     .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--rose); }
     .hero h1 {
       font-family: var(--font-serif);
-      font-size: clamp(2.4rem, 4.6vw, 3.7rem);
+      font-size: clamp(1.92rem, 4.6vw, 2.96rem);
       font-weight: 400;
       color: var(--rose);
       line-height: 1.12;
@@ -176,7 +176,7 @@
     .about-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: start; min-width: 0; }
     .about-grid > div { min-width: 0; }
     .about-text .label { text-align: left; }
-    .about-text h2 { font-family: var(--font-serif); font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 400; color: var(--rose); margin-bottom: 22px; line-height: 1.2; }
+    .about-text h2 { font-family: var(--font-serif); font-size: clamp(1.36rem, 3vw, 1.92rem); font-weight: 400; color: var(--rose); margin-bottom: 22px; line-height: 1.2; }
     .about-list { list-style: none; margin-bottom: 8px; display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; }
     .about-list li {
       position: relative;
@@ -200,33 +200,44 @@
     .gallery-scroll::-webkit-scrollbar { display: none; }
     .gallery-scroll img { flex: 0 0 auto; height: 230px; width: auto; object-fit: cover; border-radius: 10px; transition: transform 0.35s ease; display: block; }
     .gallery-scroll img:hover { transform: scale(1.02); }
+    #g-atendimento img { flex: 1 1 0; width: auto; }
     .about-gallery-label { font-size: 0.68rem; letter-spacing: 0.25em; font-weight: 500; color: var(--muted); text-transform: uppercase; margin-bottom: 14px; text-align: center; }
 
     /* PROCEDURE SECTIONS */
     .service { padding: 64px 0; }
     .service.bg-alt { background: var(--petal); }
     .service.bg-main { background: var(--cream); }
-    .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 40px; min-width: 0; }
+    .service-grid { display: grid; grid-template-columns: 1fr; margin-bottom: 32px; min-width: 0; }
     .service-grid > div { min-width: 0; }
-    .service-grid.reverse { direction: rtl; }
-    .service-grid.reverse > * { direction: ltr; }
     .service-copy .label { text-align: left; }
-    .service-copy h3 { font-family: var(--font-serif); font-size: clamp(1.6rem, 2.6vw, 2.1rem); font-weight: 400; color: var(--rose); margin-bottom: 16px; line-height: 1.2; }
+    .service-copy h3 { font-family: var(--font-serif); font-size: clamp(1.28rem, 2.6vw, 1.68rem); font-weight: 400; color: var(--rose); margin-bottom: 16px; line-height: 1.2; }
     .service-copy p { color: var(--text); font-weight: 300; margin-bottom: 14px; line-height: 1.8; }
     .service-copy .for-you { background: var(--white); border-left: 2px solid var(--rose); padding: 14px 18px; border-radius: 0 10px 10px 0; margin-top: 8px; }
     .service.bg-alt .service-copy .for-you { background: var(--cream); }
     .service-copy .for-you strong { color: var(--rose-text); font-weight: 500; }
-    .service-img { border-radius: 18px; overflow: hidden; }
-    .service-img img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; }
+    .service-media { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(220px, 500px); gap: 20px; align-items: stretch; margin-bottom: 40px; }
+    .service-media > div { min-width: 0; }
+    .service-img, .service-result-img { border-radius: 18px; overflow: hidden; }
+    .service-img img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 18px; }
+    .service-result-img { display: flex; align-items: center; justify-content: center; }
+    .service-result-img img { width: auto; height: 100%; max-width: 100%; object-fit: contain; display: block; border-radius: 18px; }
+    #preenchimentos .service-grid, #harmonizacao .service-grid { grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    #preenchimentos .service-grid .service-img img, #harmonizacao .service-grid .service-img img { height: auto; aspect-ratio: 4/5; }
+    #g-harmonizacao img { height: 345px; }
+    .service-result-wrap { display: flex; flex-direction: column; min-width: 0; }
+    .service-result-wrap .subsection-label { margin-bottom: 10px; }
+    .service-result-wrap .service-result-img { flex: 1; min-height: 0; }
+    .ba-extra { flex: 1 1 0; height: 230px; width: auto; object-fit: cover; border-radius: 10px; display: block; transition: transform 0.35s ease; }
+    .ba-extra:hover { transform: scale(1.02); }
 
     .subsection-label { font-size: 0.68rem; letter-spacing: 0.25em; font-weight: 500; color: var(--muted); text-transform: uppercase; margin-bottom: 14px; text-align: center; }
     .ba-carousel-wrap { position: relative; }
     .ba-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; scrollbar-width: none; -ms-overflow-style: none; cursor: grab; padding-bottom: 2px; touch-action: pan-x pan-y; }
     .ba-track:active { cursor: grabbing; }
     .ba-track::-webkit-scrollbar { display: none; }
-    .ba-card { flex: 0 0 420px; scroll-snap-align: start; display: grid; grid-template-columns: 1fr 1px 1fr; background: var(--white); border: 1px solid var(--blush); border-radius: 14px; overflow: hidden; box-shadow: 0 2px 12px rgba(58,32,34,0.05); }
+    .ba-card { flex: 2 1 0; scroll-snap-align: start; display: grid; grid-template-columns: 1fr 1px 1fr; background: var(--white); border: 1px solid var(--blush); border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(58,32,34,0.05); }
     .ba-side { position: relative; overflow: hidden; }
-    .ba-side img { width: 100%; height: 340px; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .ba-side img { width: 100%; height: 230px; object-fit: cover; display: block; transition: transform 0.5s ease; }
     .ba-card:hover .ba-side img { transform: scale(1.04); }
     .ba-tag { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-family: var(--font-sans); font-size: 0.62rem; letter-spacing: 0.2em; font-weight: 500; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
     .ba-tag.antes { background: rgba(255,255,255,0.88); color: var(--muted); }
@@ -247,7 +258,7 @@
     .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
     .value-card { padding: 30px 24px; background: var(--petal); border-top: 2px solid var(--blush-mid); border-radius: 0 0 14px 14px; transition: border-color 0.3s, border-radius 0.3s, box-shadow 0.3s; }
     .value-card:hover { border-top-color: var(--rose); }
-    .value-card h3 { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 500; color: var(--rose); margin-bottom: 8px; }
+    .value-card h3 { font-family: var(--font-serif); font-size: 1rem; font-weight: 500; color: var(--rose); margin-bottom: 8px; }
     .value-card p { font-size: 0.95rem; color: var(--muted); font-weight: 300; line-height: 1.7; }
 
     /* RESULTADOS */
@@ -264,7 +275,7 @@
     .kathleen-img-wrap::before { content: ''; position: absolute; top: -10px; left: -10px; bottom: 10px; right: 10px; border: 1px solid var(--blush-mid); border-radius: 18px; z-index: 0; }
     .kathleen-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top center; border-radius: 18px; display: block; position: relative; z-index: 1; }
     .kathleen-text .label { text-align: left; }
-    .kathleen-text h2 { font-family: var(--font-serif); font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 400; color: var(--rose); margin-bottom: 20px; line-height: 1.2; }
+    .kathleen-text h2 { font-family: var(--font-serif); font-size: clamp(1.36rem, 3vw, 1.92rem); font-weight: 400; color: var(--rose); margin-bottom: 20px; line-height: 1.2; }
     .kathleen-text p { color: var(--text); font-weight: 300; margin-bottom: 14px; line-height: 1.85; }
     .kathleen-cred { font-size: 0.85rem; color: var(--rose-text); letter-spacing: 0.04em; margin-bottom: 18px; }
     .kathleen-gallery { display: flex; gap: 10px; margin-top: 26px; }
@@ -299,7 +310,7 @@
     /* CTA FINAL */
     .cta-final { padding: 64px 0; background: var(--cream); text-align: center; }
     .cta-final .label { justify-content: center; display: block; }
-    .cta-final h2 { font-family: var(--font-serif); font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 400; color: var(--rose); margin-bottom: 16px; line-height: 1.2; }
+    .cta-final h2 { font-family: var(--font-serif); font-size: clamp(1.52rem, 3.5vw, 2.24rem); font-weight: 400; color: var(--rose); margin-bottom: 16px; line-height: 1.2; }
     .cta-final p { max-width: 520px; margin: 0 auto 36px; font-weight: 300; color: var(--text); line-height: 1.8; }
 
     /* FOOTER */
@@ -333,21 +344,25 @@
       .hero-img { aspect-ratio: 1/1; }
       .about-list { grid-template-columns: 1fr; }
       .about-grid { grid-template-columns: 1fr; gap: 32px; }
-      .service-grid, .service-grid.reverse { grid-template-columns: 1fr; direction: ltr; gap: 28px; }
+      .service-media { grid-template-columns: 1fr; grid-template-rows: none; gap: 20px; margin-bottom: 28px; }
+      .service-img img { height: auto; aspect-ratio: 4/5; }
+      .service-result-img img { width: 100%; height: auto; max-height: none; }
+      #preenchimentos .service-grid, #harmonizacao .service-grid { grid-template-columns: 1fr; gap: 28px; }
       .values-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
       .video-grid { grid-template-columns: 1fr; max-width: 320px; margin-left: auto; margin-right: auto; }
-      .ba-card { flex: 0 0 320px; }
-      .ba-side img { height: 260px; }
+      #ba-labial, #g-harmonizacao { flex-direction: column; overflow-x: visible; }
+      #ba-labial .ba-card, #ba-labial .ba-extra, #g-harmonizacao img { flex: 0 0 auto; width: 100%; }
+      #ba-labial .ba-extra { height: auto; }
+      #g-harmonizacao img { height: auto; }
       .kathleen-grid { grid-template-columns: 1fr; gap: 32px; }
       .kathleen-img-wrap { max-width: 280px; margin: 0 auto; }
       .trust-items { gap: 28px; }
     }
     @media (max-width: 600px) {
-      body { font-size: 15px; }
+      body { font-size: 18.75px; }
       .container { padding: 0 16px; }
       .hero { padding: 90px 0 60px; }
-      .ba-card { flex: 0 0 260px; }
-      .ba-side img { height: 220px; }
+      .ba-side img { height: 170px; }
       .gallery-scroll img { height: 170px; }
       .trust-items {
         display: grid;
@@ -383,7 +398,7 @@
           </h1>
         </div>
         <div class="hero-img-wrap reveal" style="transition-delay:.2s">
-          <img class="hero-img" src="img/hero-kath.webp" alt="Procedimento facial realizado pela biomédica Kathleen Soares" width="380" height="506" fetchpriority="high">
+          <img class="hero-img" src="img/kathleen-3.jpg" alt="Procedimento facial realizado pela biomédica Kathleen Soares" width="380" height="506" fetchpriority="high">
         </div>
         <div class="hero-copy-bottom">
           <p class="hero-sub reveal" style="transition-delay:.16s">
@@ -447,7 +462,6 @@
             <img src="img/atendimento-1.jpg" alt="Atendimento na Clínica Bertunes" loading="lazy">
             <img src="img/atendimento-2.jpg" alt="Atendimento na Clínica Bertunes" loading="lazy">
             <img src="img/atendimento-3.jpg" alt="Atendimento na Clínica Bertunes" loading="lazy">
-            <img src="img/atendimento-4.jpg" alt="Atendimento na Clínica Bertunes" loading="lazy">
             <img src="img/atendimento-5.jpg" alt="Atendimento na Clínica Bertunes" loading="lazy">
             <img src="img/atendimento-6.jpg" alt="Atendimento na Clínica Bertunes" loading="lazy">
           </div>
@@ -472,7 +486,7 @@
           <div class="for-you"><strong>Para você que deseja:</strong> valorizar pontos específicos do rosto, preservando sua harmonia e sua identidade.</div>
         </div>
         <div class="service-img reveal" style="transition-delay:.12s">
-          <img src="img/kathleen-3.jpg" alt="Preenchimento labial sendo realizado" loading="lazy">
+          <img src="img/atendimento-4.jpg" alt="Preenchimento labial sendo realizado" loading="lazy">
         </div>
       </div>
 
@@ -485,13 +499,10 @@
               <div class="ba-divider"></div>
               <div class="ba-side"><img src="img/depois-labial.jpg" alt="Depois do preenchimento labial" loading="lazy"><span class="ba-tag depois">Depois</span></div>
             </div>
+            <img class="ba-extra" src="img/resultado-labial-1.jpg" alt="Resultado preenchimento labial" loading="lazy">
+            <img class="ba-extra" src="img/resultado-labial-2.jpg" alt="Resultado preenchimento de queixo ou mandíbula" loading="lazy">
+            <img class="ba-extra" src="img/resultado-labial-3.jpg" alt="Resultado preenchimento labial" loading="lazy">
           </div>
-        </div>
-        <p class="about-gallery-label" style="margin-top:28px">Mais resultados — preenchimento labial, queixo e mandíbula</p>
-        <div class="gallery-scroll" id="g-labial" style="justify-content:center">
-          <img src="img/resultado-labial-1.jpg" alt="Resultado preenchimento labial" loading="lazy">
-          <img src="img/resultado-labial-2.jpg" alt="Resultado preenchimento de queixo ou mandíbula" loading="lazy">
-          <img src="img/resultado-labial-3.jpg" alt="Resultado preenchimento labial" loading="lazy">
         </div>
       </div>
 
@@ -507,16 +518,16 @@
   <!-- ════════ HARMONIZAÇÃO FACIAL ════════ -->
   <section class="service bg-main" id="harmonizacao">
     <div class="container">
-      <div class="service-grid reverse">
-        <div class="service-img reveal">
-          <img src="img/kathleen-1.jpg" alt="Aplicação de harmonização facial" loading="lazy">
-        </div>
-        <div class="service-copy reveal" style="transition-delay:.12s">
+      <div class="service-grid">
+        <div class="service-copy reveal">
           <span class="label">Procedimento</span>
           <h3>Harmonização facial</h3>
           <p>A harmonização facial reúne diferentes possibilidades de tratamento para melhorar proporções, contornos e pontos de equilíbrio do rosto.</p>
           <p>Não existe um protocolo pronto. A quantidade de produto e as regiões tratadas são definidas a partir das suas características, necessidades e objetivos.</p>
           <div class="for-you"><strong>Para você que deseja:</strong> cuidar de diferentes regiões do rosto por meio de um planejamento integrado e personalizado.</div>
+        </div>
+        <div class="service-img reveal" style="transition-delay:.12s">
+          <img src="img/kathleen-1.jpg" alt="Aplicação de harmonização facial" loading="lazy">
         </div>
       </div>
 
@@ -548,15 +559,17 @@
           <p>O procedimento pode ser realizado em regiões como testa, entre as sobrancelhas e ao redor dos olhos, de acordo com uma avaliação individual.</p>
           <div class="for-you"><strong>Para você que deseja:</strong> uma expressão mais leve e descansada, sem perder a naturalidade dos seus traços.</div>
         </div>
-        <div class="service-img reveal" style="transition-delay:.12s">
-          <img src="img/atendimento-2.jpg" alt="Aplicação de botox" loading="lazy">
-        </div>
       </div>
 
-      <div class="reveal">
-        <p class="subsection-label">Resultado — Botox</p>
-        <div class="gallery-scroll gallery-single" id="g-botox" style="justify-content:center">
-          <img src="img/resultado-botox.jpg" alt="Antes e depois no período correto — botox" loading="lazy">
+      <div class="service-media reveal" style="transition-delay:.12s">
+        <div class="service-img">
+          <img src="img/atendimento-2.jpg" alt="Aplicação de botox" loading="lazy">
+        </div>
+        <div class="service-result-wrap">
+          <p class="subsection-label">Resultado — Botox</p>
+          <div class="service-result-img">
+            <img src="img/resultado-botox.jpg" alt="Resultado — Botox" loading="lazy">
+          </div>
         </div>
       </div>
 
@@ -572,11 +585,8 @@
   <!-- ════════ BIOESTIMULADORES ════════ -->
   <section class="service bg-main" id="bioestimuladores">
     <div class="container">
-      <div class="service-grid reverse">
-        <div class="service-img reveal">
-          <img src="img/atendimento-4.jpg" alt="Procedimento facial na clínica" loading="lazy">
-        </div>
-        <div class="service-copy reveal" style="transition-delay:.12s">
+      <div class="service-grid">
+        <div class="service-copy reveal">
           <span class="label">Procedimento</span>
           <h3>Bioestimuladores de colágeno</h3>
           <p>Os bioestimuladores contribuem para estimular a produção natural de colágeno, melhorando gradualmente a firmeza, a sustentação e a qualidade da pele.</p>
@@ -585,10 +595,15 @@
         </div>
       </div>
 
-      <div class="reveal">
-        <p class="subsection-label">Evolução do resultado — Bioestimulador</p>
-        <div class="gallery-scroll gallery-single" id="g-bioestimulador" style="justify-content:center">
-          <img src="img/resultado-bioestimulador.jpg" alt="Evolução do resultado — bioestimulador de colágeno" loading="lazy">
+      <div class="service-media reveal" style="transition-delay:.12s">
+        <div class="service-img">
+          <img src="img/kathleen-4.jpg" alt="Procedimento facial na clínica" loading="lazy">
+        </div>
+        <div class="service-result-wrap">
+          <p class="subsection-label">Evolução do resultado — Bioestimulador</p>
+          <div class="service-result-img">
+            <img src="img/resultado-bioestimulador.jpg" alt="Resultado — Bioestimulador de colágeno" loading="lazy">
+          </div>
         </div>
       </div>
 
@@ -648,10 +663,6 @@
             <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Iniciar avaliação gratuita
           </a>
-          <div class="kathleen-gallery">
-            <img src="img/kathleen-1.jpg" alt="Kathleen Soares realizando procedimento" loading="lazy">
-            <img src="img/kathleen-4.jpg" alt="Kathleen Soares realizando procedimento" loading="lazy">
-          </div>
         </div>
       </div>
     </div>
@@ -796,7 +807,7 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
 
     let dragMoved = false;
-    document.querySelectorAll('.gallery-scroll img, .ba-side img').forEach(img => {
+    document.querySelectorAll('.gallery-scroll img, .ba-side img, .ba-extra').forEach(img => {
       img.classList.add('lb-trigger');
       img.addEventListener('click', () => { if (!dragMoved) openLb(img.src, img.alt); });
     });
