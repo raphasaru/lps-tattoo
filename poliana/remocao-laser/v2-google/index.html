@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remoção de Tatuagem a Laser — Poliana Bertunes · Vila Formosa, SP</title>
+  <meta name="description" content="Remoção de tatuagem a laser com avaliação individual e cuidado com a pele. Mais de 3 mil clientes atendidas. Vila Formosa – São Paulo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #faf7f4;
+      --petal: #fdf1f2;
+      --blush: #f2dce0;
+      --blush-mid: #e2c4c9;
+      --rose: #bc717c;
+      --rose-deep: #9e5560;
+      --rose-text: #8a4a52;
+      --gold: #c9a96e;
+      --dark: #362022;
+      --text: #5a4245;
+      --muted: #9c848a;
+      --white: #fffcfb;
+      --green: #25D366;
+      --green-hover: #1ebe57;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 17px;
+      line-height: 1.75;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 32px;
+      background: var(--green);
+      color: #fff;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .cta:hover { background: var(--green-hover); transform: translateY(-2px); }
+    .cta svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .label {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .section-header h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.15;
+    }
+    .section-header p {
+      margin-top: 14px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--muted);
+      font-size: 1.08rem;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #fdf2f3 0%, #faf7f4 55%, #f9f3ee 100%);
+      display: flex;
+      align-items: center;
+      padding: 110px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 65% 65% at 75% 45%, rgba(188,113,124,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1fr 380px; gap: 80px; align-items: center; }
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      font-weight: 500;
+      color: var(--rose);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--rose); }
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.1rem, 4vw, 3.1rem);
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.22;
+      margin-bottom: 22px;
+    }
+    .hero h1 em { font-style: italic; color: var(--rose); }
+    .hero-sub { font-size: 1.1rem; font-weight: 300; color: var(--text); max-width: 470px; margin-bottom: 30px; line-height: 1.8; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+    .hero-badge {
+      font-size: 0.92rem;
+      font-weight: 400;
+      color: var(--rose-text);
+      background: var(--blush);
+      padding: 5px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .hero-img-wrap { position: relative; }
+    .hero-img-wrap::before {
+      content: '';
+      position: absolute;
+      top: -10px; right: -10px; bottom: 10px; left: 10px;
+      border: 1px solid var(--blush-mid);
+      border-radius: 3px;
+      z-index: 0;
+    }
+    .hero-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; object-position: top center; display: block; border-radius: 3px; position: relative; z-index: 1; }
+
+    /* TRUST BAR */
+    .trust-bar { background: var(--blush); padding: 30px 0; border-top: 1px solid var(--blush-mid); border-bottom: 1px solid var(--blush-mid); }
+    .trust-items { display: flex; justify-content: center; gap: 56px; flex-wrap: wrap; }
+    .trust-item { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .trust-num { font-family: var(--font-serif); font-size: 1.65rem; font-weight: 500; color: var(--dark); line-height: 1; }
+    .trust-desc { font-size: 0.72rem; letter-spacing: 0.12em; font-weight: 400; color: var(--rose-text); text-transform: uppercase; }
+
+    /* GENERIC SECTION */
+    .sec { padding: 90px 0; }
+    .sec.bg-alt { background: var(--petal); }
+    .sec.bg-white { background: var(--white); }
+    .sec.bg-main { background: var(--cream); }
+
+    .note-block { max-width: 700px; margin: 0 auto 40px; text-align: left; }
+    .note-block p { color: var(--text); font-weight: 300; font-size: 1.05rem; line-height: 1.85; margin-bottom: 14px; }
+    .note-block ul { list-style: none; padding: 0; margin: 18px 0; columns: 2; gap: 24px; }
+    .note-block ul li { position: relative; padding-left: 20px; margin-bottom: 10px; font-weight: 300; break-inside: avoid; }
+    .note-block ul li::before { content: '—'; position: absolute; left: 0; color: var(--rose); }
+    .note-block .protocol { border-left: 2px solid var(--rose); padding: 16px 20px; background: var(--white); border-radius: 0 3px 3px 0; margin-top: 20px; }
+
+    /* GALLERY */
+    .gallery-scroll { display: flex; overflow-x: auto; gap: 10px; scrollbar-width: none; -ms-overflow-style: none; cursor: grab; padding-bottom: 2px; }
+    .gallery-scroll:active { cursor: grabbing; }
+    .gallery-scroll::-webkit-scrollbar { display: none; }
+    .gallery-scroll img { flex: 0 0 auto; height: 320px; width: auto; object-fit: cover; border-radius: 3px; transition: transform 0.35s ease; display: block; }
+    .gallery-scroll img:hover { transform: scale(1.02); }
+
+    /* VALUES */
+    .values-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .value-card { padding: 28px 26px; background: var(--white); border-top: 2px solid var(--blush-mid); border-radius: 0 0 3px 3px; }
+    .value-card:hover { border-top-color: var(--rose); }
+    .value-icon { font-size: 1.3rem; margin-bottom: 10px; color: var(--rose); }
+    .value-card h3 { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 500; color: var(--dark); margin-bottom: 6px; }
+    .value-card p { font-size: 1rem; color: var(--muted); font-weight: 300; line-height: 1.7; }
+
+    /* SPLIT (text | image) */
+    .split-grid { display: grid; grid-template-columns: 1fr 340px; gap: 70px; align-items: center; }
+    .split-grid.rev { grid-template-columns: 340px 1fr; }
+    .split-text .label { text-align: left; }
+    .split-text h2 { font-family: var(--font-serif); font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 400; color: var(--dark); margin-bottom: 20px; line-height: 1.2; }
+    .split-text p { color: var(--text); font-weight: 300; margin-bottom: 14px; line-height: 1.85; }
+    .split-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top center; border-radius: 3px; display: block; }
+
+    /* STEPS */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .step-card { padding: 30px 24px; background: var(--white); border-top: 2px solid var(--blush-mid); }
+    .step-num { font-family: var(--font-serif); font-size: 2rem; color: var(--rose); font-weight: 500; margin-bottom: 10px; }
+    .step-card h3 { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 500; color: var(--dark); margin-bottom: 8px; }
+    .step-card p { font-size: 0.96rem; color: var(--muted); font-weight: 300; line-height: 1.7; }
+
+    /* FAQ */
+    .faq-list { max-width: 780px; margin: 0 auto; }
+    .faq-item { padding: 24px 0; border-bottom: 1px solid var(--blush-mid); }
+    .faq-item h3 { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 500; color: var(--dark); margin-bottom: 8px; }
+    .faq-item p { color: var(--muted); font-weight: 300; line-height: 1.75; }
+
+    /* CTA FINAL */
+    .cta-final { padding: 90px 0; background: var(--white); text-align: center; }
+    .cta-final .label { justify-content: center; display: block; }
+    .cta-final h2 { font-family: var(--font-serif); font-size: clamp(1.9rem, 3.5vw, 2.6rem); font-weight: 400; color: var(--dark); margin-bottom: 16px; line-height: 1.25; }
+    .cta-final p { max-width: 520px; margin: 0 auto 36px; font-weight: 300; color: var(--muted); line-height: 1.8; }
+
+    .service-cta { margin-top: 44px; text-align: center; }
+
+    /* FOOTER */
+    footer { padding: 54px 0; background: var(--dark); text-align: center; }
+    .footer-name { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 300; letter-spacing: 0.18em; color: var(--cream); margin-bottom: 8px; }
+    footer p { font-size: 0.95rem; color: var(--muted); font-weight: 300; }
+    .footer-sep { margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer-sep p { font-size: 0.88rem; color: var(--muted); }
+
+    /* LIGHTBOX */
+    .lb-overlay { display: none; position: fixed; inset: 0; z-index: 10000; background: rgba(28,10,12,0.95); align-items: center; justify-content: center; padding: 20px; }
+    .lb-overlay.active { display: flex; }
+    .lb-overlay img { max-width: 100%; max-height: 90vh; object-fit: contain; border-radius: 2px; }
+    .lb-close { position: fixed; top: 16px; right: 20px; font-size: 1.7rem; color: var(--cream); cursor: pointer; background: none; border: none; opacity: 0.7; padding: 4px 8px; transition: opacity 0.2s; }
+    .lb-close:hover { opacity: 1; }
+    .lb-trigger { cursor: zoom-in; }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-img-wrap { max-width: 280px; margin: 0 auto; }
+      .hero-img-wrap::before { display: none; }
+      .split-grid, .split-grid.rev { grid-template-columns: 1fr; gap: 32px; }
+      .split-grid.rev .split-img { order: -1; }
+      .split-img { max-height: 320px; object-position: center; }
+      .values-grid { grid-template-columns: 1fr; gap: 16px; }
+      .steps { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .trust-items { gap: 28px; }
+      .gallery-scroll img { height: 240px; }
+      .note-block ul { columns: 1; }
+    }
+    @media (max-width: 600px) {
+      body { font-size: 15px; }
+      .container { padding: 0 16px; }
+      .hero { padding: 90px 0 60px; }
+      .steps { grid-template-columns: 1fr; }
+      .trust-items { gap: 20px; }
+      .gallery-scroll img { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-eyebrow reveal">Poliana Bertunes — Clínica Estética Bertunes</div>
+          <h1 class="reveal" style="transition-delay:.08s">Algumas histórias merecem ser lembradas. Outras, <em>você pode escolher não carregar mais</em></h1>
+          <p class="hero-sub reveal" style="transition-delay:.16s">
+            Remoção de tatuagem a laser com Poliana Bertunes, respeitando o tempo do pigmento e,
+            principalmente, a saúde da sua pele.
+          </p>
+          <div class="hero-badges reveal" style="transition-delay:.24s">
+            <span class="hero-badge">+3000 clientes atendidas</span>
+            <span class="hero-badge">8 anos de experiência</span>
+            <span class="hero-badge">Vila Formosa — SP</span>
+            <span class="hero-badge">Avaliação gratuita</span>
+          </div>
+          <a href="https://wa.me/5511988261906?text=Ol%C3%A1%2C%20vim%20da%20p%C3%A1gina%20de%20remo%C3%A7%C3%A3o%20de%20tatuagem%20a%20laser%20%28google%29%20e%20quero%20fazer%20uma%20avalia%C3%A7%C3%A3o%20gratuita%21" class="cta reveal" style="transition-delay:.3s" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Quero minha avaliação gratuita
+          </a>
+        </div>
+        <div class="hero-img-wrap reveal" style="transition-delay:.2s">
+          <img class="hero-img" src="../imgs/hero.webp" alt="Resultado real de remoção de tatuagem a laser" width="380" fetchpriority="high">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-items">
+        <div class="trust-item"><span class="trust-num">8+</span><span class="trust-desc">Anos de experiência</span></div>
+        <div class="trust-item"><span class="trust-num">+3000</span><span class="trust-desc">Clientes atendidas</span></div>
+        <div class="trust-item"><span class="trust-num">~90d</span><span class="trust-desc">Entre sessões</span></div>
+        <div class="trust-item"><span class="trust-num">SP</span><span class="trust-desc">Vila Formosa</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOBRE O SERVIÇO -->
+  <section class="sec bg-main">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Como funciona o clareamento</span>
+        <h2>Sobre o serviço</h2>
+        <p>A remoção a laser é um processo de clareamento progressivo do pigmento presente na pele. Durante as sessões, o laser atua sobre as partículas de tinta e, depois da aplicação, o próprio organismo continua participando desse processo ao longo das semanas.</p>
+      </div>
+      <div class="note-block reveal">
+        <p><strong style="color:var(--dark)">Poliana avalia fatores como:</strong></p>
+        <ul>
+          <li>Cor do pigmento</li>
+          <li>Quantidade de tinta</li>
+          <li>Saturação</li>
+          <li>Profundidade aparente</li>
+          <li>Região do corpo</li>
+          <li>Tempo da tatuagem</li>
+          <li>Condições da pele</li>
+          <li>Cicatrização</li>
+          <li>Histórico de sessões anteriores</li>
+          <li>Resposta individual de cada cliente</li>
+        </ul>
+        <div class="protocol">
+          <p style="margin:0">No protocolo habitual da Poliana, são respeitados aproximadamente <strong style="color:var(--dark)">90 dias entre as sessões</strong>, sempre de acordo com a evolução da pele.</p>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <p class="label" style="text-align:left">Sequência de resultados</p>
+        <div class="gallery-scroll" id="g-resultados">
+          <img src="../imgs/resultado-1.webp" alt="Remoção de tatuagem a laser — resultado" loading="lazy">
+          <img src="../imgs/resultado-2.webp" alt="Remoção de tatuagem a laser — resultado" loading="lazy">
+          <img src="../imgs/resultado-3.webp" alt="Remoção de tatuagem a laser — resultado" loading="lazy">
+          <img src="../imgs/resultado-4.webp" alt="Remoção de tatuagem a laser — resultado" loading="lazy">
+          <img src="../imgs/resultado-5.webp" alt="Remoção de tatuagem a laser — resultado" loading="lazy">
+        </div>
+      </div>
+
+      <div class="service-cta reveal">
+        <a href="https://wa.me/5511988261906?text=Ol%C3%A1%2C%20vim%20da%20p%C3%A1gina%20de%20remo%C3%A7%C3%A3o%20de%20tatuagem%20a%20laser%20%28google%29%20e%20quero%20fazer%20uma%20avalia%C3%A7%C3%A3o%20gratuita%21" class="cta" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quero avaliar minha tatuagem
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section class="sec bg-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Por que remover</span>
+        <h2>Benefícios da remoção de tatuagem</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card reveal"><div class="value-icon">◈</div><h3>Liberdade para mudar</h3><p>Uma escolha feita no passado não precisa determinar como você deseja se apresentar hoje.</p></div>
+        <div class="value-card reveal" style="transition-delay:.06s"><div class="value-icon">◈</div><h3>Clareamento progressivo</h3><p>Cada etapa é acompanhada de acordo com a resposta do pigmento e da pele.</p></div>
+        <div class="value-card reveal" style="transition-delay:.12s"><div class="value-icon">◈</div><h3>Cuidado com a pele</h3><p>O processo prioriza recuperação, cicatrização e respeito aos intervalos necessários.</p></div>
+        <div class="value-card reveal" style="transition-delay:.18s"><div class="value-icon">◈</div><h3>Planejamento individual</h3><p>Cada tatuagem possui características diferentes e precisa ser avaliada de forma única.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE A POLIANA -->
+  <section class="sec bg-white">
+    <div class="container">
+      <div class="split-grid rev">
+        <div class="reveal" style="transition-delay:.15s">
+          <img class="split-img" src="../imgs/about.webp" alt="Poliana Bertunes, fundadora da Clínica Estética Bertunes" loading="lazy">
+        </div>
+        <div class="split-text reveal">
+          <span class="label">Quem vai cuidar de você</span>
+          <h2>Sobre a Poliana</h2>
+          <p>Poliana Bertunes é fundadora da Clínica Estética Bertunes e atua há mais de oito anos no segmento estético. Sua relação com a remoção também nasceu de uma experiência pessoal.</p>
+          <p>Em determinado momento da sua trajetória, Poliana percebeu que algumas tatuagens que carregava já não representavam a mulher que havia se tornado. Ao viver esse processo, compreendeu algo que hoje também leva para suas clientes: remover não significa apagar sua história. Significa escolher o que ainda faz sentido carregar.</p>
+          <p>Hoje, são mais de 3 mil clientes atendidas, com um padrão de trabalho baseado em avaliação individual, segurança, cuidado e respeito à pele.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="sec bg-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Passo a passo</span>
+        <h2>Como funciona</h2>
+      </div>
+      <div class="steps">
+        <div class="step-card reveal"><div class="step-num">1</div><h3>Avaliação gratuita</h3><p>Envie fotos da tatuagem e conte um pouco sobre o seu caso pelo WhatsApp.</p></div>
+        <div class="step-card reveal" style="transition-delay:.06s"><div class="step-num">2</div><h3>Avaliação da tatuagem e da pele</h3><p>Poliana analisa pigmento, saturação, cores, região, textura e histórico de sessões anteriores.</p></div>
+        <div class="step-card reveal" style="transition-delay:.12s"><div class="step-num">3</div><h3>Aplicação do laser</h3><p>A sessão é planejada de acordo com o que a pele e o pigmento apresentam naquele momento.</p></div>
+        <div class="step-card reveal" style="transition-delay:.18s"><div class="step-num">4</div><h3>Recuperação e acompanhamento</h3><p>A pele se recupera antes da próxima etapa, definida a partir dessa evolução.</p></div>
+      </div>
+      <div class="service-cta reveal">
+        <a href="https://wa.me/5511988261906?text=Ol%C3%A1%2C%20vim%20da%20p%C3%A1gina%20de%20remo%C3%A7%C3%A3o%20de%20tatuagem%20a%20laser%20%28google%29%20e%20quero%20fazer%20uma%20avalia%C3%A7%C3%A3o%20gratuita%21" class="cta" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Agendar minha avaliação gratuita
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec bg-white">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Dúvidas frequentes</span>
+        <h2>FAQ</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <h3>Quantas sessões são necessárias para remover minha tatuagem?</h3>
+          <p>Não existe uma quantidade padrão. A evolução depende da cor, quantidade e profundidade aparente do pigmento, região do corpo, características da pele e resposta individual de cada cliente.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h3>É possível remover a tatuagem completamente?</h3>
+          <p>O nível de clareamento varia de acordo com cada caso. Por isso, não é responsável prometer um resultado absoluto antes de acompanhar como o pigmento e a pele respondem ao processo.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h3>Por que preciso esperar entre uma sessão e outra?</h3>
+          <p>Porque a pele precisa se recuperar e o organismo continua trabalhando sobre o pigmento após a aplicação. Poliana geralmente respeita aproximadamente 90 dias entre as sessões, podendo ajustar esse período de acordo com cada evolução.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h3>Posso fazer sessões mais próximas para remover mais rápido?</h3>
+          <p>A próxima sessão não é definida apenas pelo tempo no calendário. É necessário avaliar a recuperação da pele antes de avançar. Acelerar o processo sem respeitar essa resposta pode aumentar o risco de alterações indesejadas na região.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h3>Já comecei uma remoção em outro local. Posso continuar com a Poliana?</h3>
+          <p>Sim, desde que seja realizada uma nova avaliação. Poliana precisa observar as condições atuais da pele, o pigmento residual e o histórico das sessões anteriores antes de definir o próximo passo.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h3>A remoção pode deixar cicatriz?</h3>
+          <p>Procedimentos a laser envolvem riscos e a resposta varia de uma pele para outra. Por isso, avaliação, parâmetros adequados, cuidados pós-procedimento e respeito à recuperação da região são fundamentais durante todo o processo.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h3>Quais cuidados preciso ter depois da sessão?</h3>
+          <p>Os cuidados são orientados individualmente de acordo com a resposta da pele. De forma geral, é importante proteger a região, evitar exposição solar durante a recuperação e seguir todas as orientações fornecidas pela Poliana.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="container">
+      <div class="reveal">
+        <span class="label">Próximo passo</span>
+        <h2>Remover não significa apagar sua história.<br>Significa escolher o que ainda faz sentido carregar</h2>
+        <p>Fale com a equipe da Clínica Estética Bertunes, envie fotos da tatuagem e receba as primeiras orientações.</p>
+        <a href="https://wa.me/5511988261906?text=Ol%C3%A1%2C%20vim%20da%20p%C3%A1gina%20de%20remo%C3%A7%C3%A3o%20de%20tatuagem%20a%20laser%20%28google%29%20e%20quero%20fazer%20uma%20avalia%C3%A7%C3%A3o%20gratuita%21" class="cta" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Avaliação gratuita no WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-name">CLÍNICA ESTÉTICA BERTUNES</div>
+      <p>Especialistas em realçar a beleza natural com técnicas de alta performance.</p>
+      <div class="footer-sep">
+        <p>Avenida Renata, 140 — Sala 2, Chácara Belenzinho — São Paulo/SP · CEP 03377-000</p>
+        <p style="margin-top:6px">WhatsApp: (11) 98826-1906 · Instagram: @polianabertunes</p>
+        <p style="margin-top:10px;font-size:0.78rem;color:var(--muted)">Copyright &copy; 2026 Poliana Bertunes | CNPJ: 48.741.397/0001-07</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="lb-overlay" id="lightbox">
+    <button class="lb-close" id="lb-close">&times;</button>
+    <img id="lb-img" src="" alt="">
+  </div>
+
+  <script>
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    function openLb(src, alt) { lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeLb() { lb.classList.remove('active'); document.body.style.overflow = ''; lbImg.src = ''; }
+    document.getElementById('lb-close').addEventListener('click', closeLb);
+    lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+
+    let dragMoved = false;
+    document.querySelectorAll('.gallery-scroll img').forEach(img => {
+      img.classList.add('lb-trigger');
+      img.addEventListener('click', () => { if (!dragMoved) openLb(img.src, img.alt); });
+    });
+
+    document.querySelectorAll('.gallery-scroll').forEach(el => {
+      let isDragging = false, startX, scrollLeft;
+      el.addEventListener('mousedown', e => { isDragging = true; dragMoved = false; startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft; });
+      el.addEventListener('mouseleave', () => isDragging = false);
+      el.addEventListener('mouseup', () => isDragging = false);
+      el.addEventListener('mousemove', e => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const delta = e.pageX - el.offsetLeft - startX;
+        if (Math.abs(delta) > 4) dragMoved = true;
+        el.scrollLeft = scrollLeft - delta;
+      });
+    });
+  </script>
+
+</body>
+</html>
