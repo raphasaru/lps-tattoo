@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matheus Almeida — Guest Tattoo Artist · Amsterdam, Zurich & Austria</title>
+  <meta name="description" content="Brazilian tattoo artist and founder of Apollo 33, specializing in Fine Line and Black & Grey Realism. European tour — Amsterdam, Zurich and Austria.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1619796326466758');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1619796326466758&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #fefefd;
+      --dark: #f3f2ee;
+      --dark-card: #ececE7;
+      --ink: #777673;
+      --ink-light: #4a4946;
+      --cream: #2a2a28;
+      --gray: #6f6e6b;
+      --gray-light: #57564f;
+      --white: #191917;
+      --green: #25D366;
+      --green-hover: #1ebe57;
+      --light-bg: #f6f5f1;
+      --light-text: #232320;
+      --light-muted: #6d6c68;
+      --font-display: 'Cinzel', serif;
+      --font-body: 'Raleway', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.8;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 34px;
+      background: var(--green);
+      color: #fff;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .cta:hover {
+      background: var(--green-hover);
+      transform: translateY(-2px);
+    }
+    .cta svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* ═══ HERO ═══ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      overflow: hidden;
+      background-color: #fefefd;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 70% 50%, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.05) 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-label {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.8rem;
+      letter-spacing: 0.35em;
+      color: var(--ink);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-label::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--ink);
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(2.1rem, 4vw, 3.4rem);
+      line-height: 1.25;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--ink-light);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border: 1px solid rgba(0,0,0,0.16);
+      margin-bottom: 20px;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.78rem;
+      letter-spacing: 0.25em;
+      color: var(--ink-light);
+    }
+    .hero-badge::before {
+      content: '●';
+      color: var(--ink);
+      font-size: 0.5rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--gray-light);
+      max-width: 520px;
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+    .hero-text {
+      font-size: 1.05rem;
+      color: var(--gray);
+      max-width: 520px;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .hero-img-wrapper { position: relative; }
+    .hero-img-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border: 1px solid rgba(0,0,0,0.1);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .hero-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      filter: grayscale(1) contrast(1.05);
+    }
+
+    /* ═══ ABOUT ═══ */
+    .about {
+      padding: 96px 0;
+      position: relative;
+      background-color: var(--light-bg);
+    }
+    .about::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.06;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+    .about .section-header .label { color: var(--ink-light); }
+    .about .section-header h2 { color: var(--light-text); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .about-text p {
+      color: var(--light-muted);
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+    .about-text p:first-child {
+      font-size: 1.1rem;
+      color: var(--light-text);
+    }
+    .about-highlight {
+      position: relative;
+      padding: 40px;
+      background: rgba(0,0,0,0.035);
+      border-left: 3px solid var(--ink);
+    }
+    .about-highlight p {
+      font-size: 1.05rem;
+      letter-spacing: 0.03em;
+      color: var(--light-text);
+      font-weight: 300;
+      line-height: 1.9;
+    }
+    .about-highlight .dash {
+      display: block;
+      width: 30px;
+      height: 2px;
+      background: var(--ink);
+      margin-top: 20px;
+    }
+    .credentials {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .credential {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--light-muted);
+      letter-spacing: 0.03em;
+    }
+    .credential::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--ink);
+      flex-shrink: 0;
+    }
+
+    /* ═══ GALLERY ═══ */
+    .gallery { padding: 80px 0; }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-header .label {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.78rem;
+      letter-spacing: 0.35em;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      color: var(--white);
+      letter-spacing: 0.06em;
+    }
+
+    .gallery-carousel-wrapper { position: relative; }
+    .gallery-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 6px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+    }
+    .gallery-grid:active { cursor: grabbing; }
+    .gallery-grid::-webkit-scrollbar { display: none; }
+    .gallery-grid .gallery-item {
+      flex: 0 0 calc(33.333% - 4px);
+      scroll-snap-align: start;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      background: var(--dark);
+    }
+    .gallery-grid .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s;
+      filter: grayscale(1) contrast(1.05);
+    }
+    .gallery-grid .gallery-item:hover img {
+      transform: scale(1.05);
+      filter: grayscale(0.7) contrast(1.1);
+    }
+    .gallery-grid .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.18) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: rgba(10,10,10,0.7);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #f2f2f0;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-size: 1.2rem;
+      line-height: 1;
+      user-select: none;
+    }
+    .carousel-btn:hover { background: rgba(10,10,10,0.95); }
+    .carousel-btn.prev { left: -22px; }
+    .carousel-btn.next { right: -22px; }
+    .gallery-cta { text-align: center; margin-top: 50px; }
+
+    /* ═══ PROCESS ═══ */
+    .process {
+      padding: 96px 0;
+      position: relative;
+      background-color: var(--light-bg);
+    }
+    .process::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.06;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+    .process .section-header .label { color: var(--ink-light); }
+    .process .section-header h2 { color: var(--light-text); }
+    .process-intro {
+      max-width: 680px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+    .process-intro p { color: var(--light-muted); font-weight: 400; }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    .step {
+      padding: 36px 28px;
+      background: #ffffff;
+      border-top: 2px solid var(--ink);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      color: rgba(0,0,0,0.08);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .step h3 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: var(--light-text);
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+    }
+    .step p {
+      font-size: 1.05rem;
+      color: var(--light-muted);
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    /* ═══ CLOSING ═══ */
+    .closing-section {
+      padding: 96px 0;
+      background: var(--dark);
+      position: relative;
+    }
+    .closing-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(0,0,0,0.025) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .closing {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .closing p {
+      font-size: 1.15rem;
+      color: var(--cream);
+      font-weight: 300;
+      margin-bottom: 16px;
+      line-height: 1.85;
+    }
+    .closing p:last-of-type {
+      font-size: 1rem;
+      color: var(--gray);
+      margin-bottom: 40px;
+    }
+
+    /* ═══ FOOTER ═══ */
+    footer {
+      padding: 60px 0;
+      text-align: center;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+    footer .footer-name {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1.3rem;
+      color: var(--white);
+      letter-spacing: 0.25em;
+      margin-bottom: 12px;
+    }
+    footer p { font-size: 0.85rem; color: var(--gray); font-weight: 300; }
+    footer .footer-detail {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    footer .footer-detail span {
+      font-size: 0.8rem;
+      color: var(--gray);
+      letter-spacing: 0.05em;
+    }
+    footer .footer-detail span::before { content: '·'; margin-right: 12px; color: var(--ink); }
+    footer .footer-detail span:first-child::before { display: none; }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-img-wrapper { max-width: 360px; margin: 0 auto; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .gallery-grid .gallery-item { flex: 0 0 calc(50% - 3px); }
+      .carousel-btn.prev { left: 4px; }
+      .carousel-btn.next { right: 4px; }
+      .steps { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media (max-width: 600px) {
+      body { font-size: 16px; }
+      .container { padding: 0 18px; }
+      .hero { padding: 100px 0 60px; min-height: auto; }
+      .hero-img-wrapper { display: block; max-width: 260px; margin: 0 auto; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .gallery-grid .gallery-item { flex: 0 0 80%; }
+      .cta { padding: 14px 28px; font-size: 1rem; }
+    }
+
+    /* Lightbox */
+    .lb-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(0,0,0,0.94);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .lb-overlay.active { display: flex; }
+    .lb-overlay img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 2px;
+      user-select: none;
+    }
+    .lb-close {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      font-size: 2rem;
+      color: #f2f2f0;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      background: none;
+      border: none;
+      padding: 4px 8px;
+    }
+    .lb-close:hover { opacity: 1; }
+    .lb-trigger { cursor: zoom-in; }
+  </style>
+</head>
+<body>
+
+  <!-- ════════ HERO ════════ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-label reveal">MATHEUS ALMEIDA · GUEST TATTOO ARTIST</div>
+          <div class="hero-badge reveal" style="transition-delay: 0.05s">BOOKING OPEN · OCTOBER – NOVEMBER</div>
+          <h1 class="reveal" style="transition-delay: 0.1s">
+            Turn your story into a tattoo created <em>exclusively</em> for you
+          </h1>
+          <p class="hero-sub reveal" style="transition-delay: 0.2s">
+            Between October and November, Matheus Almeida returns to Europe — guest sessions in Amsterdam, Zurich and, for the first time, in Austria.
+          </p>
+          <p class="hero-text reveal" style="transition-delay: 0.3s">
+            Brazilian artist and founder of Apollo 33, Matheus develops projects in Fine Line and Black & Grey Realism, turning stories, ideas and references into authorial compositions.<br><br>
+            A limited number of projects will be selected in each destination during the season.
+          </p>
+          <a href="https://wa.me/5511978361287?text=Hi%20Matheus!%20I%20saw%20the%20European%20tour%20page%20and%20I%27d%20like%20to%20apply%20for%20a%20tattoo%20project." class="cta reveal" style="transition-delay: 0.4s" onclick="fbq('track','Lead');">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            APPLY FOR A PROJECT
+          </a>
+        </div>
+        <div class="hero-img-wrapper reveal" style="transition-delay: 0.3s">
+          <img class="hero-img" src="profile.jpg" alt="Matheus Almeida — Tattoo Artist" width="420" height="560" fetchpriority="high">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ ABOUT ════════ -->
+  <section class="about">
+    <div class="container">
+      <div class="section-header reveal" style="margin-bottom: 50px;">
+        <div class="label">ABOUT</div>
+        <h2>Your project starts with what you want to represent</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>Matheus Almeida is a Brazilian tattoo artist and founder of Apollo 33, developing authorial projects in Fine Line and Black & Grey Realism.</p>
+          <p>The process starts by understanding what you want to represent. Based on your story and references, Matheus develops an individual composition, designed to translate that meaning into a project that makes sense for you and for your body.</p>
+          <p>Every piece is built from scratch — no reused flash, no generic solutions. Just a project shaped around your story.</p>
+          <p>During the European season, Matheus will accept a limited number of clients in each destination, prioritizing projects with a clear reference and story.</p>
+          <div class="credentials">
+            <div class="credential">Founder of Apollo 33</div>
+            <div class="credential">Fine Line & Black and Grey Realism</div>
+            <div class="credential">Authorial compositions built from your story</div>
+            <div class="credential">Guest in Amsterdam, Zurich and Austria</div>
+          </div>
+        </div>
+        <div class="about-highlight reveal" style="transition-delay: 0.15s">
+          <p>Amsterdam · Zurich · Austria<br>Limited availability during the European season.</p>
+          <span class="dash"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ GALLERY ════════ -->
+  <section class="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label">PORTFOLIO</div>
+        <h2>Original Work</h2>
+      </div>
+      <div class="gallery-carousel-wrapper">
+        <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
+        <div class="gallery-grid" id="galleryCarousel">
+          <div class="gallery-item"><img src="trabalhos/work-1.jpg" alt="Matheus Almeida tattoo work" loading="lazy" width="600" height="600"></div>
+          <div class="gallery-item"><img src="trabalhos/work-2.jpg" alt="Matheus Almeida tattoo work" loading="lazy" width="600" height="600"></div>
+          <div class="gallery-item"><img src="trabalhos/work-3.jpg" alt="Matheus Almeida tattoo work" loading="lazy" width="600" height="600"></div>
+          <div class="gallery-item"><img src="trabalhos/work-4.jpg" alt="Matheus Almeida tattoo work" loading="lazy" width="600" height="600"></div>
+          <div class="gallery-item"><img src="trabalhos/work-5.jpg" alt="Matheus Almeida tattoo work" loading="lazy" width="600" height="600"></div>
+          <div class="gallery-item"><img src="trabalhos/work-6.jpg" alt="Matheus Almeida tattoo work" loading="lazy" width="600" height="600"></div>
+          <div class="gallery-item"><img src="trabalhos/work-7.jpg" alt="Matheus Almeida tattoo work" loading="lazy" width="600" height="600"></div>
+          <div class="gallery-item"><img src="trabalhos/work-8.jpg" alt="Matheus Almeida tattoo work" loading="lazy" width="600" height="600"></div>
+          <div class="gallery-item"><img src="trabalhos/work-9.jpg" alt="Matheus Almeida tattoo work" loading="lazy" width="600" height="600"></div>
+          <div class="gallery-item"><img src="trabalhos/work-10.jpg" alt="Matheus Almeida tattoo work" loading="lazy" width="600" height="600"></div>
+          <div class="gallery-item"><img src="trabalhos/work-11.jpg" alt="Matheus Almeida tattoo work" loading="lazy" width="600" height="600"></div>
+          <div class="gallery-item"><img src="trabalhos/work-12.jpg" alt="Matheus Almeida tattoo work" loading="lazy" width="600" height="600"></div>
+        </div>
+        <button class="carousel-btn next" aria-label="Next">&#8594;</button>
+      </div>
+      <div class="gallery-cta reveal">
+        <a href="https://wa.me/5511978361287?text=Hi%20Matheus!%20I%20saw%20the%20European%20tour%20page%20and%20I%27d%20like%20to%20apply%20for%20a%20tattoo%20project." class="cta" onclick="fbq('track','Lead');">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          TALK TO MATHEUS ABOUT MY PROJECT
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ PROCESS ════════ -->
+  <section class="process">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label">THE PROCESS</div>
+        <h2>How your project is built</h2>
+      </div>
+      <div class="process-intro reveal">
+        <p>No reused flash, no generic solutions. Every project is shaped around your own story, from the first conversation to the final composition.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h3>LISTENING</h3>
+          <p>The process starts by understanding what you want to represent — your story, ideas and references, and what they mean to you.</p>
+        </div>
+        <div class="step reveal" style="transition-delay: 0.1s">
+          <div class="step-num">02</div>
+          <h3>COMPOSITION</h3>
+          <p>Matheus develops an individual composition in Fine Line or Black & Grey Realism, built to fit your body and translate that meaning into the piece.</p>
+        </div>
+        <div class="step reveal" style="transition-delay: 0.2s">
+          <div class="step-num">03</div>
+          <h3>SELECTION</h3>
+          <p>A limited number of projects is selected in each destination — Amsterdam, Zurich and Austria — prioritizing clear references and stories.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ CLOSING CTA ════════ -->
+  <section class="closing-section">
+    <div class="container">
+      <div class="closing reveal">
+        <p>If you have a story you want to carry as a tattoo — built with direction, meaning and an authorial composition — this is the moment to start the conversation.</p>
+        <p>Availability is limited across Amsterdam, Zurich and Austria and the schedule is organized in order of project approval.</p>
+        <a href="https://wa.me/5511978361287?text=Hi%20Matheus!%20I%20saw%20the%20European%20tour%20page%20and%20I%27d%20like%20to%20apply%20for%20a%20tattoo%20project." class="cta" onclick="fbq('track','Lead');">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          APPLY FOR A PROJECT
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ FOOTER ════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-name">MATHEUS ALMEIDA</div>
+      <p>Guest Tattoo Artist · Amsterdam · Zurich · Austria</p>
+      <div class="footer-detail">
+        <span>Apollo 33</span>
+        <span>Fine Line</span>
+        <span>Black & Grey Realism</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lb-overlay" id="lightbox">
+    <button class="lb-close" id="lb-close">&times;</button>
+    <img id="lb-img" src="" alt="">
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+
+    function openLightbox(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt || '';
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+      img.classList.add('lb-trigger');
+      img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    });
+
+    const carousel = document.getElementById('galleryCarousel');
+    let isDragging = false, startX = 0, scrollLeft = 0;
+
+    carousel.addEventListener('mousedown', e => {
+      isDragging = true;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+      carousel.style.userSelect = 'none';
+    });
+    carousel.addEventListener('mouseleave', () => { isDragging = false; });
+    carousel.addEventListener('mouseup', () => { isDragging = false; carousel.style.userSelect = ''; });
+    carousel.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      e.preventDefault();
+      carousel.scrollLeft = scrollLeft - (e.pageX - carousel.offsetLeft - startX) * 1.5;
+    });
+
+    document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
+      const itemW = carousel.querySelector('.gallery-item').offsetWidth + 6;
+      carousel.scrollBy({ left: -itemW * 3, behavior: 'smooth' });
+    });
+    document.querySelector('.carousel-btn.next').addEventListener('click', () => {
+      const itemW = carousel.querySelector('.gallery-item').offsetWidth + 6;
+      carousel.scrollBy({ left: itemW * 3, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
