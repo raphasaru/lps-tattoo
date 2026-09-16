@@ -261,6 +261,27 @@
       font-size: 1.1rem;
       color: var(--light-text);
     }
+    .about-media {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .about-photo-wrapper { position: relative; }
+    .about-photo-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border: 1px solid rgba(0,0,0,0.1);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(1) contrast(1.05);
+    }
     .about-highlight {
       position: relative;
       padding: 40px;
@@ -614,9 +635,14 @@
             <div class="credential">Guest in Amsterdam, Zurich and Austria</div>
           </div>
         </div>
-        <div class="about-highlight reveal" style="transition-delay: 0.15s">
-          <p>Amsterdam · Zurich · Austria<br>Limited availability during the European season.</p>
-          <span class="dash"></span>
+        <div class="about-media reveal" style="transition-delay: 0.15s">
+          <div class="about-photo-wrapper">
+            <img class="about-photo" src="about-photo.jpg" alt="Matheus Almeida tattooing a client" loading="lazy">
+          </div>
+          <div class="about-highlight">
+            <p>Amsterdam · Zurich · Austria<br>Limited availability during the European season.</p>
+            <span class="dash"></span>
+          </div>
         </div>
       </div>
     </div>
